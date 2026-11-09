@@ -53,12 +53,12 @@ No synthetic benchmarks or exaggerated marketing numbers. Below are the author-d
 
 | State captured in Task Manager | Memory shown | CPU shown | What the row includes |
 | :--- | ---: | ---: | :--- |
-| **Background cache preparation** | **348.9 MB – 409.3 MB** | **42.5% – 50.3%** | App plus background cache worker (temporary SDR display cache conversion) |
+| **Background cache preparation** | **348.9 MB – 409.3 MB** | **42.5% – 50.3%** | App plus background cache worker (temporary conversion; ~350 MB on 1080p, up to ~409 MB peak specifically when converting 4K media) |
 | **Cache ready, panel open** | **43.1 MB – 45.4 MB** | **1.3% – 2.6%** | WallpaperLive app with library and controls visible |
 | **Minimized to tray (live playback)** | **20.3 MB** | **0.5%** | WallpaperLive actively rendering live wallpaper on desktop (Disk: 0.5 MB/s, Net: 0) |
 | **Fullscreen/maximized auto-pause** | **4.5 MB** | **0%** | Playback paused automatically, resident pages trimmed down |
 
-> **Author context note:** The temporary peak around 350–410 MB occurs during initial cache conversion where two decoder/encoder processes run concurrently. Once cached and minimized to tray, memory settles to **20.3 MB / 0.5% CPU**, and drops to **4.5 MB / 0% CPU** on auto-pause. Task Manager rounds live values; media, codec, display resolution, and GPU driver affect usage.
+> **Author context note:** The author reports a temporary peak around **350 MB for 1080p and up to ~409 MB specifically when converting high-resolution 4K wallpapers** (where two decoder/encoder processes run concurrently during initial background cache generation), dropping to **~43–45 MB with the control panel open**, and settling to **20.3 MB / 0.5% CPU when minimized to the system tray**. When an application is maximized or fullscreen, auto-pause reclaims resident pages down to **4.5 MB / 0% CPU**. Initial conversion memory peaks are strictly temporary while encoding the display cache; once prepared, playback uses only ~20.3 MB in tray.
 
 ### 2. TransparentBar Resource Usage (Capture time)
 
