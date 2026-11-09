@@ -1,6 +1,6 @@
 import React from 'react';
 import { Translation } from '../types/content';
-import { Zap, CheckCircle2 } from 'lucide-react';
+import { Zap, AlertCircle } from 'lucide-react';
 
 interface BenchmarkProps {
   t: Translation;
@@ -10,13 +10,13 @@ export const Benchmark: React.FC<BenchmarkProps> = ({ t }) => {
   return (
     <section id="benchmark" className="py-16 md:py-24 px-4 sm:px-6 max-w-6xl mx-auto">
       
-      {/* Container with Ink Black Contrast Background */}
-      <div className="bg-[#111111] text-[#F3EEE3] rounded-3xl p-6 sm:p-10 md:p-14 border border-white/10 shadow-2xl relative overflow-hidden">
+      {/* Container with Ink Black Background */}
+      <div className="bg-[#111111] text-[#F3EEE3] rounded-3xl p-6 sm:p-10 md:p-12 border border-white/10 shadow-2xl relative overflow-hidden">
         
         {/* Glow background accent */}
         <div className="absolute -top-32 -right-32 w-80 h-80 rounded-full bg-[#D9541E]/20 blur-3xl pointer-events-none"></div>
 
-        <div className="relative z-10 max-w-3xl mb-12">
+        <div className="relative z-10 max-w-3xl mb-10">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-mono text-[#D9541E] mb-4">
             <Zap className="w-3.5 h-3.5" />
             <span>{t.benchmark.badge}</span>
@@ -29,96 +29,68 @@ export const Benchmark: React.FC<BenchmarkProps> = ({ t }) => {
           </p>
         </div>
 
-        {/* Visual Benchmark Bars */}
-        <div className="space-y-8 mb-12">
-          
-          {/* 1. RAM Footprint Comparison */}
-          <div className="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-4">
-            <div className="flex justify-between items-center text-sm font-mono">
-              <span className="text-white/80 font-bold">{t.benchmark.ramFootprint}</span>
-              <span className="text-xs text-white/50">Lebih rendah lebih baik</span>
-            </div>
+        {/* Real Task Manager Captured Data Table */}
+        <div className="overflow-x-auto mb-10">
+          <table className="w-full text-left text-xs sm:text-sm font-mono border-collapse">
+            <thead>
+              <tr className="border-b border-white/15 text-white/50 text-[11px] uppercase tracking-wider">
+                <th className="py-3 px-4">{t.benchmark.stateCol}</th>
+                <th className="py-3 px-4 text-[#D9541E]">{t.benchmark.ramCol}</th>
+                <th className="py-3 px-4">{t.benchmark.cpuCol}</th>
+                <th className="py-3 px-4 hidden md:table-cell">{t.benchmark.notesCol}</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/5 text-white/80">
+              {/* Row 1: Cache prep */}
+              <tr className="hover:bg-white/5 transition-colors">
+                <td className="py-3.5 px-4 font-sans font-medium text-white">{t.benchmark.row1State}</td>
+                <td className="py-3.5 px-4 font-bold text-amber-400">{t.benchmark.row1Ram}</td>
+                <td className="py-3.5 px-4 text-amber-400 font-bold">{t.benchmark.row1Cpu}</td>
+                <td className="py-3.5 px-4 text-white/60 text-xs hidden md:table-cell">{t.benchmark.row1Notes}</td>
+              </tr>
 
-            {/* Our Suite */}
-            <div className="space-y-1.5">
-              <div className="flex justify-between text-xs font-mono">
-                <span className="text-[#D9541E] font-bold">{t.benchmark.suiteName}</span>
-                <span className="text-[#D9541E] font-bold">~20 MB RAM</span>
-              </div>
-              <div className="w-full bg-white/10 h-3 rounded-full overflow-hidden">
-                <div className="bg-[#D9541E] h-full rounded-full w-[8%]"></div>
-              </div>
-            </div>
+              {/* Row 2: Panel Open */}
+              <tr className="hover:bg-white/5 transition-colors">
+                <td className="py-3.5 px-4 font-sans font-medium text-white">{t.benchmark.row2State}</td>
+                <td className="py-3.5 px-4 font-bold text-white/90">{t.benchmark.row2Ram}</td>
+                <td className="py-3.5 px-4 text-white/90 font-bold">{t.benchmark.row2Cpu}</td>
+                <td className="py-3.5 px-4 text-white/60 text-xs hidden md:table-cell">{t.benchmark.row2Notes}</td>
+              </tr>
 
-            {/* Competitor */}
-            <div className="space-y-1.5 opacity-60">
-              <div className="flex justify-between text-xs font-mono text-white/70">
-                <span>{t.benchmark.competitorName}</span>
-                <span>~260 MB RAM</span>
-              </div>
-              <div className="w-full bg-white/10 h-3 rounded-full overflow-hidden">
-                <div className="bg-white/50 h-full rounded-full w-[60%]"></div>
-              </div>
-            </div>
+              {/* Row 3: Minimized to tray */}
+              <tr className="bg-[#D9541E]/10 border-l-2 border-[#D9541E] hover:bg-[#D9541E]/15 transition-colors">
+                <td className="py-3.5 px-4 font-sans font-bold text-white">{t.benchmark.row3State}</td>
+                <td className="py-3.5 px-4 font-bold text-[#D9541E] text-base">{t.benchmark.row3Ram}</td>
+                <td className="py-3.5 px-4 text-[#D9541E] font-bold text-base">{t.benchmark.row3Cpu}</td>
+                <td className="py-3.5 px-4 text-white/80 text-xs hidden md:table-cell">{t.benchmark.row3Notes}</td>
+              </tr>
 
-            {/* Electron Apps */}
-            <div className="space-y-1.5 opacity-40">
-              <div className="flex justify-between text-xs font-mono text-white/70">
-                <span>{t.benchmark.electronName}</span>
-                <span>~450 MB RAM</span>
-              </div>
-              <div className="w-full bg-white/10 h-3 rounded-full overflow-hidden">
-                <div className="bg-red-400 h-full rounded-full w-[95%]"></div>
-              </div>
-            </div>
-          </div>
+              {/* Row 4: Auto-pause */}
+              <tr className="hover:bg-white/5 transition-colors">
+                <td className="py-3.5 px-4 font-sans font-medium text-white">{t.benchmark.row4State}</td>
+                <td className="py-3.5 px-4 font-bold text-emerald-400 text-base">{t.benchmark.row4Ram}</td>
+                <td className="py-3.5 px-4 text-emerald-400 font-bold text-base">{t.benchmark.row4Cpu}</td>
+                <td className="py-3.5 px-4 text-white/60 text-xs hidden md:table-cell">{t.benchmark.row4Notes}</td>
+              </tr>
 
-          {/* 2. Side-by-side Technical Metrics Table */}
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs sm:text-sm font-mono border-collapse">
-              <thead>
-                <tr className="border-b border-white/10 text-white/50">
-                  <th className="py-3 px-4">Metrik</th>
-                  <th className="py-3 px-4 text-[#D9541E] font-bold">WallpaperLive + TransparentBar</th>
-                  <th className="py-3 px-4">Wallpaper Engine + TranslucentTB</th>
-                  <th className="py-3 px-4">Aplikasi Web / Electron</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-white/5 text-white/80">
-                <tr>
-                  <td className="py-3 px-4 font-sans font-medium text-white">{t.benchmark.ramFootprint}</td>
-                  <td className="py-3 px-4 text-[#D9541E] font-bold">~18 MB + ~2 MB</td>
-                  <td className="py-3 px-4">~220 MB + ~40 MB</td>
-                  <td className="py-3 px-4">350 - 500 MB</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-sans font-medium text-white">{t.benchmark.cpuIdle}</td>
-                  <td className="py-3 px-4 text-[#D9541E] font-bold">0.0% (Auto Suspend)</td>
-                  <td className="py-3 px-4">1.5% - 3.0%</td>
-                  <td className="py-3 px-4">2.0% - 6.0%</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-sans font-medium text-white">{t.benchmark.packageSize}</td>
-                  <td className="py-3 px-4 text-[#D9541E] font-bold">&lt; 5 MB</td>
-                  <td className="py-3 px-4">~350 MB</td>
-                  <td className="py-3 px-4">~120 MB</td>
-                </tr>
-                <tr>
-                  <td className="py-3 px-4 font-sans font-medium text-white">{t.benchmark.startupTime}</td>
-                  <td className="py-3 px-4 text-[#D9541E] font-bold">&lt; 0.2 detik</td>
-                  <td className="py-3 px-4">~3.5 detik</td>
-                  <td className="py-3 px-4">~5.2 detik</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
+              {/* Row 5: TransparentBar */}
+              <tr className="bg-white/5 border-l-2 border-cyan-400 hover:bg-white/10 transition-colors">
+                <td className="py-3.5 px-4 font-sans font-bold text-white">{t.benchmark.tbRowState}</td>
+                <td className="py-3.5 px-4 font-bold text-cyan-300 text-base">{t.benchmark.tbRowRam}</td>
+                <td className="py-3.5 px-4 text-cyan-300 font-bold text-base">{t.benchmark.tbRowCpu}</td>
+                <td className="py-3.5 px-4 text-white/80 text-xs hidden md:table-cell">{t.benchmark.tbRowNotes}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
 
-        {/* Conclusion Badge */}
-        <div className="bg-[#D9541E]/15 border border-[#D9541E]/30 rounded-2xl p-4 flex items-center gap-3 text-xs sm:text-sm font-medium text-[#F3EEE3]">
-          <CheckCircle2 className="w-5 h-5 text-[#D9541E] shrink-0" />
-          <span>{t.benchmark.conclusion}</span>
+        {/* Disclaimer / Context Box directly echoing author's note */}
+        <div className="bg-white/5 border border-white/10 rounded-2xl p-5 flex items-start gap-3.5 text-xs font-mono text-white/70 leading-relaxed">
+          <AlertCircle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
+          <div>
+            <span className="font-bold text-white block mb-1">Konteks Pengujian Resmi (Bukan Klaim Universal):</span>
+            <span>{t.benchmark.disclaimer}</span>
+          </div>
         </div>
 
       </div>

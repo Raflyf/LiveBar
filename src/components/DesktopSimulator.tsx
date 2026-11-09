@@ -10,7 +10,7 @@ interface SimulatorProps {
   t: Translation;
 }
 
-type TaskbarMode = 'clear' | 'blur' | 'acrylic' | 'opaque';
+type TaskbarMode = 'clear' | 'connector' | 'opaque';
 type WallpaperPreset = 'sunset' | 'cyber' | 'nature';
 
 export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
@@ -57,7 +57,7 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
 
     const render = () => {
       if (!isPlaying) {
-        // Paused state (simulating 0% CPU suspend)
+        // Paused state (simulating 4.5 MB / 0% CPU auto-pause)
         return;
       }
       step += 0.015;
@@ -73,7 +73,6 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
         ctx.fillStyle = grad;
         ctx.fillRect(0, 0, width, height);
 
-        // Fluid waves
         for (let i = 0; i < 3; i++) {
           ctx.beginPath();
           ctx.moveTo(0, height);
@@ -87,16 +86,15 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
           ctx.closePath();
 
           if (i === 0) {
-            ctx.fillStyle = 'rgba(217, 84, 30, 0.45)'; // Burnt orange
+            ctx.fillStyle = 'rgba(217, 84, 30, 0.45)';
           } else if (i === 1) {
-            ctx.fillStyle = 'rgba(243, 238, 227, 0.15)'; // Cream
+            ctx.fillStyle = 'rgba(243, 238, 227, 0.15)';
           } else {
             ctx.fillStyle = 'rgba(217, 84, 30, 0.2)';
           }
           ctx.fill();
         }
 
-        // Floating ambient light orb
         const orbX = width * 0.75 + Math.sin(step * 0.5) * 60;
         const orbY = height * 0.35 + Math.cos(step * 0.5) * 40;
         const orbGrad = ctx.createRadialGradient(orbX, orbY, 10, orbX, orbY, 160);
@@ -108,11 +106,9 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
         ctx.fill();
 
       } else if (preset === 'cyber') {
-        // Cyberpunk Horizon Grid
         ctx.fillStyle = '#0a0a0c';
         ctx.fillRect(0, 0, width, height);
 
-        // Sun / Moon in horizon
         const sunY = height * 0.42;
         const sunGrad = ctx.createRadialGradient(width / 2, sunY, 10, width / 2, sunY, 120);
         sunGrad.addColorStop(0, '#D9541E');
@@ -123,11 +119,9 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
         ctx.arc(width / 2, sunY, 120, 0, Math.PI * 2);
         ctx.fill();
 
-        // 3D Perspective Grid
         ctx.strokeStyle = 'rgba(217, 84, 30, 0.25)';
         ctx.lineWidth = 1;
 
-        // Horizontal lines moving down
         const horizon = height * 0.48;
         for (let i = 0; i < 15; i++) {
           const progress = ((step * 0.4 + i / 15) % 1);
@@ -138,7 +132,6 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
           ctx.stroke();
         }
 
-        // Perspective lines radiating from horizon center
         for (let x = -width; x < width * 2; x += 80) {
           ctx.beginPath();
           ctx.moveTo(width / 2, horizon);
@@ -147,7 +140,6 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
         }
 
       } else {
-        // Minimal Aurora Wave
         ctx.fillStyle = '#101314';
         ctx.fillRect(0, 0, width, height);
 
@@ -183,17 +175,18 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
     };
   }, [preset, isPlaying]);
 
-  // Handle taskbar classes based on mode
+  // Handle taskbar classes based on real TransparentBar features
   const getTaskbarClasses = () => {
     switch (taskbarMode) {
       case 'clear':
+        // Pure clear transparency (no blur)
         return 'bg-transparent border-transparent text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]';
-      case 'blur':
-        return 'bg-black/40 backdrop-blur-xl border-t border-white/10 text-white shadow-lg';
-      case 'acrylic':
-        return 'bg-white/15 backdrop-blur-md border-t border-white/20 text-white shadow-xl';
+      case 'connector':
+        // Maximized-window connector strip: clear taskbar with a soft gradient connector line at the top
+        return 'bg-transparent border-t-2 border-gradient-to-r from-[#D9541E]/80 via-white/40 to-[#D9541E]/80 text-white shadow-lg';
       case 'opaque':
       default:
+        // Default Windows opaque dark taskbar
         return 'bg-[#181818] border-t border-[#2a2a2a] text-white shadow-md';
     }
   };
@@ -257,13 +250,13 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
             </button>
           </div>
 
-          {/* Taskbar Mode Switcher (TransparentBar Core Feature) */}
+          {/* Taskbar Mode Switcher (True TransparentBar Features) */}
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-xs font-mono font-semibold text-[#111111]/70 mr-1 flex items-center gap-1.5">
               <Sliders className="w-3.5 h-3.5 text-[#D9541E]" />
               {t.simulator.taskbarLabel}
             </span>
-            {(['clear', 'blur', 'acrylic', 'opaque'] as TaskbarMode[]).map((mode) => (
+            {(['clear', 'connector', 'opaque'] as TaskbarMode[]).map((mode) => (
               <button
                 key={mode}
                 onClick={() => setTaskbarMode(mode)}
@@ -274,7 +267,7 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
                 }`}
               >
                 {taskbarMode === mode && <Check className="w-3 h-3" />}
-                {t.simulator.modes[mode].split(' ')[0]}
+                {mode === 'clear' ? 'Transparent' : mode === 'connector' ? 'Window Connector' : 'Default Windows'}
               </button>
             ))}
           </div>
@@ -299,14 +292,14 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
             <button
               onClick={() => setIsPlaying(!isPlaying)}
               className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md bg-white/10 hover:bg-white/20 text-white text-[11px] transition-colors"
-              title="Toggle Render Suspend"
+              title="Toggle Fullscreen Auto-Pause Simulation"
             >
               {isPlaying ? <Pause className="w-3 h-3 text-[#D9541E]" /> : <Play className="w-3 h-3 text-green-400" />}
               <span>{isPlaying ? t.simulator.controls.playing : t.simulator.controls.paused}</span>
             </button>
 
             <span className="text-[#D9541E] font-bold">
-              {isPlaying ? t.simulator.controls.speed : '0 FPS (Idle)'}
+              {isPlaying ? '60 FPS (D3D11)' : '0 FPS (Suspended)'}
             </span>
           </div>
         </div>
@@ -320,12 +313,17 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
             className="absolute inset-0 w-full h-full object-cover"
           />
 
+          {/* Optional Connector Strip Visual Overlay at taskbar top when mode is 'connector' */}
+          {taskbarMode === 'connector' && (
+            <div className="absolute bottom-12 left-0 right-0 h-1 bg-gradient-to-r from-[#D9541E]/90 via-amber-300/80 to-[#D9541E]/90 shadow-[0_0_8px_rgba(217,84,30,0.8)] z-15 animate-pulse"></div>
+          )}
+
           {/* Desktop Overlay Content */}
           <div className="relative z-10 p-4 sm:p-6 flex-1 flex flex-col justify-between">
             
             {/* Floating App Mockup (WallpaperLive Manager) */}
             {activeWindow && (
-              <div className="w-full max-w-sm bg-[#161616]/90 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-4 text-white animate-fade-in">
+              <div className="w-full max-w-sm bg-[#161616]/95 backdrop-blur-xl border border-white/10 rounded-2xl shadow-2xl p-4 text-white animate-fade-in">
                 
                 {/* Window Titlebar */}
                 <div className="flex items-center justify-between pb-3 border-b border-white/10 mb-3">
@@ -345,15 +343,11 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
                   </button>
                 </div>
 
-                {/* 3x3 Thumbnail Grid Preview */}
-                <div className="text-[11px] text-white/60 mb-2 font-mono flex items-center justify-between">
-                  <span>Local Library (3x3 Grid)</span>
-                  <span className="text-green-400 text-[10px] flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse"></span>
-                    Direct3D Active
-                  </span>
+                <div className="text-[10px] text-amber-400/90 mb-2 font-mono flex items-center justify-between">
+                  <span>{t.simulator.mockWindow.status}</span>
                 </div>
 
+                {/* 3x3 Thumbnail Grid Preview */}
                 <div className="grid grid-cols-3 gap-2 mb-3">
                   <div 
                     onClick={() => setPreset('sunset')}
@@ -387,9 +381,14 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
                 </div>
 
                 {/* Status Bar */}
-                <div className="pt-2 border-t border-white/10 flex items-center justify-between text-[10px] font-mono text-white/50">
-                  <span>RAM: 18.4 MB</span>
-                  <span>Rust Taskbar: Active</span>
+                <div className="pt-2 border-t border-white/10 text-[10px] font-mono text-white/60 space-y-1">
+                  <div className="flex justify-between">
+                    <span>Tray RAM: <strong className="text-white">20.3 MB</strong></span>
+                    <span>TransparentBar: <strong className="text-cyan-400">1.6 MB</strong></span>
+                  </div>
+                  <div className="text-[9px] text-white/40">
+                    {t.simulator.mockWindow.cacheNotice}
+                  </div>
                 </div>
               </div>
             )}
@@ -405,9 +404,9 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
             )}
 
             {/* Hint Notice */}
-            <div className="self-end bg-black/50 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/10 text-[11px] text-white/80 font-mono flex items-center gap-2">
+            <div className="self-end bg-black/60 backdrop-blur-md px-3 py-1.5 rounded-xl border border-white/10 text-[11px] text-white/90 font-mono flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#D9541E]"></span>
-              <span>Taskbar Mode: <strong className="text-white uppercase">{taskbarMode}</strong></span>
+              <span>Taskbar: <strong className="text-white uppercase">{taskbarMode}</strong></span>
             </div>
 
           </div>
@@ -416,13 +415,12 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
           <div className={`relative z-20 w-full h-12 flex items-center justify-between px-3 sm:px-6 transition-all duration-300 ${getTaskbarClasses()}`}>
             
             {/* Left Spacer (Windows 11 widgets) */}
-            <div className="hidden sm:flex items-center gap-2 text-white/70 hover:text-white cursor-pointer">
+            <div className="hidden sm:flex items-center gap-2 text-white/80 hover:text-white cursor-pointer">
               <span className="text-xs font-medium font-mono">⛅ 28°C Cerah</span>
             </div>
 
             {/* Center: Windows 11 App Icons */}
             <div className="flex items-center gap-1 sm:gap-2 mx-auto sm:mx-0">
-              {/* Windows Start Button */}
               <button className="w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center transition-colors group">
                 <div className="grid grid-cols-2 gap-0.5 w-4 h-4">
                   <div className="bg-[#00adef] rounded-xs"></div>
@@ -432,19 +430,16 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
                 </div>
               </button>
 
-              {/* Search Icon */}
               <button className="w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center text-white/80 hover:text-white transition-colors">
                 <Search className="w-4 h-4" />
               </button>
 
-              {/* Explorer Icon */}
               <button className="w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center transition-colors">
                 <div className="w-5 h-4 bg-amber-400 rounded-xs shadow-xs flex items-center justify-center text-[8px] font-bold text-black">
                   📁
                 </div>
               </button>
 
-              {/* WallpaperLive App Icon in Taskbar */}
               <button 
                 onClick={() => setActiveWindow(!activeWindow)}
                 className="w-8 h-8 rounded-lg bg-white/15 flex items-center justify-center transition-colors relative"
@@ -456,7 +451,6 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
                 <div className="absolute -bottom-0.5 w-1.5 h-0.5 rounded-full bg-[#D9541E]"></div>
               </button>
 
-              {/* Terminal Icon */}
               <button className="w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center transition-colors text-white/80">
                 <div className="w-4 h-3.5 bg-black rounded-xs border border-white/30 flex items-center justify-center text-[8px] font-mono text-green-400">
                   &gt;_
@@ -483,18 +477,20 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
 
       </div>
 
-      {/* Realtime Telemetry Bar */}
+      {/* Realtime Telemetry Bar with Exact Test Metrics */}
       <div className="mt-4 px-4 py-3 rounded-2xl bg-[#111111] text-[#F3EEE3] text-xs font-mono flex flex-wrap items-center justify-between gap-3 border border-[#111111]">
         <div className="flex items-center gap-2">
           <span className="w-2 h-2 rounded-full bg-green-400 animate-ping"></span>
-          <span className="text-white/60">Live Process:</span>
-          <span className="text-[#D9541E] font-bold">WallpaperLive.exe (18.4 MB)</span>
+          <span className="text-white/60">Tangkapan Task Manager:</span>
+          <span className="text-[#D9541E] font-bold">
+            {isPlaying ? t.simulator.controls.ramLive : t.simulator.controls.ramPaused}
+          </span>
           <span className="text-white/30">|</span>
-          <span className="text-white/80">TransparentBar.exe (1.6 MB Rust Hook)</span>
+          <span className="text-cyan-400 font-bold">{t.simulator.controls.tbRam}</span>
         </div>
         <div className="flex items-center gap-4 text-white/60">
           <span>DWM Hook: <strong className="text-white">Active</strong></span>
-          <span>GPU Direct3D: <strong className="text-green-400">Hardware Sync</strong></span>
+          <span>GPU: <strong className="text-green-400">D3D11VA Hardware Decode</strong></span>
         </div>
       </div>
 
