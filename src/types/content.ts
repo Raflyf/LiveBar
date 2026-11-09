@@ -209,7 +209,7 @@ export const translations: Record<Language, Translation> = {
     features: {
       badge: "Spesifikasi Nyata",
       title: "Arsitektur Native Tanpa Runtime Web.",
-      subtitle: "Dibangun dengan Rust dan Win32 C/C++. Tanpa Chromium, tanpa Node.js di desktop, tanpa akun wajib.",
+      subtitle: "Dibangun murni dengan Rust dan Win32 API. Tanpa Chromium, tanpa Node.js di desktop, tanpa akun wajib.",
       items: {
         f1Title: "Playback Video Lokal & Cache Background",
         f1Desc: "Mendukung MP4, WebM, GIF, MKV, MOV, APNG. Video langsung diputar sementara cache resolusi layar disiapkan di latar belakang.",
@@ -358,7 +358,7 @@ export const translations: Record<Language, Translation> = {
     features: {
       badge: "Factual Specifications",
       title: "Native Architecture Without Web Runtimes.",
-      subtitle: "Engineered with Rust and Win32 C/C++. No Chromium webviews, no Node runtimes on desktop, no mandatory accounts.",
+      subtitle: "Engineered purely with Rust and Win32 APIs. No Chromium webviews, no Node runtimes on desktop, no mandatory accounts.",
       items: {
         f1Title: "Local Playback & Background Cache",
         f1Desc: "Supports MP4, WebM, GIF, MKV, MOV, APNG. Video starts immediately while an optimized display-sized SDR cache builds in the background.",
