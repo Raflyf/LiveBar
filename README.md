@@ -41,7 +41,7 @@
 1. **[WallpaperLive](https://github.com/Raflyf/WallpaperLive):** Native Windows live wallpaper engine. Plays local videos (MP4, WebM, GIF, MKV) with hardware-accelerated D3D11 decoding via native libmpv and an in-app 3x3 thumbnail library. Playback auto-pauses for maximized or fullscreen apps; resource-use snapshots are documented below.
 2. **[TransparentBar](https://github.com/Raflyf/TransparentBar):** Pure native Windows taskbar transparency utility written in Rust. Hooks directly into Windows DWM to remove taskbar opacity without blur or a browser engine. Includes an optional maximized-window connector strip.
 
-Inspired by [Nusa](https://rama2555.github.io/nusa), this landing page presents a desktop demo video, native-app screenshots, and source-linked resource-use captures before download.
+The website presents a desktop demo video, native-app screenshots, and resource-use captures before download.
 
 ---
 
@@ -143,11 +143,12 @@ npm run build
 
 ## Deploy to Vercel
 
-1. Push your repository to GitHub.
-2. Open [vercel.com/new](https://vercel.com/new).
-3. Import `Raflyf/desktop-suite-web`.
-4. Vercel automatically detects the preset from `vercel.json` (Framework: **Vite**, Output Directory: `dist`).
-5. Click **Deploy**.
+1. Connect `Raflyf/LiveBar` to the existing Vercel project `desktop-suite-web` with Production Branch `main`.
+2. Use the **Vite** preset and output directory `dist`.
+3. Enable GitHub deployment records in Project Settings > Git (`gitProviderOptions.createDeployments: "enabled"`). Vercel records deployment state and the production URL in GitHub.
+4. Push to `main` and verify the resulting deployment SHA and [production website](https://livebar.vercel.app/).
+
+The native Git integration handles deployment; no parallel Actions deployment or CLI upload is needed. Creating a GitHub environment alone does not deploy the website.
 
 ---
 

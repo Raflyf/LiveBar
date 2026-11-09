@@ -78,7 +78,7 @@ export const DownloadHub: React.FC<DownloadHubProps> = ({ t, releases }) => {
               <span>{wl.downloadUrl ? t.download.installerBtn : t.download.latestRelease}</span>
             </a>
 
-            {/* Nusa Style Dynamic Version, Size & Download Counter Metric */}
+            {/* Release version, size, and download count */}
             <div className="text-center py-0.5">
               <div className="text-[11px] text-fg/70 font-mono">
                 {wl.version ? <>{t.download.version} {wl.version.replace(/^v/, '')}{wl.sizeMb && <>, {t.download.about} {wl.sizeMb}</>}.</> : statusLabel(wl.status)}
@@ -157,7 +157,7 @@ export const DownloadHub: React.FC<DownloadHubProps> = ({ t, releases }) => {
               <span>{tb.downloadUrl ? t.download.installerBtn : t.download.latestRelease}</span>
             </a>
 
-            {/* Nusa Style Dynamic Version, Size & Download Counter Metric */}
+            {/* Release version, size, and download count */}
             <div className="text-center py-0.5">
               <div className="text-[11px] text-fg/70 font-mono">
                 {tb.version ? <>{t.download.version} {tb.version.replace(/^v/, '')}{tb.sizeMb && <>, {t.download.about} {tb.sizeMb}</>}.</> : statusLabel(tb.status)}
