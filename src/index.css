@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cream: #F3EEE3;
+  --color-cream-card: #f9f6f0;
+  --color-cream-border: rgba(17, 17, 17, 0.08);
+  --color-ink: #111111;
+  --color-ink-muted: #1e1e1e;
+  --color-ink-card: #161616;
+  --color-burnt: #D9541E;
+  --color-burnt-hover: #c44614;
+  --color-burnt-light: rgba(217, 84, 30, 0.12);
+
+  --font-display: "Bricolage Grotesque", -apple-system, sans-serif;
+  --font-sans: "Plus Jakarta Sans", -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-cream);
+  color: var(--color-ink);
+  overflow-x: hidden;
+}
+
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
