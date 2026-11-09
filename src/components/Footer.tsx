@@ -55,6 +55,15 @@ export const Footer: React.FC<FooterProps> = ({ t }) => {
             <Heart className="w-3.5 h-3.5 fill-burnt" />
             <span>yapp.ink/raflyf</span>
           </a>
+          <a
+            href="https://saweria.co/BuyMatcha"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-accent-text transition-colors flex items-center gap-1.5 text-accent-text font-bold"
+          >
+            <Heart className="w-3.5 h-3.5" aria-hidden="true" />
+            <span>Saweria</span>
+          </a>
         </div>
 
         {/* Open source promise */}

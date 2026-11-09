@@ -16,7 +16,7 @@ export const SupportYapp: React.FC<SupportYappProps> = ({ t }) => {
         {/* Decorative corner tag */}
         <div data-reveal className="absolute top-6 right-6 flex items-center gap-1.5 px-3 py-1 rounded-full bg-burnt/10 border border-burnt/20 text-xs font-mono font-semibold text-accent-text">
           <Heart className="w-3.5 h-3.5 fill-burnt" />
-          <span>Yapp.ink Creator</span>
+          <span>Yapp · Saweria</span>
         </div>
 
         <div data-reveal className="max-w-2xl space-y-4 mb-8">
@@ -82,8 +82,8 @@ export const SupportYapp: React.FC<SupportYappProps> = ({ t }) => {
           </a>
         </div>
 
-        {/* Direct Action to Yapp */}
-        <div data-reveal className="flex flex-col sm:flex-row items-center gap-4 pt-4 border-t border-fg/10">
+        {/* Support links */}
+        <div data-reveal className="flex flex-col sm:flex-row sm:flex-wrap items-center gap-4 pt-4 border-t border-fg/10">
           <a
             href="https://yapp.ink/raflyf"
             target="_blank"
@@ -95,7 +95,18 @@ export const SupportYapp: React.FC<SupportYappProps> = ({ t }) => {
             <ExternalLink className="w-4 h-4 opacity-75" />
           </a>
 
-          <div className="text-xs text-fg/70 font-mono flex items-center gap-2">
+          <a
+            href="https://saweria.co/BuyMatcha"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="motion-button w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl border border-burnt/50 bg-surface text-fg font-bold text-sm hover:bg-burnt/10 transition-colors"
+          >
+            <Heart className="w-4 h-4 text-accent-text" aria-hidden="true" />
+            <span>{t.support.saweriaBtn}</span>
+            <ExternalLink className="w-4 h-4 opacity-75" aria-hidden="true" />
+          </a>
+
+          <div className="w-full text-xs text-fg/70 font-mono flex items-center gap-2">
             <ShieldCheck className="w-4 h-4 text-accent-text" />
             <span>{t.support.guarantee}</span>
           </div>

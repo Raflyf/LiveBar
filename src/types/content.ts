@@ -130,6 +130,7 @@ export interface Translation {
     tier3: string;
     customTip: string;
     yappBtn: string;
+    saweriaBtn: string;
     guarantee: string;
   };
   faq: {
@@ -276,14 +277,15 @@ export const translations: Record<Language, Translation> = {
     support: {
       badge: "Dukung Pengembang",
       title: "Dukung Proyek Bebas Iklan Ini.",
-      subtitle: "WallpaperLive dan TransparentBar adalah proyek independen dan gratis. Jika membantu desktop Anda, traktir kopi di Yapp!",
+      subtitle: "WallpaperLive dan TransparentBar adalah proyek independen dan gratis. Jika membantu desktop Anda, dukung pengembang melalui Yapp atau Saweria.",
       desc: "Donasi membantu riset kompatibilitas Windows updates, pengujian layar multi-monitor DPI, dan pemeliharaan repositori.",
       tier1: "☕ Traktir Kopi ($2)",
       tier2: "🍕 Traktir Pizza ($5)",
       tier3: "🚀 Sponsor Server ($10)",
       customTip: "Beri Tip Sukarela di Yapp",
       yappBtn: "Buka Profil Yapp (raflyf)",
-      guarantee: "Pembayaran terpercaya via Yapp.ink dengan QRIS, E-Wallet, Card, atau Kripto USDT.",
+      saweriaBtn: "Dukung lewat Saweria",
+      guarantee: "Pembayaran diproses di platform pilihan Anda.",
     },
     faq: {
       badge: "Pertanyaan Umum",
@@ -427,14 +429,15 @@ export const translations: Record<Language, Translation> = {
     support: {
       badge: "Support Independent Dev",
       title: "Keep Free Software Alive.",
-      subtitle: "Both utilities are free, open-source, and ad-free. If they improve your Windows desktop, consider sending a tip on Yapp!",
+      subtitle: "Both utilities are free, open-source, and ad-free. If they improve your Windows desktop, you can support development through Yapp or Saweria.",
       desc: "Community donations help support Windows build tools, high-DPI multi-monitor testing, and active maintenance.",
       tier1: "☕ Buy a Coffee ($2)",
       tier2: "🍕 Buy a Pizza ($5)",
       tier3: "🚀 Server Sponsor ($10)",
       customTip: "Send Any Tip on Yapp",
       yappBtn: "Open Yapp Profile (raflyf)",
-      guarantee: "Secure transaction powered by Yapp.ink. Supports card, digital wallets, QRIS, and USDT.",
+      saweriaBtn: "Support on Saweria",
+      guarantee: "Payments are handled by your chosen platform.",
     },
     faq: {
       badge: "FAQ",
