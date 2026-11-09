@@ -6,25 +6,39 @@ export function setupMotion() {
   document.addEventListener('visibilitychange', pause);
 
   let observer: IntersectionObserver | undefined;
+  let resetObserver: IntersectionObserver | undefined;
   if ('IntersectionObserver' in window) {
     observer = new IntersectionObserver(entries => {
       for (const entry of entries) {
         const target = entry.target as HTMLElement;
-        if (!entry.isIntersecting) {
-          target.classList.remove('is-revealed');
-        } else if (!target.classList.contains('is-revealed')) {
-          target.style.setProperty('--reveal-offset', entry.boundingClientRect.top < (entry.rootBounds?.top ?? 0) ? '-18px' : '18px');
+        if (entry.isIntersecting && !target.classList.contains('is-revealed')) {
+          target.style.setProperty('--reveal-direction', entry.boundingClientRect.top < (entry.rootBounds?.top ?? 0) ? '-1' : '1');
           target.classList.add('is-revealed');
         }
       }
-    }, { threshold: 0, rootMargin: '24px 0px' });
-    targets.forEach(target => observer?.observe(target));
+    }, { threshold: 0, rootMargin: '-32px 0px' });
+    // Reset well beyond the entry edge so transforms and tiny scroll reversals cannot retrigger it.
+    resetObserver = new IntersectionObserver(entries => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) entry.target.classList.remove('is-revealed');
+      }
+    }, { threshold: 0, rootMargin: '160px 0px' });
+    targets.forEach(target => {
+      target.classList.add('reveal-ready');
+      observer?.observe(target);
+      resetObserver?.observe(target);
+    });
   } else {
     targets.forEach(target => target.classList.add('is-revealed'));
   }
 
   return () => {
     observer?.disconnect();
+    resetObserver?.disconnect();
+    targets.forEach(target => {
+      target.classList.remove('reveal-ready');
+      target.classList.remove('is-revealed');
+    });
     document.removeEventListener('visibilitychange', pause);
     delete document.documentElement.dataset.motionPaused;
   };

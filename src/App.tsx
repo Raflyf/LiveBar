@@ -11,6 +11,7 @@ import { FAQ } from './components/FAQ';
 import { Footer } from './components/Footer';
 import { emptyRelease, loadRelease, type ProductReleases, type ProductRepo } from './releases';
 import { setupMotion } from './motion';
+import { setupSmoothScroll, scrollToSection } from './utils/scroll';
 
 export default function App() {
   const [lang, setLang] = useState<Language>(() => {
@@ -32,6 +33,7 @@ export default function App() {
   });
   const t = translations[lang];
 
+  useEffect(setupSmoothScroll, []);
   useEffect(setupMotion, []);
 
   useEffect(() => {
@@ -61,15 +63,10 @@ export default function App() {
   // Clean any #hash from address bar on mount while preserving scroll target
   useEffect(() => {
     if (window.location.hash) {
-      const id = window.location.hash.replace('#', '');
-      const el = document.getElementById(id);
-      if (el) {
-        setTimeout(() => {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }, 100);
-      }
-      // Immediately strip the #hash from the address bar
+      const id = window.location.hash.slice(1);
       window.history.replaceState(null, '', window.location.pathname + window.location.search);
+      const timer = window.setTimeout(() => scrollToSection(id)(), 100);
+      return () => window.clearTimeout(timer);
     }
   }, []);
 

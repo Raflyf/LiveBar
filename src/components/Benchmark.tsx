@@ -30,7 +30,7 @@ export const Benchmark: React.FC<BenchmarkProps> = ({ t }) => {
         </div>
 
         {/* Real Task Manager Captured Data Table */}
-        <div data-reveal className="overflow-x-auto mb-10">
+        <div data-reveal data-lenis-prevent-horizontal className="overflow-x-auto mb-10">
           <table className="w-full text-left text-xs sm:text-sm font-mono border-collapse">
             <thead>
               <tr className="border-b border-cream/15 text-cream/70 text-[11px] uppercase tracking-wider">

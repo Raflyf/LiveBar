@@ -1,4 +1,7 @@
 @import "tailwindcss";
+@import "lenis/dist/lenis.css";
+
+html.lenis { scroll-behavior: auto; }
 
 @theme {
   --color-cream: #F3EEE3;
@@ -79,21 +82,26 @@ h1, h2, h3, .font-display {
 :root {
   --motion-ease: cubic-bezier(.16, 1, .3, 1);
   --motion-fast: 180ms;
-  --motion-reveal: 640ms;
+  --motion-reveal: 850ms;
+  --reveal-distance: 44px;
+  --reveal-ease: cubic-bezier(.22, .68, 0, 1);
 }
 
-/* Motion stays on by product choice; content remains visible without scripting. */
+/* Only initialized targets wait for reveal; static content stays visible without scripting. */
+[data-reveal].reveal-ready:not(.is-revealed) { opacity: 0; }
+
 [data-reveal].is-revealed {
-  animation: section-reveal var(--motion-reveal) var(--motion-ease) var(--reveal-delay, 0ms) backwards;
+  animation: section-reveal var(--motion-reveal) var(--reveal-ease) var(--reveal-delay, 0ms) backwards;
 }
 
-[data-reveal]:focus-within {
+[data-reveal].reveal-ready:focus-within {
+  opacity: 1;
   animation: none;
 }
 
 .hero-line.is-revealed {
-  animation-name: headline-reveal;
-  animation-duration: 820ms;
+  --reveal-distance: 56px;
+  animation-duration: 950ms;
 }
 
 .hero-line + .hero-line { --reveal-delay: 100ms; }
@@ -164,11 +172,7 @@ header nav button:is(:hover, :focus-visible)::after { scale: 1; }
 }
 
 @keyframes section-reveal {
-  from { opacity: .3; transform: translateY(var(--reveal-offset, 18px)); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes headline-reveal {
-  from { opacity: .3; transform: translateY(var(--reveal-offset, 24px)); }
+  from { opacity: 0; transform: translateY(calc(var(--reveal-direction, 1) * var(--reveal-distance))); }
   to { opacity: 1; transform: translateY(0); }
 }
 @keyframes content-enter {

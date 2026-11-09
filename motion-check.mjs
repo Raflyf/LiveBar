@@ -18,18 +18,24 @@ const targets = Array.from({ length: 2 }, () => {
 globalThis.window = { IntersectionObserver: Observer, addEventListener: (k,v) => windowListeners.set(k,v), removeEventListener: k => windowListeners.delete(k) };
 globalThis.IntersectionObserver = Observer;
 globalThis.document = { hidden: false, hasFocus: () => true, documentElement: { dataset: {} }, querySelectorAll: () => targets, addEventListener: (k,v) => listeners.set(k,v), removeEventListener: k => listeners.delete(k) };
-const cleanup = setupMotion(), reveal = instances[0];
+const cleanup = setupMotion(), reveal = instances[0], reset = instances[1];
+assert.ok(targets.every(target => target.classList.contains('reveal-ready')));
 const entry = (target, visible, top = 100) => ({ target, isIntersecting: visible, boundingClientRect: { top }, rootBounds: { top: 0 } });
 reveal.callback([entry(targets[0], true)]);
 assert.ok(targets[0].classList.contains('is-revealed'));
 reveal.callback([entry(targets[0], false)]);
-assert.ok(!targets[0].classList.contains('is-revealed'));
+assert.ok(targets[0].classList.contains('is-revealed'), 'Crossing the entry edge must not cancel an animation');
+reset.callback([entry(targets[0], true)]);
+assert.ok(targets[0].classList.contains('is-revealed'));
+reset.callback([entry(targets[0], false)]);
+assert.ok(!targets[0].classList.contains('is-revealed'), 'Reset only after leaving the wider viewport');
 reveal.callback([entry(targets[0], true, -100)]);
 assert.ok(targets[0].classList.contains('is-revealed'));
-assert.equal(targets[0].styles['--reveal-offset'], '-18px');
+assert.equal(targets[0].styles['--reveal-direction'], '-1');
 document.hidden = true; listeners.get('visibilitychange')();
 assert.equal(document.documentElement.dataset.motionPaused, 'true');
-cleanup(); assert.ok(reveal.disconnected); assert.equal(listeners.size, 0);
+cleanup(); assert.ok(reveal.disconnected && reset.disconnected); assert.equal(listeners.size, 0);
+assert.ok(targets.every(target => !target.classList.contains('reveal-ready')));
 document.hidden = false;
 const mediaListeners = new Map(); let plays = 0;
 const video = { paused: true, hidden: false, currentTime: 9,
@@ -37,7 +43,7 @@ const video = { paused: true, hidden: false, currentTime: 9,
   pause() { if (!this.paused) { this.paused = true; mediaListeners.get('pause')?.(); } },
   addEventListener: (k,v) => mediaListeners.set(k,v), removeEventListener: k => mediaListeners.delete(k),
 };
-const stopVideo = setupVideoVisibility(video), visibility = instances[1];
+const stopVideo = setupVideoVisibility(video), visibility = instances[2];
 const show = ratio => visibility.callback([{ target: video, isIntersecting: ratio > 0, intersectionRatio: ratio }]);
 assert.equal(plays, 0); show(.6); assert.equal(plays, 1);
 show(0); assert.ok(video.paused); show(.6); assert.equal(plays, 2);
