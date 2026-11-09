@@ -80,7 +80,7 @@ The first tab keeps the existing desktop demo video. Other tabs show the v0.1.6 
 
 ## Features
 
-- **Light and dark themes:** Navbar switch keeps Cream `#F3EEE3`, Ink Black `#111111`, and Burnt Orange `#D9541E`. Light stays the default; your choice is saved when browser storage is available.
+- **Light and dark themes:** Navbar switch keeps Cream `#F3EEE3`, Ink Black `#111111`, and Burnt Orange `#D9541E`. Dark is the default; an explicitly saved light theme is preserved when browser storage is available.
 - **Official product icons:** Current WallpaperLive and TransparentBar logos are bundled unchanged, including their original colors. [Icon sources](<public/icons/SOURCES.md>).
 - **Factual Presentation:** Complete transparency on resource metrics (acknowledging initial conversion peaks alongside resting tray efficiency).
 - **Bilingual Support (ID / EN):** One-click language switching between Indonesian and English.

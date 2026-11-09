@@ -24,7 +24,7 @@ export default function App() {
     return 'en';
   });
   const [theme, setTheme] = useState<'light' | 'dark'>(() =>
-    document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'
+    document.documentElement.dataset.theme === 'light' ? 'light' : 'dark'
   );
   const [releases, setReleases] = useState<ProductReleases>({
     WallpaperLive: emptyRelease, TransparentBar: emptyRelease,

@@ -37,13 +37,13 @@ assert.equal((await loadRelease(repo, new AbortController().signal)).downloads, 
 globalThis.fetch = originalFetch;
 const { runInNewContext } = await import('node:vm');
 const bootstrap = readFileSync('index.html', 'utf8').match(/<script id="theme-init">([\s\S]*?)<\/script>/)[1];
-for (const [saved, expected] of [[null, 'light'], ['dark', 'dark'], ['light', 'light'], ['invalid', 'light']]) {
+for (const [saved, expected] of [[null, 'dark'], ['dark', 'dark'], ['light', 'light'], ['invalid', 'dark']]) {
   const document = { documentElement: { dataset: {} } };
   runInNewContext(bootstrap, { document, localStorage: { getItem: () => saved } });
   assert.equal(document.documentElement.dataset.theme, expected);
 }
 const document = { documentElement: { dataset: {} } };
 runInNewContext(bootstrap, { document, localStorage: { getItem: () => { throw new Error('Blocked'); } } });
-assert.equal(document.documentElement.dataset.theme, 'light');
+assert.equal(document.documentElement.dataset.theme, 'dark');
 assert.ok(readFileSync('src/components/Navbar.tsx', 'utf8').includes('role="switch"'));
 console.log('PASS: shared latest releases, safe links, pagination, API failures, and saved-theme bootstrap.');
