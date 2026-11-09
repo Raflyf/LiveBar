@@ -17,7 +17,7 @@ export const DownloadHub: React.FC<DownloadHubProps> = ({ t, releases }) => {
     <section id="download" className="py-16 md:py-24 px-4 sm:px-6 max-w-6xl mx-auto">
       
       {/* Header */}
-      <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+      <div data-reveal className="text-center max-w-3xl mx-auto mb-14 space-y-3">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-burnt/10 border border-burnt/20 text-xs font-mono text-accent-text font-semibold">
           <Download className="w-3.5 h-3.5" />
           <span>{t.download.badge}</span>
@@ -31,10 +31,10 @@ export const DownloadHub: React.FC<DownloadHubProps> = ({ t, releases }) => {
       </div>
 
       {/* Two Main Cards: WallpaperLive & TransparentBar */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+      <div className="motion-sequence grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
         
         {/* Card 1: WallpaperLive */}
-        <div className="bg-surface p-8 rounded-3xl border border-fg/10 flex flex-col justify-between shadow-xs hover:border-burnt/40 transition-all">
+        <div data-reveal className="motion-card bg-surface p-8 rounded-3xl border border-fg/10 flex flex-col justify-between shadow-xs hover:border-burnt/40 transition-all">
           <div>
             <div className="flex items-center justify-between mb-4">
               <span className="px-3 py-1 rounded-full bg-inverse text-on-inverse text-xs font-mono font-semibold">
@@ -44,7 +44,7 @@ export const DownloadHub: React.FC<DownloadHubProps> = ({ t, releases }) => {
             </div>
 
             <div className="flex items-center gap-4 mb-4">
-              <img src="/icons/wallpaperlive.png" alt="WallpaperLive logo" width="64" height="64" loading="lazy" className="h-16 w-16 shrink-0 object-contain" />
+              <img src="/icons/wallpaperlive.png" alt="WallpaperLive logo" width="64" height="64" loading="lazy" className="product-icon h-16 w-16 shrink-0 object-contain" />
               <h3 className="font-display text-2xl font-bold text-fg">{t.download.wpTitle}</h3>
             </div>
             <p className="text-sm text-fg/75 mb-6 leading-relaxed">
@@ -72,7 +72,7 @@ export const DownloadHub: React.FC<DownloadHubProps> = ({ t, releases }) => {
             {/* Direct dynamic download link to latest .exe */}
             <a
               href={wl.downloadUrl ?? 'https://github.com/Raflyf/WallpaperLive/releases/latest'}
-              className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-burnt text-ink font-semibold text-xs sm:text-sm hover:bg-burnt-hover transition-all transform hover:-translate-y-0.5 shadow-md shadow-burnt/20"
+              className="motion-button w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-burnt text-ink font-semibold text-xs sm:text-sm hover:bg-burnt-hover transition-all shadow-md shadow-burnt/20"
             >
               <Download className="w-4 h-4" />
               <span>{wl.downloadUrl ? t.download.installerBtn : t.download.latestRelease}</span>
@@ -113,7 +113,7 @@ export const DownloadHub: React.FC<DownloadHubProps> = ({ t, releases }) => {
         </div>
 
         {/* Card 2: TransparentBar */}
-        <div className="bg-surface p-8 rounded-3xl border border-fg/10 flex flex-col justify-between shadow-xs hover:border-burnt/40 transition-all">
+        <div data-reveal className="motion-card bg-surface p-8 rounded-3xl border border-fg/10 flex flex-col justify-between shadow-xs hover:border-burnt/40 transition-all">
           <div>
             <div className="flex items-center justify-between mb-4">
               <span className="px-3 py-1 rounded-full bg-burnt text-ink text-xs font-mono font-semibold">
@@ -123,7 +123,7 @@ export const DownloadHub: React.FC<DownloadHubProps> = ({ t, releases }) => {
             </div>
 
             <div className="flex items-center gap-4 mb-4">
-              <img src="/icons/transparentbar.png" alt="TransparentBar logo" width="64" height="64" loading="lazy" className="h-16 w-16 shrink-0 object-contain" />
+              <img src="/icons/transparentbar.png" alt="TransparentBar logo" width="64" height="64" loading="lazy" className="product-icon h-16 w-16 shrink-0 object-contain" />
               <h3 className="font-display text-2xl font-bold text-fg">{t.download.tbTitle}</h3>
             </div>
             <p className="text-sm text-fg/75 mb-6 leading-relaxed">
@@ -151,7 +151,7 @@ export const DownloadHub: React.FC<DownloadHubProps> = ({ t, releases }) => {
             {/* Direct dynamic download link to latest .exe */}
             <a
               href={tb.downloadUrl ?? 'https://github.com/Raflyf/TransparentBar/releases/latest'}
-              className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-inverse text-on-inverse font-semibold text-xs sm:text-sm hover:bg-inverse/90 transition-all transform hover:-translate-y-0.5 shadow-sm"
+              className="motion-button w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-inverse text-on-inverse font-semibold text-xs sm:text-sm hover:bg-inverse/90 transition-all shadow-sm"
             >
               <Download className="w-4 h-4 text-burnt" />
               <span>{tb.downloadUrl ? t.download.installerBtn : t.download.latestRelease}</span>
@@ -194,7 +194,7 @@ export const DownloadHub: React.FC<DownloadHubProps> = ({ t, releases }) => {
       </div>
 
       {/* System Requirements and Security Banner */}
-      <div className="bg-fg/5 p-5 rounded-2xl border border-fg/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-mono text-fg/70">
+      <div data-reveal className="bg-fg/5 p-5 rounded-2xl border border-fg/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs font-mono text-fg/70">
         <div className="flex items-center gap-2.5">
           <Monitor className="w-4 h-4 text-accent-text shrink-0" />
           <span>{t.download.requirements}</span>

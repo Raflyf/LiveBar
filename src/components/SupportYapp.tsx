@@ -14,12 +14,12 @@ export const SupportYapp: React.FC<SupportYappProps> = ({ t }) => {
       <div className="bg-surface rounded-3xl border-2 border-burnt/30 p-8 sm:p-12 md:p-14 shadow-xl relative overflow-hidden">
         
         {/* Decorative corner tag */}
-        <div className="absolute top-6 right-6 flex items-center gap-1.5 px-3 py-1 rounded-full bg-burnt/10 border border-burnt/20 text-xs font-mono font-semibold text-accent-text">
+        <div data-reveal className="absolute top-6 right-6 flex items-center gap-1.5 px-3 py-1 rounded-full bg-burnt/10 border border-burnt/20 text-xs font-mono font-semibold text-accent-text">
           <Heart className="w-3.5 h-3.5 fill-burnt" />
           <span>Yapp.ink Creator</span>
         </div>
 
-        <div className="max-w-2xl space-y-4 mb-8">
+        <div data-reveal className="max-w-2xl space-y-4 mb-8">
           <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-inverse text-on-inverse text-[11px] font-mono uppercase tracking-wider">
             {t.support.badge}
           </div>
@@ -38,12 +38,13 @@ export const SupportYapp: React.FC<SupportYappProps> = ({ t }) => {
         </div>
 
         {/* Tip Tiers Showcase */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5 mb-8">
+        <div className="motion-sequence grid grid-cols-1 sm:grid-cols-3 gap-3.5 mb-8">
           <a
             href="https://yapp.ink/raflyf"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-4 rounded-2xl bg-surface border border-fg/10 hover:border-burnt hover:shadow-md transition-all text-center group"
+            data-reveal
+            className="motion-card p-4 rounded-2xl bg-surface border border-fg/10 hover:border-burnt hover:shadow-md transition-all text-center group"
           >
             <div className="font-display font-bold text-lg text-fg group-hover:text-accent-text transition-colors">
               {t.support.tier1}
@@ -55,7 +56,8 @@ export const SupportYapp: React.FC<SupportYappProps> = ({ t }) => {
             href="https://yapp.ink/raflyf"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-4 rounded-2xl bg-surface border-2 border-burnt shadow-sm hover:shadow-md transition-all text-center relative group"
+            data-reveal
+            className="motion-card p-4 rounded-2xl bg-surface border-2 border-burnt shadow-sm hover:shadow-md transition-all text-center relative group"
           >
             <div className="absolute -top-2.5 left-1/2 -translate-x-1/2 px-2 py-0.5 rounded-full bg-burnt text-ink text-[9px] font-mono font-bold uppercase tracking-wider">
               Favorit
@@ -70,7 +72,8 @@ export const SupportYapp: React.FC<SupportYappProps> = ({ t }) => {
             href="https://yapp.ink/raflyf"
             target="_blank"
             rel="noopener noreferrer"
-            className="p-4 rounded-2xl bg-surface border border-fg/10 hover:border-burnt hover:shadow-md transition-all text-center group"
+            data-reveal
+            className="motion-card p-4 rounded-2xl bg-surface border border-fg/10 hover:border-burnt hover:shadow-md transition-all text-center group"
           >
             <div className="font-display font-bold text-lg text-fg group-hover:text-accent-text transition-colors">
               {t.support.tier3}
@@ -80,12 +83,12 @@ export const SupportYapp: React.FC<SupportYappProps> = ({ t }) => {
         </div>
 
         {/* Direct Action to Yapp */}
-        <div className="flex flex-col sm:flex-row items-center gap-4 pt-4 border-t border-fg/10">
+        <div data-reveal className="flex flex-col sm:flex-row items-center gap-4 pt-4 border-t border-fg/10">
           <a
             href="https://yapp.ink/raflyf"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-burnt text-ink font-bold text-sm hover:bg-burnt-hover transition-all transform hover:-translate-y-0.5 shadow-lg shadow-burnt/25"
+            className="motion-button w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-xl bg-burnt text-ink font-bold text-sm hover:bg-burnt-hover transition-all shadow-lg shadow-burnt/25"
           >
             <Heart className="w-4 h-4 fill-ink" />
             <span>{t.support.yappBtn}</span>

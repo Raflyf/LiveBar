@@ -80,6 +80,7 @@ The first tab keeps the existing desktop demo video. Other tabs show the v0.1.6 
 
 ## Features
 
+- **Interaction motion:** Repeat-on-entry scroll reveals for all content groups, including headings, cards, bars, controls, and footer, desktop hover lifts, button press feedback, animated showcase captions, and smooth FAQ expansion. CSS and IntersectionObserver only; no animation dependency. Motion stays enabled regardless of device reduced-motion preference by product choice. CSS animations pause while the page is hidden. Only the outer reveal group animates, preventing nested transform conflicts. The demo video pauses when offscreen, hidden by another tab, or the window loses focus; visibility resumes playback from the current position. Manual pause remains respected while scrolling.
 - **Light and dark themes:** Navbar switch keeps Cream `#F3EEE3`, Ink Black `#111111`, and Burnt Orange `#D9541E`. Dark is the default; an explicitly saved light theme is preserved when browser storage is available.
 - **Official product icons:** Current WallpaperLive and TransparentBar logos are bundled unchanged, including their original colors. [Icon sources](<public/icons/SOURCES.md>).
 - **Factual Presentation:** Complete transparency on resource metrics (acknowledging initial conversion peaks alongside resting tray efficiency).
@@ -129,6 +130,8 @@ npm run dev
 ```
 
 ### Verification
+
+Run `node motion-check.mjs` for repeat reveals, scroll direction, video visibility and focus, resume position, manual pause, and cleanup.
 
 Run `node release-check.mjs` for release selection, link validation, pagination, error states, and theme bootstrap checks. Run `node benchmark-check.mjs` for source figures, both languages, and unchanged demo-video bytes. Node.js 22.18+ or 24 is required; the benchmark check also needs internet access.
 

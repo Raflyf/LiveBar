@@ -76,7 +76,102 @@ h1, h2, h3, .font-display {
   transition: transform 160ms ease-out;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .theme-switch-thumb { transition: none; }
+:root {
+  --motion-ease: cubic-bezier(.16, 1, .3, 1);
+  --motion-fast: 180ms;
+  --motion-reveal: 640ms;
+}
+
+/* Motion stays on by product choice; content remains visible without scripting. */
+[data-reveal].is-revealed {
+  animation: section-reveal var(--motion-reveal) var(--motion-ease) var(--reveal-delay, 0ms) backwards;
+}
+
+[data-reveal]:focus-within {
+  animation: none;
+}
+
+.hero-line.is-revealed {
+  animation-name: headline-reveal;
+  animation-duration: 820ms;
+}
+
+.hero-line + .hero-line { --reveal-delay: 100ms; }
+.motion-sequence > [data-reveal]:nth-child(2) { --reveal-delay: 80ms; }
+.motion-sequence > [data-reveal]:nth-child(3) { --reveal-delay: 160ms; }
+.motion-sequence > [data-reveal]:nth-child(4) { --reveal-delay: 40ms; }
+.motion-sequence > [data-reveal]:nth-child(5) { --reveal-delay: 120ms; }
+.motion-sequence > [data-reveal]:nth-child(6) { --reveal-delay: 200ms; }
+
+.motion-swap {
+  animation: content-enter 340ms var(--motion-ease) backwards;
+}
+
+.motion-card {
+  transition: translate 260ms var(--motion-ease), scale var(--motion-fast) var(--motion-ease), border-color 260ms ease, box-shadow 260ms ease;
+}
+
+.motion-card:focus-within { border-color: var(--color-burnt); }
+
+.motion-button, :where(button, a[href]) {
+  transition: translate var(--motion-fast) var(--motion-ease), scale var(--motion-fast) var(--motion-ease), background-color var(--motion-fast), color var(--motion-fast), box-shadow var(--motion-fast);
+}
+
+.motion-button:active, :where(button, a[href]):active { scale: .97; }
+
+.motion-button svg, .product-icon {
+  transition: translate 260ms var(--motion-ease), scale 260ms var(--motion-ease);
+}
+
+header nav button { position: relative; }
+header nav button::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 -7px;
+  height: 2px;
+  background: var(--color-burnt);
+  scale: 0 1;
+  transform-origin: left;
+  transition: scale 240ms var(--motion-ease);
+}
+header nav button:is(:hover, :focus-visible)::after { scale: 1; }
+
+@media (hover: hover) and (pointer: fine) {
+  .motion-card:hover {
+    translate: 0 -6px;
+    border-color: var(--color-burnt);
+    box-shadow: 0 14px 28px color-mix(in srgb, var(--color-ink) 22%, transparent);
+  }
+  .motion-card:hover .product-icon { scale: 1.04; }
+  .motion-button:hover, :where(button, a[href]):hover { translate: 0 -2px; }
+  .motion-button:hover svg:last-child { translate: 2px 0; }
+}
+
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 320ms var(--motion-ease), opacity 220ms ease;
+}
+.faq-answer[data-open="true"] { grid-template-rows: 1fr; opacity: 1; }
+.faq-answer > div { min-height: 0; overflow: hidden; }
+#faq button:focus-visible { outline-offset: -4px; }
+
+:root[data-motion-paused="true"] *,
+:root[data-motion-paused="true"] *::before,
+:root[data-motion-paused="true"] *::after {
+  animation-play-state: paused !important;
+}
+
+@keyframes section-reveal {
+  from { opacity: .3; transform: translateY(var(--reveal-offset, 18px)); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes headline-reveal {
+  from { opacity: .3; transform: translateY(var(--reveal-offset, 24px)); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes content-enter {
+  from { opacity: .35; }
+  to { opacity: 1; }
 }

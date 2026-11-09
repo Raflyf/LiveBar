@@ -16,7 +16,7 @@ export const Benchmark: React.FC<BenchmarkProps> = ({ t }) => {
         {/* Glow background accent */}
         <div className="absolute -top-32 -right-32 w-80 h-80 rounded-full bg-burnt/20 blur-3xl pointer-events-none"></div>
 
-        <div className="relative z-10 max-w-3xl mb-10">
+        <div data-reveal className="relative z-10 max-w-3xl mb-10">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cream/10 border border-cream/15 text-xs font-mono text-accent-text mb-4">
             <Zap className="w-3.5 h-3.5" />
             <span>{t.benchmark.badge}</span>
@@ -30,7 +30,7 @@ export const Benchmark: React.FC<BenchmarkProps> = ({ t }) => {
         </div>
 
         {/* Real Task Manager Captured Data Table */}
-        <div className="overflow-x-auto mb-10">
+        <div data-reveal className="overflow-x-auto mb-10">
           <table className="w-full text-left text-xs sm:text-sm font-mono border-collapse">
             <thead>
               <tr className="border-b border-cream/15 text-cream/70 text-[11px] uppercase tracking-wider">
@@ -85,7 +85,7 @@ export const Benchmark: React.FC<BenchmarkProps> = ({ t }) => {
         </div>
 
         {/* Disclaimer / Context Box directly echoing author's note */}
-        <div className="bg-cream/5 border border-cream/10 rounded-2xl p-5 flex items-start gap-3.5 text-xs font-mono text-cream/70 leading-relaxed">
+        <div data-reveal className="bg-cream/5 border border-cream/10 rounded-2xl p-5 flex items-start gap-3.5 text-xs font-mono text-cream/70 leading-relaxed">
           <AlertCircle className="w-5 h-5 text-cream shrink-0 mt-0.5" />
           <div>
             <span className="font-bold text-cream block mb-1">{t.benchmark.contextTitle}</span>

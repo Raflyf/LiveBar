@@ -19,7 +19,7 @@ export const FAQ: React.FC<FAQProps> = ({ t }) => {
   return (
     <section id="faq" className="py-16 md:py-20 px-4 sm:px-6 max-w-4xl mx-auto">
       
-      <div className="text-center mb-12 space-y-2">
+      <div data-reveal className="text-center mb-12 space-y-2">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-fg/5 border border-fg/10 text-xs font-mono text-fg">
           <HelpCircle className="w-3.5 h-3.5 text-accent-text" />
           <span>{t.faq.badge}</span>
@@ -33,9 +33,14 @@ export const FAQ: React.FC<FAQProps> = ({ t }) => {
         {faqs.map((item, idx) => (
           <div
             key={idx}
+            data-reveal
             className="bg-surface rounded-2xl border border-fg/8 overflow-hidden transition-all shadow-xs"
           >
             <button
+              type="button"
+              id={`faq-question-${idx}`}
+              aria-expanded={openIdx === idx}
+              aria-controls={`faq-answer-${idx}`}
               onClick={() => setOpenIdx(openIdx === idx ? null : idx)}
               className="w-full p-5 text-left flex items-center justify-between gap-4 font-display font-bold text-base text-fg hover:text-accent-text transition-colors"
             >
@@ -47,11 +52,21 @@ export const FAQ: React.FC<FAQProps> = ({ t }) => {
               />
             </button>
 
-            {openIdx === idx && (
-              <div className="px-5 pb-5 text-xs sm:text-sm text-fg/75 leading-relaxed border-t border-fg/5 pt-3">
-                {item.a}
+            <div
+              id={`faq-answer-${idx}`}
+              className="faq-answer"
+              role="region"
+              aria-labelledby={`faq-question-${idx}`}
+              aria-hidden={openIdx !== idx}
+              inert={openIdx !== idx}
+              data-open={openIdx === idx}
+            >
+              <div>
+                <div className="px-5 pb-5 text-xs sm:text-sm text-fg/75 leading-relaxed border-t border-fg/5 pt-3">
+                  {item.a}
+                </div>
               </div>
-            )}
+            </div>
           </div>
         ))}
       </div>

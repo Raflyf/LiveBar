@@ -10,6 +10,7 @@ import { SupportYapp } from './components/SupportYapp';
 import { FAQ } from './components/FAQ';
 import { Footer } from './components/Footer';
 import { emptyRelease, loadRelease, type ProductReleases, type ProductRepo } from './releases';
+import { setupMotion } from './motion';
 
 export default function App() {
   const [lang, setLang] = useState<Language>(() => {
@@ -30,6 +31,8 @@ export default function App() {
     WallpaperLive: emptyRelease, TransparentBar: emptyRelease,
   });
   const t = translations[lang];
+
+  useEffect(setupMotion, []);
 
   useEffect(() => {
     const controller = new AbortController();

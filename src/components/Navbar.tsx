@@ -14,7 +14,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ t, lang, onToggleLang, isDark, onToggleTheme }) => {
   return (
     <header className="sticky top-0 z-50 bg-canvas/90 backdrop-blur-md border-b border-fg/10 transition-colors">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+      <div data-reveal className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         
         {/* Brand */}
         <button 
@@ -136,7 +136,7 @@ export const Navbar: React.FC<NavbarProps> = ({ t, lang, onToggleLang, isDark, o
           <button
             onClick={scrollToSection('download')}
             aria-label={t.nav.downloadBtn}
-            className="min-h-11 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-inverse text-on-inverse text-xs font-semibold hover:bg-burnt hover:text-ink transition-colors shadow-sm cursor-pointer"
+            className="motion-button min-h-11 inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-inverse text-on-inverse text-xs font-semibold hover:bg-burnt hover:text-ink transition-colors shadow-sm cursor-pointer"
           >
             <Download className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">{t.nav.downloadBtn}</span>

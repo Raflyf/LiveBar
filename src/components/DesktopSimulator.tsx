@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { setupVideoVisibility } from '../motion';
 import { Translation } from '../types/content';
 import { Monitor, Image as ImageIcon, Sliders, CheckCircle2, ExternalLink } from 'lucide-react';
 
@@ -10,6 +11,11 @@ type TabKey = 'desktop' | 'library' | 'taskbar' | 'telemetry';
 
 export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
   const [activeTab, setActiveTab] = useState<TabKey>('desktop');
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) return setupVideoVisibility(videoRef.current);
+  }, [activeTab]);
 
   const tabData = {
     desktop: {
@@ -52,7 +58,7 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
     <section id="simulator" className="py-16 md:py-24 px-4 sm:px-6 max-w-6xl mx-auto">
       
       {/* Header */}
-      <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
+      <div data-reveal className="text-center max-w-3xl mx-auto mb-10 space-y-3">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-burnt/10 border border-burnt/20 text-xs font-mono text-accent-text font-semibold">
           <CheckCircle2 className="w-3.5 h-3.5" />
           <span>{t.simulator.tag}</span>
@@ -66,10 +72,11 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
       </div>
 
       {/* Clean Interactive Tab Controls */}
-      <div className="flex flex-wrap items-center justify-center gap-2 mb-6">
+      <div data-reveal className="flex flex-wrap items-center justify-center gap-2 mb-6">
         <button
           onClick={() => setActiveTab('desktop')}
-          className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 ${
+          aria-pressed={activeTab === 'desktop'}
+          className={`motion-button px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 ${
             activeTab === 'desktop'
               ? 'bg-inverse text-on-inverse font-bold shadow-sm'
               : 'bg-surface hover:bg-fg/10 text-fg/80 border border-fg/10'
@@ -81,7 +88,8 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
 
         <button
           onClick={() => setActiveTab('library')}
-          className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 ${
+          aria-pressed={activeTab === 'library'}
+          className={`motion-button px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 ${
             activeTab === 'library'
               ? 'bg-inverse text-on-inverse font-bold shadow-sm'
               : 'bg-surface hover:bg-fg/10 text-fg/80 border border-fg/10'
@@ -93,7 +101,8 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
 
         <button
           onClick={() => setActiveTab('taskbar')}
-          className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 ${
+          aria-pressed={activeTab === 'taskbar'}
+          className={`motion-button px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 ${
             activeTab === 'taskbar'
               ? 'bg-inverse text-on-inverse font-bold shadow-sm'
               : 'bg-surface hover:bg-fg/10 text-fg/80 border border-fg/10'
@@ -105,7 +114,8 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
 
         <button
           onClick={() => setActiveTab('telemetry')}
-          className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 ${
+          aria-pressed={activeTab === 'telemetry'}
+          className={`motion-button px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 ${
             activeTab === 'telemetry'
               ? 'bg-inverse text-on-inverse font-bold shadow-sm'
               : 'bg-surface hover:bg-fg/10 text-fg/80 border border-fg/10'
@@ -117,7 +127,7 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
       </div>
 
       {/* Authentic High-Res Frame */}
-      <div className="media-frame rounded-3xl p-3 sm:p-5 bg-ink shadow-2xl border border-fg/20">
+      <div data-reveal className="media-frame rounded-3xl p-3 sm:p-5 bg-ink shadow-2xl border border-fg/20">
         
         {/* Frame Top Window Bar */}
         <div className="flex items-center justify-between px-3 py-2 text-cream/70 text-xs font-mono border-b border-cream/10 mb-3">
@@ -141,11 +151,12 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
 
         {/* High-Resolution Video / Capture Display */}
         <div className={`relative rounded-2xl overflow-hidden bg-ink flex items-center justify-center border border-cream/5 ${activeTab === 'telemetry' ? 'aspect-[32/11]' : 'aspect-video'}`}>
-          {activeTab === 'desktop' ? (
             <video
+              ref={videoRef}
+              hidden={activeTab !== 'desktop'}
               src="/video/1109.mp4"
               poster="https://raw.githubusercontent.com/Raflyf/WallpaperLive/main/assets/screenshots/preview-v0.1.5.png"
-              autoPlay
+              preload="metadata"
               loop
               muted
               playsInline
@@ -156,19 +167,19 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
               <source src="/video/1109.mp4" type="video/mp4" />
               Browser Anda tidak mendukung tag video.
             </video>
-          ) : (
+          {activeTab !== 'desktop' && (
             <img
               key={current.image}
               src={current.image}
               alt={current.alt}
-              className="w-full h-full object-contain select-none animate-fade-in"
+              className="w-full h-full object-contain select-none motion-swap"
               loading="lazy"
             />
           )}
         </div>
 
         {/* Caption Bar */}
-        <div className="mt-4 px-3 py-3 rounded-2xl bg-cream/5 border border-cream/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-cream">
+        <div key={activeTab} className="motion-swap mt-4 px-3 py-3 rounded-2xl bg-cream/5 border border-cream/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-cream">
           <div>
             <h4 className="font-display font-bold text-sm text-cream flex items-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-burnt"></span>

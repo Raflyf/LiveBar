@@ -29,7 +29,7 @@ export const Features: React.FC<FeaturesProps> = ({ t }) => {
     <section id="features" className="py-16 md:py-24 px-4 sm:px-6 max-w-6xl mx-auto">
       
       {/* Header */}
-      <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
+      <div data-reveal className="text-center max-w-3xl mx-auto mb-14 space-y-3">
         <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-fg/5 border border-fg/10 text-xs font-mono text-fg">
           <span>{t.features.badge}</span>
         </div>
@@ -42,11 +42,12 @@ export const Features: React.FC<FeaturesProps> = ({ t }) => {
       </div>
 
       {/* Bento Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="motion-sequence grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {featureItems.map((item, idx) => (
           <div
             key={idx}
-            className="bg-surface p-7 rounded-3xl border border-fg/8 hover:border-burnt/40 transition-all transform hover:-translate-y-1 shadow-xs hover:shadow-md flex flex-col justify-between"
+            data-reveal
+            className="motion-card bg-surface p-7 rounded-3xl border border-fg/8 hover:border-burnt/40 shadow-xs hover:shadow-md flex flex-col justify-between"
           >
             <div>
               <div className="w-11 h-11 rounded-2xl bg-fg/5 flex items-center justify-center mb-5">

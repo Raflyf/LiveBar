@@ -9,7 +9,7 @@ interface FooterProps {
 export const Footer: React.FC<FooterProps> = ({ t }) => {
   return (
     <footer className="border-t border-fg/10 bg-surface text-fg pt-12 pb-10 px-4 sm:px-6">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div data-reveal className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         
         {/* Brand */}
         <div className="flex items-center gap-3">
@@ -66,7 +66,7 @@ export const Footer: React.FC<FooterProps> = ({ t }) => {
 
       </div>
 
-      <div className="max-w-6xl mx-auto text-center mt-8 pt-6 border-t border-fg/5 text-[11px] font-mono text-fg/70">
+      <div data-reveal className="max-w-6xl mx-auto text-center mt-8 pt-6 border-t border-fg/5 text-[11px] font-mono text-fg/70">
         {t.footer.rights}
       </div>
     </footer>
