@@ -73,7 +73,7 @@ export const Navbar: React.FC<NavbarProps> = ({ t, lang, onToggleLang }) => {
             className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-[#D9541E]/30 text-xs font-semibold text-[#D9541E] hover:bg-[#D9541E]/10 transition-colors"
           >
             <Heart className="w-3.5 h-3.5 fill-[#D9541E]" />
-            <span>Yapp</span>
+            <span>Support</span>
           </a>
 
           {/* Primary Download CTA */}
