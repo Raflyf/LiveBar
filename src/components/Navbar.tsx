@@ -1,6 +1,7 @@
 import React from 'react';
 import { Translation, Language } from '../types/content';
 import { Monitor, Heart, Download } from 'lucide-react';
+import { scrollToSection } from '../utils/scroll';
 
 interface NavbarProps {
   t: Translation;
@@ -14,7 +15,10 @@ export const Navbar: React.FC<NavbarProps> = ({ t, lang, onToggleLang }) => {
       <div className="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
         
         {/* Brand */}
-        <a href="#top" className="flex items-center gap-2.5 group">
+        <button 
+          onClick={scrollToSection('top')}
+          className="flex items-center gap-2.5 group cursor-pointer text-left"
+        >
           <div className="w-9 h-9 rounded-xl bg-[#111111] flex items-center justify-center text-[#F3EEE3] shadow-sm group-hover:scale-105 transition-transform">
             <Monitor className="w-5 h-5 text-[#D9541E]" />
           </div>
@@ -26,15 +30,40 @@ export const Navbar: React.FC<NavbarProps> = ({ t, lang, onToggleLang }) => {
               Windows Suite
             </span>
           </div>
-        </a>
+        </button>
 
         {/* Nav Links */}
         <nav className="hidden md:flex items-center gap-7 text-sm font-medium text-[#111111]/80">
-          <a href="#simulator" className="hover:text-[#D9541E] transition-colors">{t.nav.simulator}</a>
-          <a href="#features" className="hover:text-[#D9541E] transition-colors">{t.nav.features}</a>
-          <a href="#benchmark" className="hover:text-[#D9541E] transition-colors">{t.nav.benchmark}</a>
-          <a href="#download" className="hover:text-[#D9541E] transition-colors">{t.nav.download}</a>
-          <a href="#support" className="hover:text-[#D9541E] transition-colors">{t.nav.support}</a>
+          <button 
+            onClick={scrollToSection('simulator')} 
+            className="hover:text-[#D9541E] transition-colors cursor-pointer"
+          >
+            {t.nav.simulator}
+          </button>
+          <button 
+            onClick={scrollToSection('features')} 
+            className="hover:text-[#D9541E] transition-colors cursor-pointer"
+          >
+            {t.nav.features}
+          </button>
+          <button 
+            onClick={scrollToSection('benchmark')} 
+            className="hover:text-[#D9541E] transition-colors cursor-pointer"
+          >
+            {t.nav.benchmark}
+          </button>
+          <button 
+            onClick={scrollToSection('download')} 
+            className="hover:text-[#D9541E] transition-colors cursor-pointer"
+          >
+            {t.nav.download}
+          </button>
+          <button 
+            onClick={scrollToSection('support')} 
+            className="hover:text-[#D9541E] transition-colors cursor-pointer"
+          >
+            {t.nav.support}
+          </button>
         </nav>
 
         {/* Action Controls */}
@@ -43,7 +72,7 @@ export const Navbar: React.FC<NavbarProps> = ({ t, lang, onToggleLang }) => {
           <div className="flex items-center bg-[#111111]/5 rounded-lg p-0.5 border border-[#111111]/10 text-xs font-mono">
             <button
               onClick={() => onToggleLang('id')}
-              className={`px-2 py-1 rounded-md transition-all ${
+              className={`px-2 py-1 rounded-md transition-all cursor-pointer ${
                 lang === 'id' 
                   ? 'bg-[#111111] text-[#F3EEE3] font-bold shadow-sm' 
                   : 'text-[#111111]/60 hover:text-[#111111]'
@@ -54,7 +83,7 @@ export const Navbar: React.FC<NavbarProps> = ({ t, lang, onToggleLang }) => {
             </button>
             <button
               onClick={() => onToggleLang('en')}
-              className={`px-2 py-1 rounded-md transition-all ${
+              className={`px-2 py-1 rounded-md transition-all cursor-pointer ${
                 lang === 'en' 
                   ? 'bg-[#111111] text-[#F3EEE3] font-bold shadow-sm' 
                   : 'text-[#111111]/60 hover:text-[#111111]'
@@ -65,7 +94,7 @@ export const Navbar: React.FC<NavbarProps> = ({ t, lang, onToggleLang }) => {
             </button>
           </div>
 
-          {/* Yapp Support Button */}
+          {/* Support Button (External Yapp Link) */}
           <a
             href="https://yapp.ink/raflyf"
             target="_blank"
@@ -76,14 +105,14 @@ export const Navbar: React.FC<NavbarProps> = ({ t, lang, onToggleLang }) => {
             <span>Support</span>
           </a>
 
-          {/* Primary Download CTA */}
-          <a
-            href="#download"
-            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#111111] text-[#F3EEE3] text-xs font-semibold hover:bg-[#D9541E] transition-colors shadow-sm"
+          {/* Primary Download CTA Button (Clean Scroll) */}
+          <button
+            onClick={scrollToSection('download')}
+            className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg bg-[#111111] text-[#F3EEE3] text-xs font-semibold hover:bg-[#D9541E] transition-colors shadow-sm cursor-pointer"
           >
             <Download className="w-3.5 h-3.5" />
             <span>{t.nav.downloadBtn}</span>
-          </a>
+          </button>
         </div>
       </div>
     </header>

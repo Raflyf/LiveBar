@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Language, translations } from './types/content';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -13,6 +13,21 @@ import { Footer } from './components/Footer';
 export default function App() {
   const [lang, setLang] = useState<Language>('id');
   const t = translations[lang];
+
+  // Clean any #hash from address bar on mount while preserving scroll target
+  useEffect(() => {
+    if (window.location.hash) {
+      const id = window.location.hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      }
+      // Immediately strip the #hash from the address bar
+      window.history.replaceState(null, '', window.location.pathname + window.location.search);
+    }
+  }, []);
 
   return (
     <div id="top" className="min-h-screen bg-[#F3EEE3] text-[#111111] flex flex-col font-sans selection:bg-[#D9541E] selection:text-white">

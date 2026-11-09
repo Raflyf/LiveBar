@@ -1,6 +1,7 @@
 import React from 'react';
 import { Translation } from '../types/content';
 import { Download, Heart, ArrowRight, ShieldCheck, Zap, Sparkles } from 'lucide-react';
+import { scrollToSection } from '../utils/scroll';
 
 interface HeroProps {
   t: Translation;
@@ -33,14 +34,14 @@ export const Hero: React.FC<HeroProps> = ({ t }) => {
 
         {/* CTA Buttons */}
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5">
-          <a
-            href="#download"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#D9541E] text-white font-semibold text-sm hover:bg-[#c24615] transition-all transform hover:-translate-y-0.5 shadow-md shadow-[#D9541E]/20"
+          <button
+            onClick={scrollToSection('download')}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-[#D9541E] text-white font-semibold text-sm hover:bg-[#c24615] transition-all transform hover:-translate-y-0.5 shadow-md shadow-[#D9541E]/20 cursor-pointer"
           >
             <Download className="w-4 h-4" />
             <span>{t.hero.ctaPrimary}</span>
             <ArrowRight className="w-4 h-4 opacity-75" />
-          </a>
+          </button>
 
           <a
             href="https://yapp.ink/raflyf"
