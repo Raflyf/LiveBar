@@ -18,7 +18,7 @@
   <a href="https://github.com/Raflyf/WallpaperLive"><img src="https://img.shields.io/github/v/release/Raflyf/WallpaperLive?color=D9541E" alt="WallpaperLive"></a>
   <a href="https://github.com/Raflyf/TransparentBar"><img src="https://img.shields.io/github/v/release/Raflyf/TransparentBar?color=111111" alt="TransparentBar"></a>
   <a href="https://yapp.ink/raflyf"><img src="https://img.shields.io/badge/Support-Yapp.ink-ff4b4b?style=flat&logo=ko-fi" alt="Yapp.ink"></a>
-  <a href="#license"><img src="https://img.shields.io/badge/license-GPL--3.0%20%7C%20MIT-586575" alt="License"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/github/license/Raflyf/LiveBar?color=586575" alt="LiveBar MIT license"></a>
 </p>
 
 <p align="center">
@@ -170,6 +170,10 @@ If you find these projects helpful, consider supporting their ongoing developmen
 
 ## License
 
-- [WallpaperLive](https://github.com/Raflyf/WallpaperLive) is licensed under [GPL-3.0-or-later](https://github.com/Raflyf/WallpaperLive/blob/main/LICENSE).
-- [TransparentBar](https://github.com/Raflyf/TransparentBar) is licensed under [MIT](https://github.com/Raflyf/TransparentBar/blob/main/LICENSE.md).
-- This website presentation is open source.
+LiveBar’s original website code and documentation are licensed under [MIT](<LICENSE>). Copyright (c) 2026 Raflyf.
+
+The showcased applications remain separately licensed:
+- [WallpaperLive](https://github.com/Raflyf/WallpaperLive): [GPL-3.0-or-later](https://github.com/Raflyf/WallpaperLive/blob/main/LICENSE).
+- [TransparentBar](https://github.com/Raflyf/TransparentBar): [MIT](https://github.com/Raflyf/TransparentBar/blob/main/LICENSE.md).
+
+Third-party dependencies retain their own licenses. Product logos, screenshots, demo videos, and wallpaper artwork are not automatically covered by LiveBar’s MIT license; their original rights and permissions remain in force. See [icon sources](<public/icons/SOURCES.md>) and [figure sources](<public/images/SOURCES.md>).
