@@ -189,7 +189,7 @@ export const translations: Record<Language, Translation> = {
         taskbarTitle: "Taskbar Transparan Windows 11 Murni",
         taskbarDesc: "Wallpaper tetap terlihat jelas di balik icon aplikasi Windows 11 tanpa efek blur berat. Mengait langsung ke DWM API.",
         telemetryTitle: "Tangkapan Layar Task Manager Asli",
-        telemetryDesc: "Komposisi cuplikan Task Manager: desktop v0.1.6 menunjukkan 37.8 MB / 1.5% CPU; cuplikan auto-pause v0.1.5 menunjukkan 4.5 MB / 0% CPU. Diambil pada waktu berbeda.",
+        telemetryDesc: "Cuplikan asli v0.1.5 yang dipertahankan di repo: wallpaperlive.exe menunjukkan 20.3 MB / 0.5% CPU di tray dan 4.5 MB / 0% CPU saat auto-pause. Diambil pada waktu berbeda, bukan pengujian baru v0.1.6.",
       },
     },
     features: {
@@ -333,7 +333,7 @@ export const translations: Record<Language, Translation> = {
         taskbarTitle: "True Windows 11 Taskbar Transparency",
         taskbarDesc: "Wallpaper remains fully visible behind pinned icons without artificial blur overlays. Powered by native DWM hooks.",
         telemetryTitle: "Original Task Manager Evidence",
-        telemetryDesc: "Task Manager composition: desktop playback in v0.1.6 shows 37.8 MB / 1.5% CPU; the earlier v0.1.5 auto-pause capture shows 4.5 MB / 0% CPU. These are separate moments.",
+        telemetryDesc: "Original v0.1.5 captures retained by the repo: wallpaperlive.exe shows 20.3 MB / 0.5% CPU in tray and 4.5 MB / 0% CPU while auto-paused. Separate moments, not new v0.1.6 measurements.",
       },
     },
     features: {

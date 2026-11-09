@@ -37,11 +37,11 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
       repoLink: 'https://github.com/Raflyf/TransparentBar',
     },
     telemetry: {
-      image: 'https://raw.githubusercontent.com/Raflyf/WallpaperLive/main/assets/screenshots/resource-use-v0.1.6.png',
-      alt: 'Task Manager composition: WallpaperLive v0.1.6 desktop playback at 37.8 MB and 1.5 percent CPU; earlier v0.1.5 auto-pause at 4.5 MB and 0 percent CPU',
+      image: '/images/resource-use-v0.1.5.png',
+      alt: 'Original v0.1.5 Task Manager captures: wallpaperlive.exe at 20.3 MB and 0.5 percent CPU in tray, and 4.5 MB and 0 percent CPU while auto-paused',
       title: t.simulator.captions.telemetryTitle,
       desc: t.simulator.captions.telemetryDesc,
-      tag: 'Task Manager · v0.1.6 / v0.1.5',
+      tag: 'Task Manager · v0.1.5',
       repoLink: 'https://github.com/Raflyf/WallpaperLive#resource-use',
     },
   };

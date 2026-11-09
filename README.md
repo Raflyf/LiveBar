@@ -58,7 +58,7 @@ Latest WallpaperLive captures were supplied on 9 November 2026. Values below rep
 | Desktop live playback (v0.1.6) | 37.8 MB | 1.5% | Active wallpaper with Task Manager visible; disk 0 MB/s, network 0 Mbps |
 | Fullscreen/maximized auto-pause (v0.1.5 capture) | 4.5 MB | 0% | Earlier paused snapshot reused in the latest documentation |
 
-The earlier v0.1.5 tray-playback capture from 8 November 2026 shows **20.3 MB / 0.5% CPU**. It is not a new v0.1.6 measurement. The updated resource-use composition pairs v0.1.6 desktop playback with the earlier v0.1.5 auto-pause capture.
+The earlier v0.1.5 tray-playback capture from 8 November 2026 shows **20.3 MB / 0.5% CPU**. It is not a new v0.1.6 measurement. The [retained source figure](https://github.com/Raflyf/WallpaperLive/blob/main/assets/screenshots/resource-use-v0.1.5.png) shows the original v0.1.5 tray and auto-pause captures unchanged.
 
 Cache preparation is temporary; its app-and-worker row is not steady playback usage. Task Manager rounds CPU values, so displayed 0% does not prove zero work. Its Memory column does not establish total private allocation, all process-tree memory, or dedicated VRAM. Media, codec, display resolution, driver, and cache state affect usage. These captures do not measure GPU utilization or guarantee a RAM ceiling or GPU/VRAM savings.
 
@@ -74,7 +74,7 @@ These are [displayed values at capture time](https://github.com/Raflyf/Transpare
 
 ## Product Showcase
 
-The first tab keeps the existing desktop demo video. Other tabs show the native library, TransparentBar detail, and Task Manager captures. The WallpaperLive library and resource-use images now use the latest v0.1.6 compositions. Resource-use captions identify the reused v0.1.5 auto-pause capture; no browser HUD or live telemetry is simulated.
+The first tab keeps the existing desktop demo video. Other tabs show the v0.1.6 native library, TransparentBar detail, and the original v0.1.5 Task Manager tray/auto-pause figure. The [Task Manager image](<public/images/resource-use-v0.1.5.png>) is bundled locally with its source bytes unchanged, so upstream renames or deletions cannot break that tab. Captions preserve capture versions; no browser HUD or live telemetry is simulated.
 
 ---
 
