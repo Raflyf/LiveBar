@@ -93,8 +93,6 @@ export interface Translation {
     tbRowRam: string;
     tbRowCpu: string;
     tbRowNotes: string;
-    tbCaptureLabel: string;
-    tbCaptureAlt: string;
     disclaimer: string;
     contextTitle: string;
   };
@@ -249,8 +247,6 @@ export const translations: Record<Language, Translation> = {
       tbRowRam: "3.9 MB",
       tbRowCpu: "0%",
       tbRowNotes: "Cuplikan host v0.2.4: 3.9 MB, 0% CPU, disk 0 MB/s, jaringan 0 Mbps. Tidak mencakup bridge yang dimuat di Explorer.",
-      tbCaptureLabel: "TransparentBar: cuplikan Task Manager v0.2.4",
-      tbCaptureAlt: "Task Manager TransparentBar: memori 3.9 MB, CPU 0%, disk 0 MB/s, jaringan 0 Mbps.",
       disclaimer: "Persiapan cache 4K sementara mencakup aplikasi dan worker; panel serta desktop menampilkan kondisi lain. Cuplikan tray 20.3 MB / 0.5% CPU dan auto-pause 4.5 MB / 0% CPU berasal dari v0.1.5. Ini momen terpisah, bukan benchmark terkontrol. Task Manager membulatkan CPU; 0% bukan bukti nol aktivitas. Kolom Memory bukan total alokasi privat, seluruh process tree, atau VRAM. Host TransparentBar tidak mencakup bridge Explorer. Media, codec, resolusi, driver, dan status cache memengaruhi hasil; tidak ada batas RAM atau penghematan GPU/VRAM yang dijamin.",
     },
     download: {
@@ -402,8 +398,6 @@ export const translations: Record<Language, Translation> = {
       tbRowRam: "3.9 MB",
       tbRowCpu: "0%",
       tbRowNotes: "v0.2.4 host snapshot: 3.9 MB, 0% CPU, 0 MB/s disk, 0 Mbps network. Excludes the bridge loaded inside Explorer.",
-      tbCaptureLabel: "TransparentBar: Task Manager capture v0.2.4",
-      tbCaptureAlt: "TransparentBar in Task Manager: 3.9 MB memory, 0% CPU, 0 MB/s disk, 0 Mbps network.",
       disclaimer: "Temporary 4K cache preparation includes the app and worker; panel and desktop rows show other states. The 20.3 MB / 0.5% CPU tray and 4.5 MB / 0% CPU auto-pause captures are from v0.1.5. These are separate moments, not a controlled benchmark. Task Manager rounds CPU; 0% does not prove zero work. Its Memory column is not total private allocation, all process-tree memory, or VRAM. TransparentBar host values exclude its Explorer bridge. Media, codec, resolution, driver, and cache state affect usage; no RAM ceiling or GPU/VRAM savings are guaranteed.",
     },
     download: {

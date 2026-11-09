@@ -42,7 +42,7 @@ for (const locale of ['en', 'id']) {
   assert.equal(t.hero.stat2, '3.9 MB');
   assert.equal(t.benchmark.tbRowRam, t.hero.stat2);
   assert.equal(t.benchmark.tbRowCpu, '0%');
-  for (const text of [t.features.items.f2Desc, t.benchmark.tbRowNotes, t.benchmark.tbCaptureAlt, t.faq.a2]) {
+  for (const text of [t.features.items.f2Desc, t.benchmark.tbRowNotes, t.faq.a2]) {
     assert.ok(text.includes(t.hero.stat2));
   }
   assert.ok(t.hero.stat2Sub.includes('v0.2.4'));
@@ -61,7 +61,9 @@ assert.equal(image.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
 assert.equal(createHash('sha256').update(image).digest('hex'), '03f5bc5e6280fc799e106af939a3d6edc9c6f9338e5758bba8b3f9e774e5f96d');
 const hash = path => createHash('sha256').update(readFileSync(path)).digest('hex');
 assert.equal(hash('public/images/transparentbar-resource-use-v0.2.4.png'), '1e36f81ff7794f1a7d87be97c49c2f37320309482b596b8386f6edb18f5d5fd4');
-assert.ok(readFileSync('src/components/Benchmark.tsx', 'utf8').includes('src="/images/transparentbar-resource-use-v0.2.4.png"'));
+const benchmark = readFileSync('src/components/Benchmark.tsx', 'utf8');
+assert.ok(!benchmark.includes('transparentbar-resource-use-v0.2.4.png'), 'Do not duplicate the TransparentBar table with a photo');
+assert.ok(benchmark.includes('{t.benchmark.tbRowRam}') && benchmark.includes('{t.benchmark.tbRowCpu}'));
 assert.equal(hash('public/video/1109.mp4'), '350d9fe805f905d7ce4fbf1df9fc72d89c08d80bccbfc99b7fc74fdf5d2bc7c6');
 assert.equal(hash('public/icons/wallpaperlive.png'), 'cbc08f661ef21af58736157a2e9342cd52a7075655cc0bcd760cbe3395127279');
 assert.equal(hash('public/icons/transparentbar.png'), '94c4c4161ac25d3df881a58045120cdfe7b268639d13a336352db92c1799321e');

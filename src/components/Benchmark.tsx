@@ -84,17 +84,6 @@ export const Benchmark: React.FC<BenchmarkProps> = ({ t }) => {
           </table>
         </div>
 
-        <figure data-reveal className="mb-8">
-          <figcaption className="mb-3 text-xs font-mono text-cream/80">
-            <a href="https://github.com/Raflyf/TransparentBar/blob/e6c17bf9f730921666fb74a82517669e2fdcd056/README.md#resource-use" target="_blank" rel="noopener noreferrer" className="underline underline-offset-4 hover:text-cream">
-              {t.benchmark.tbCaptureLabel}
-            </a>
-          </figcaption>
-          <a href="/images/transparentbar-resource-use-v0.2.4.png" target="_blank" rel="noopener noreferrer" className="block w-fit max-w-full rounded-lg">
-            <img src="/images/transparentbar-resource-use-v0.2.4.png" alt={t.benchmark.tbCaptureAlt} width="728" height="41" loading="lazy" className="block h-auto max-w-full rounded-lg" />
-          </a>
-        </figure>
-
         {/* Disclaimer / Context Box directly echoing author's note */}
         <div data-reveal className="bg-cream/5 border border-cream/10 rounded-2xl p-5 flex items-start gap-3.5 text-xs font-mono text-cream/70 leading-relaxed">
           <AlertCircle className="w-5 h-5 text-cream shrink-0 mt-0.5" />

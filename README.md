@@ -59,6 +59,8 @@ Cache preparation is temporary; its app-and-worker row is not steady playback us
 
 ### TransparentBar
 
+The website displays these values in the table only; the source crop is retained for attribution.
+
 | Host process memory | CPU | Disk | Network |
 | ---: | ---: | ---: | ---: |
 | 3.9 MB | 0% | 0 MB/s | 0 Mbps |
