@@ -156,7 +156,7 @@ export const translations: Record<Language, Translation> = {
       supportBtn: "Traktir di Yapp",
     },
     hero: {
-      badge: "Data Nyata Task Manager v0.1.5 · Windows 11 x64",
+      badge: "Tersedia untuk Windows 10 & 11 · 64-bit · Native Rust",
       titlePart1: "Desktop Anda,",
       titlePart2: "hidup dan transparan.",
       subtitle: "WallpaperLive memutar video dan GIF lokal dengan dekoder libmpv native. TransparentBar menghapus latar taskbar melalui hook Win32 DWM murni berbasis Rust. Ringan, transparan, dan tanpa overclaim.",
@@ -299,7 +299,7 @@ export const translations: Record<Language, Translation> = {
       supportBtn: "Tip on Yapp",
     },
     hero: {
-      badge: "Real Task Manager v0.1.5 Data · Windows 11 x64",
+      badge: "Available for Windows 10 & 11 · 64-bit · Native Rust",
       titlePart1: "Your desktop,",
       titlePart2: "alive and transparent.",
       subtitle: "WallpaperLive plays local videos and GIFs with a native libmpv decoder. TransparentBar removes the taskbar background via pure Rust Win32 DWM hooks. Lightweight, transparent, zero overclaim.",
