@@ -150,7 +150,7 @@ npm run build
 1. Connect `Raflyf/LiveBar` to the existing Vercel project `desktop-suite-web` with Production Branch `main`.
 2. Use the **Vite** preset and output directory `dist`.
 3. Enable GitHub deployment records in Project Settings > Git (`gitProviderOptions.createDeployments: "enabled"`). Vercel records deployment state and the production URL in GitHub.
-4. Push to `main` and verify the resulting deployment SHA and [production website](https://livebar.vercel.app/).
+4. Push to `main` and verify the resulting deployment SHA and [production website](https://livelydesk.vercel.app/).
 
 The native Git integration handles deployment; no parallel Actions deployment or CLI upload is needed. Creating a GitHub environment alone does not deploy the website.
 

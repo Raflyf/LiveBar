@@ -19,7 +19,7 @@ export const Navbar: React.FC<NavbarProps> = ({ t, lang, onToggleLang, isDark, o
         {/* Brand */}
         <button 
           onClick={scrollToSection('top')}
-          aria-label="WallpaperLive & TransparentBar"
+          aria-label="LivelyDesk — WallpaperLive & TransparentBar"
           className="flex min-w-0 items-center gap-2.5 group cursor-pointer text-left"
         >
           <div className="w-9 h-9 rounded-xl bg-inverse flex items-center justify-center text-on-inverse shadow-sm group-hover:scale-105 transition-transform">
@@ -27,10 +27,10 @@ export const Navbar: React.FC<NavbarProps> = ({ t, lang, onToggleLang, isDark, o
           </div>
           <div className="hidden sm:flex flex-col">
             <span className="font-display font-bold text-base tracking-tight text-fg leading-none">
-              WallpaperLive <span className="text-accent-text font-normal">&amp;</span> TransparentBar
+              LivelyDesk
             </span>
             <span className="text-[10px] text-fg/70 font-mono tracking-wider uppercase mt-0.5">
-              Windows Suite
+              WallpaperLive <span className="text-accent-text font-normal">&amp;</span> TransparentBar
             </span>
           </div>
         </button>
