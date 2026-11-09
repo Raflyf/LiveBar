@@ -29,30 +29,21 @@ export interface Translation {
     title: string;
     subtitle: string;
     tag: string;
-    presetLabel: string;
-    taskbarLabel: string;
-    modes: {
-      clear: string;
-      connector: string;
-      opaque: string;
+    tabs: {
+      desktop: string;
+      library: string;
+      taskbar: string;
+      telemetry: string;
     };
-    presets: {
-      sunset: string;
-      cyber: string;
-      nature: string;
-    };
-    controls: {
-      playing: string;
-      paused: string;
-      speed: string;
-      ramLive: string;
-      ramPaused: string;
-      tbRam: string;
-    };
-    mockWindow: {
-      title: string;
-      status: string;
-      cacheNotice: string;
+    captions: {
+      desktopTitle: string;
+      desktopDesc: string;
+      libraryTitle: string;
+      libraryDesc: string;
+      taskbarTitle: string;
+      taskbarDesc: string;
+      telemetryTitle: string;
+      telemetryDesc: string;
     };
   };
   features: {
@@ -180,33 +171,24 @@ export const translations: Record<Language, Translation> = {
       stat3Sub: "RAM Saat Fullscreen Auto-Pause (0% CPU)",
     },
     simulator: {
-      title: "Interactive Desktop Experience",
-      subtitle: "Simulasi interaktif dengan angka konsumsi memori riil dari tangkapan Task Manager.",
-      tag: "Live Interactive Preview",
-      presetLabel: "Preset Wallpaper:",
-      taskbarLabel: "Fitur Taskbar:",
-      modes: {
-        clear: "Transparent Taskbar (Clear)",
-        connector: "Maximized-Window Connector Strip",
-        opaque: "Default Windows (Opaque)",
+      title: "Tampilan Antarmuka & Bukti Nyata",
+      subtitle: "Tangkapan layar asli dari aplikasi yang berjalan di Windows 11. Tanpa animasi kanvas buatan, tanpa mockup fiktif.",
+      tag: "Tangkapan Layar Resmi (Windows 11)",
+      tabs: {
+        desktop: "Desktop & Taskbar Transparan",
+        library: "Panel Kontrol & Library 3x3",
+        taskbar: "Detail TransparentBar",
+        telemetry: "Bukti Task Manager",
       },
-      presets: {
-        sunset: "Warm Sunset Mesh",
-        cyber: "Cyberpunk Horizon",
-        nature: "Minimal Aurora Wave",
-      },
-      controls: {
-        playing: "Memutar di Desktop",
-        paused: "Auto-Pause (Jendela Dimaksimalkan)",
-        speed: "Target Frame: 60 FPS (libmpv D3D11)",
-        ramLive: "WallpaperLive: 20.3 MB | 0.5% CPU",
-        ramPaused: "WallpaperLive: 4.5 MB | 0% CPU",
-        tbRam: "TransparentBar: 1.6 MB | 0% CPU",
-      },
-      mockWindow: {
-        title: "WallpaperLive v0.1.5",
-        status: "Panel Kontrol (43.1 – 45.4 MB saat terbuka)",
-        cacheNotice: "Konversi awal cache display menggunakan ~348–409 MB sementara waktu",
+      captions: {
+        desktopTitle: "Wallpaper Aktif dengan Taskbar Tembus Pandang",
+        desktopDesc: "Tangkapan layar v0.1.5 asli pada 8 November 2026. WallpaperLive memutar video di latar belakang dan TransparentBar menghilangkan bilah taskbar.",
+        libraryTitle: "Library Thumbnail 3x3 Asli",
+        libraryDesc: "Antarmuka native Rust/Win32 dengan filter folder, pemilihan multi-file, kontrol FPS (24/30/45/60), dan pengelolaan cache lokal.",
+        taskbarTitle: "Taskbar Transparan Windows 11 Murni",
+        taskbarDesc: "Wallpaper tetap terlihat jelas di balik icon aplikasi Windows 11 tanpa efek blur berat. Mengait langsung ke DWM API.",
+        telemetryTitle: "Tangkapan Layar Task Manager Asli",
+        telemetryDesc: "Bukti memori nyata: 20.3 MB saat aktif di tray (0.5% CPU) dan turun ke 4.5 MB (0% CPU) saat aplikasi lain fullscreen.",
       },
     },
     features: {
@@ -332,33 +314,24 @@ export const translations: Record<Language, Translation> = {
       stat3Sub: "Fullscreen Auto-Paused RAM (0% CPU)",
     },
     simulator: {
-      title: "Interactive Desktop Experience",
-      subtitle: "Interactive simulation featuring factual memory metrics from author-provided Task Manager snapshots.",
-      tag: "Live Interactive Preview",
-      presetLabel: "Wallpaper Preset:",
-      taskbarLabel: "Taskbar Feature:",
-      modes: {
-        clear: "Transparent Taskbar (Clear)",
-        connector: "Maximized-Window Connector Strip",
-        opaque: "Default Windows (Opaque)",
+      title: "Authentic Interface & Verified Captures",
+      subtitle: "Actual captures of both utilities running live on Windows 11. No simulated canvas gimmicks, no fabricated mockups.",
+      tag: "Official Windows 11 Captures",
+      tabs: {
+        desktop: "Live Desktop & Transparent Taskbar",
+        library: "Control Panel & 3x3 Library",
+        taskbar: "TransparentBar Detail",
+        telemetry: "Task Manager Evidence",
       },
-      presets: {
-        sunset: "Warm Sunset Mesh",
-        cyber: "Cyberpunk Horizon",
-        nature: "Minimal Aurora Wave",
-      },
-      controls: {
-        playing: "Desktop Playback Active",
-        paused: "Auto-Paused (Maximized App)",
-        speed: "Frame Target: 60 FPS (libmpv D3D11)",
-        ramLive: "WallpaperLive: 20.3 MB | 0.5% CPU",
-        ramPaused: "WallpaperLive: 4.5 MB | 0% CPU",
-        tbRam: "TransparentBar: 1.6 MB | 0% CPU",
-      },
-      mockWindow: {
-        title: "WallpaperLive v0.1.5",
-        status: "Control Panel (43.1 – 45.4 MB when open)",
-        cacheNotice: "Initial background SDR display-cache prep uses ~348–409 MB temporarily",
+      captions: {
+        desktopTitle: "Active Live Wallpaper & Transparent Taskbar",
+        desktopDesc: "Genuine v0.1.5 capture supplied on 8 November 2026. WallpaperLive renders video smoothly while TransparentBar removes the taskbar background.",
+        libraryTitle: "Native 3x3 Thumbnail Library",
+        libraryDesc: "Pure Win32/Rust control panel featuring folder filters, multi-file selection, placement controls, and frame caps (24/30/45/60 FPS).",
+        taskbarTitle: "True Windows 11 Taskbar Transparency",
+        taskbarDesc: "Wallpaper remains fully visible behind pinned icons without artificial blur overlays. Powered by native DWM hooks.",
+        telemetryTitle: "Original Task Manager Evidence",
+        telemetryDesc: "Direct memory verification: 20.3 MB in tray playback (0.5% CPU), dropping to 4.5 MB (0% CPU) when auto-paused.",
       },
     },
     features: {
