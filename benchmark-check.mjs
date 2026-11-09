@@ -38,11 +38,13 @@ for (const locale of ['en', 'id']) {
 const current = readFileSync('src/components/DesktopSimulator.tsx', 'utf8');
 assert.ok(current.includes('src="/video/1109.mp4"'));
 assert.ok(current.includes('cache-ready-v0.1.6.png'));
-assert.ok(current.includes("image: '/images/resource-use-v0.1.5.png',"), 'Task Manager image must use the bundled asset');
-const image = readFileSync('public/images/resource-use-v0.1.5.png');
+assert.ok(current.includes("image: '/images/resource-use-orange.png',"), 'Task Manager image must use the bundled asset');
+const image = readFileSync('public/images/resource-use-orange.png');
 assert.equal(image.subarray(0, 8).toString('hex'), '89504e470d0a1a0a');
-assert.equal(createHash('sha256').update(image).digest('hex'), 'cd60990214fb034dbf28039684a9870b10fe9a9c15879739d0e156e017b795bc');
+assert.equal(createHash('sha256').update(image).digest('hex'), '03f5bc5e6280fc799e106af939a3d6edc9c6f9338e5758bba8b3f9e774e5f96d');
 const hash = path => createHash('sha256').update(readFileSync(path)).digest('hex');
 assert.equal(hash('public/video/1109.mp4'), '350d9fe805f905d7ce4fbf1df9fc72d89c08d80bccbfc99b7fc74fdf5d2bc7c6');
+assert.equal(hash('public/icons/wallpaperlive.png'), 'cbc08f661ef21af58736157a2e9342cd52a7075655cc0bcd760cbe3395127279');
+assert.equal(hash('public/icons/transparentbar.png'), '94c4c4161ac25d3df881a58045120cdfe7b268639d13a336352db92c1799321e');
 assert.ok(!/348|409|43\.1|45\.4|procedural desktop canvas/.test(readme));
 console.log('PASS: both locales and README match source rows; history scoped; showcase images current; published video unchanged.');

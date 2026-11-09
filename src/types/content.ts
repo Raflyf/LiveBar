@@ -110,8 +110,13 @@ export interface Translation {
     requirements: string;
     checksumNote: string;
     downloadsSoFar: string;
-    wpVersionSize: string;
-    tbVersionSize: string;
+    latest: string;
+    latestRelease: string;
+    version: string;
+    about: string;
+    releaseLoading: string;
+    releaseUnavailable: string;
+    downloadsUnavailable: string;
   };
   support: {
     badge: string;
@@ -163,7 +168,7 @@ export const translations: Record<Language, Translation> = {
       subtitle: "WallpaperLive memutar video dan GIF lokal dengan dekoder libmpv native. TransparentBar menghapus latar taskbar melalui hook Win32 DWM murni berbasis Rust. Ringan, transparan, dan tanpa overclaim.",
       ctaPrimary: "Unduh Gratis (Windows)",
       ctaSecondary: "Dukung di Yapp.ink",
-      metaInfo: "WallpaperLive v0.1.6 · TransparentBar v0.2.3 · 100% Bebas Iklan",
+      metaInfo: "Bebas Iklan",
       stat1: "37.8 MB",
       stat1Sub: "WallpaperLive desktop · cuplikan v0.1.6 (1.5% CPU)",
       stat2: "1.6 MB",
@@ -256,8 +261,13 @@ export const translations: Record<Language, Translation> = {
       requirements: "Kebutuhan Sistem: Windows 10 (versi 1903+) atau Windows 11 (64-bit). Setup unsigned.",
       checksumNote: "Dekoder libmpv diunduh terpisah saat instalasi sesuai ketentuan lisensi.",
       downloadsSoFar: "unduhan sejauh ini",
-      wpVersionSize: "Versi 0.1.6, sekitar 4.8 MB",
-      tbVersionSize: "Versi 0.2.3, sekitar 1.2 MB",
+      latest: "Terbaru",
+      latestRelease: "Lihat Rilis Terbaru",
+      version: "Versi",
+      about: "sekitar",
+      releaseLoading: "Memuat rilis terbaru…",
+      releaseUnavailable: "Info rilis tidak tersedia. Lihat GitHub.",
+      downloadsUnavailable: "Jumlah unduhan tidak tersedia",
     },
     support: {
       badge: "Dukung Pengembang",
@@ -307,7 +317,7 @@ export const translations: Record<Language, Translation> = {
       subtitle: "WallpaperLive plays local videos and GIFs with a native libmpv decoder. TransparentBar removes the taskbar background via pure Rust Win32 DWM hooks. Lightweight, transparent, zero overclaim.",
       ctaPrimary: "Download for Windows",
       ctaSecondary: "Support on Yapp.ink",
-      metaInfo: "WallpaperLive v0.1.6 · TransparentBar v0.2.3 · 100% Ad-Free",
+      metaInfo: "Ad-Free",
       stat1: "37.8 MB",
       stat1Sub: "WallpaperLive desktop · v0.1.6 snapshot (1.5% CPU)",
       stat2: "1.6 MB",
@@ -400,8 +410,13 @@ export const translations: Record<Language, Translation> = {
       requirements: "System Requirements: Windows 10 (1903+) or Windows 11 (64-bit). Unsigned binaries.",
       checksumNote: "Native libmpv decoder is downloaded with user consent during setup per licensing rules.",
       downloadsSoFar: "downloads so far",
-      wpVersionSize: "Version 0.1.6, about 4.8 MB",
-      tbVersionSize: "Version 0.2.3, about 1.2 MB",
+      latest: "Latest",
+      latestRelease: "View Latest Release",
+      version: "Version",
+      about: "about",
+      releaseLoading: "Loading latest releases…",
+      releaseUnavailable: "Release info unavailable. See GitHub.",
+      downloadsUnavailable: "Download count unavailable",
     },
     support: {
       badge: "Support Independent Dev",

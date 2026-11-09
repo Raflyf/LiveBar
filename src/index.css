@@ -2,24 +2,47 @@
 
 @theme {
   --color-cream: #F3EEE3;
-  --color-cream-card: #f9f6f0;
-  --color-cream-border: rgba(17, 17, 17, 0.08);
   --color-ink: #111111;
-  --color-ink-muted: #1e1e1e;
-  --color-ink-card: #161616;
   --color-burnt: #D9541E;
-  --color-burnt-hover: #c44614;
-  --color-burnt-light: rgba(217, 84, 30, 0.12);
-
+  --color-burnt-hover: color-mix(in srgb, var(--color-burnt) 88%, var(--color-cream));
   --font-display: "Bricolage Grotesque", -apple-system, sans-serif;
   --font-sans: "Plus Jakarta Sans", -apple-system, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 }
 
+:root {
+  color-scheme: light;
+  --canvas: var(--color-cream);
+  --surface: color-mix(in srgb, var(--color-cream) 97%, var(--color-ink));
+  --fg: var(--color-ink);
+  --inverse: var(--color-ink);
+  --on-inverse: var(--color-cream);
+  --accent-text: color-mix(in srgb, var(--color-burnt) 70%, var(--color-ink));
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --canvas: var(--color-ink);
+  --surface: color-mix(in srgb, var(--color-ink) 96%, var(--color-cream));
+  --fg: var(--color-cream);
+  --inverse: var(--color-cream);
+  --on-inverse: var(--color-ink);
+  --accent-text: color-mix(in srgb, var(--color-burnt) 85%, var(--color-cream));
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-fg: var(--fg);
+  --color-inverse: var(--inverse);
+  --color-on-inverse: var(--on-inverse);
+  --color-accent-text: var(--accent-text);
+}
+
 body {
   font-family: var(--font-sans);
-  background-color: var(--color-cream);
-  color: var(--color-ink);
+  background-color: var(--canvas);
+  color: var(--fg);
   overflow-x: hidden;
 }
 
@@ -29,4 +52,31 @@ h1, h2, h3, .font-display {
 
 .font-mono {
   font-family: var(--font-mono);
+}
+
+::selection {
+  background: var(--color-burnt);
+  color: var(--color-ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--fg);
+  outline-offset: 4px;
+}
+
+.media-frame {
+  --accent-text: var(--color-cream);
+}
+
+.media-frame :focus-visible {
+  outline-color: var(--color-cream);
+}
+
+.theme-switch-thumb {
+  transition: transform 160ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .theme-switch-thumb { transition: none; }
 }

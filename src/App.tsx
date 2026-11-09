@@ -9,16 +9,51 @@ import { DownloadHub } from './components/DownloadHub';
 import { SupportYapp } from './components/SupportYapp';
 import { FAQ } from './components/FAQ';
 import { Footer } from './components/Footer';
+import { emptyRelease, loadRelease, type ProductReleases, type ProductRepo } from './releases';
 
 export default function App() {
   const [lang, setLang] = useState<Language>(() => {
     if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('lang') as Language;
-      if (saved === 'en' || saved === 'id') return saved;
+      try {
+        const saved = localStorage.getItem('lang');
+        if (saved === 'en' || saved === 'id') return saved;
+      } catch {
+        // Storage may be blocked; English still works in this tab.
+      }
     }
     return 'en';
   });
+  const [theme, setTheme] = useState<'light' | 'dark'>(() =>
+    document.documentElement.dataset.theme === 'dark' ? 'dark' : 'light'
+  );
+  const [releases, setReleases] = useState<ProductReleases>({
+    WallpaperLive: emptyRelease, TransparentBar: emptyRelease,
+  });
   const t = translations[lang];
+
+  useEffect(() => {
+    const controller = new AbortController();
+    for (const repo of ['WallpaperLive', 'TransparentBar'] as ProductRepo[]) {
+      loadRelease(repo, controller.signal).then(
+        release => { if (!controller.signal.aborted) setReleases(current => ({ ...current, [repo]: release })); },
+        () => { if (!controller.signal.aborted) setReleases(current => ({ ...current, [repo]: { ...emptyRelease, status: 'unavailable' } })); },
+      );
+    }
+    return () => controller.abort();
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme;
+    try {
+      localStorage.setItem('theme', theme);
+    } catch {
+      // The selected theme remains active when storage is unavailable.
+    }
+  }, [theme]);
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   // Clean any #hash from address bar on mount while preserving scroll target
   useEffect(() => {
@@ -36,14 +71,23 @@ export default function App() {
   }, []);
 
   return (
-    <div id="top" className="min-h-screen bg-[#F3EEE3] text-[#111111] flex flex-col font-sans selection:bg-[#D9541E] selection:text-white">
-      <Navbar t={t} lang={lang} onToggleLang={(l) => { setLang(l); localStorage.setItem('lang', l); }} />
+    <div id="top" className="min-h-screen bg-canvas text-fg flex flex-col font-sans selection:bg-burnt selection:text-ink">
+      <Navbar
+        t={t}
+        lang={lang}
+        isDark={theme === 'dark'}
+        onToggleTheme={() => setTheme(current => current === 'dark' ? 'light' : 'dark')}
+        onToggleLang={l => {
+          setLang(l);
+          try { localStorage.setItem('lang', l); } catch { /* Keep the choice in this tab. */ }
+        }}
+      />
       <main className="flex-1">
-        <Hero t={t} />
+        <Hero t={t} releases={releases} />
         <DesktopSimulator t={t} />
         <Features t={t} />
         <Benchmark t={t} />
-        <DownloadHub t={t} />
+        <DownloadHub t={t} releases={releases} />
         <SupportYapp t={t} />
         <FAQ t={t} />
       </main>

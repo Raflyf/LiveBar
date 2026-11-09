@@ -37,7 +37,7 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
       repoLink: 'https://github.com/Raflyf/TransparentBar',
     },
     telemetry: {
-      image: '/images/resource-use-v0.1.5.png',
+      image: '/images/resource-use-orange.png',
       alt: 'Original v0.1.5 Task Manager captures: wallpaperlive.exe at 20.3 MB and 0.5 percent CPU in tray, and 4.5 MB and 0 percent CPU while auto-paused',
       title: t.simulator.captions.telemetryTitle,
       desc: t.simulator.captions.telemetryDesc,
@@ -53,14 +53,14 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
       
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#D9541E]/10 border border-[#D9541E]/20 text-xs font-mono text-[#D9541E] font-semibold">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-burnt/10 border border-burnt/20 text-xs font-mono text-accent-text font-semibold">
           <CheckCircle2 className="w-3.5 h-3.5" />
           <span>{t.simulator.tag}</span>
         </div>
-        <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-[#111111] tracking-tight">
+        <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-fg tracking-tight">
           {t.simulator.title}
         </h2>
-        <p className="text-sm sm:text-base text-[#111111]/70 leading-relaxed">
+        <p className="text-sm sm:text-base text-fg/70 leading-relaxed">
           {t.simulator.subtitle}
         </p>
       </div>
@@ -71,11 +71,11 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
           onClick={() => setActiveTab('desktop')}
           className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 ${
             activeTab === 'desktop'
-              ? 'bg-[#111111] text-[#F3EEE3] font-bold shadow-sm'
-              : 'bg-[#FAF7F2] hover:bg-white text-[#111111]/80 border border-[#111111]/10'
+              ? 'bg-inverse text-on-inverse font-bold shadow-sm'
+              : 'bg-surface hover:bg-fg/10 text-fg/80 border border-fg/10'
           }`}
         >
-          <Monitor className="w-4 h-4 text-[#D9541E]" />
+          <Monitor className="w-4 h-4 text-accent-text" />
           <span>{t.simulator.tabs.desktop}</span>
         </button>
 
@@ -83,11 +83,11 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
           onClick={() => setActiveTab('library')}
           className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 ${
             activeTab === 'library'
-              ? 'bg-[#111111] text-[#F3EEE3] font-bold shadow-sm'
-              : 'bg-[#FAF7F2] hover:bg-white text-[#111111]/80 border border-[#111111]/10'
+              ? 'bg-inverse text-on-inverse font-bold shadow-sm'
+              : 'bg-surface hover:bg-fg/10 text-fg/80 border border-fg/10'
           }`}
         >
-          <Sliders className="w-4 h-4 text-[#D9541E]" />
+          <Sliders className="w-4 h-4 text-accent-text" />
           <span>{t.simulator.tabs.library}</span>
         </button>
 
@@ -95,11 +95,11 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
           onClick={() => setActiveTab('taskbar')}
           className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 ${
             activeTab === 'taskbar'
-              ? 'bg-[#111111] text-[#F3EEE3] font-bold shadow-sm'
-              : 'bg-[#FAF7F2] hover:bg-white text-[#111111]/80 border border-[#111111]/10'
+              ? 'bg-inverse text-on-inverse font-bold shadow-sm'
+              : 'bg-surface hover:bg-fg/10 text-fg/80 border border-fg/10'
           }`}
         >
-          <ImageIcon className="w-4 h-4 text-[#D9541E]" />
+          <ImageIcon className="w-4 h-4 text-accent-text" />
           <span>{t.simulator.tabs.taskbar}</span>
         </button>
 
@@ -107,32 +107,32 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
           onClick={() => setActiveTab('telemetry')}
           className={`px-4 py-2.5 rounded-2xl text-xs sm:text-sm font-medium transition-all flex items-center gap-2 ${
             activeTab === 'telemetry'
-              ? 'bg-[#111111] text-[#F3EEE3] font-bold shadow-sm'
-              : 'bg-[#FAF7F2] hover:bg-white text-[#111111]/80 border border-[#111111]/10'
+              ? 'bg-inverse text-on-inverse font-bold shadow-sm'
+              : 'bg-surface hover:bg-fg/10 text-fg/80 border border-fg/10'
           }`}
         >
-          <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span className="w-2 h-2 rounded-full bg-burnt"></span>
           <span>{t.simulator.tabs.telemetry}</span>
         </button>
       </div>
 
       {/* Authentic High-Res Frame */}
-      <div className="rounded-3xl p-3 sm:p-5 bg-[#111111] shadow-2xl border border-[#111111]/20">
+      <div className="media-frame rounded-3xl p-3 sm:p-5 bg-ink shadow-2xl border border-fg/20">
         
         {/* Frame Top Window Bar */}
-        <div className="flex items-center justify-between px-3 py-2 text-white/50 text-xs font-mono border-b border-white/10 mb-3">
+        <div className="flex items-center justify-between px-3 py-2 text-cream/70 text-xs font-mono border-b border-cream/10 mb-3">
           <div className="flex items-center gap-2">
-            <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
-            <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
-            <div className="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
-            <span className="ml-2 text-white/70 font-semibold">{current.tag}</span>
+            <div className="w-2.5 h-2.5 rounded-full bg-burnt"></div>
+            <div className="w-2.5 h-2.5 rounded-full bg-cream/60"></div>
+            <div className="w-2.5 h-2.5 rounded-full bg-cream/30"></div>
+            <span className="ml-2 text-cream/70 font-semibold">{current.tag}</span>
           </div>
 
           <a
             href={current.repoLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1.5 text-xs text-[#D9541E] hover:underline"
+            className="flex items-center gap-1.5 text-xs text-accent-text hover:underline"
           >
             <span>Sumber Resmi GitHub</span>
             <ExternalLink className="w-3.5 h-3.5" />
@@ -140,7 +140,7 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
         </div>
 
         {/* High-Resolution Video / Capture Display */}
-        <div className="relative rounded-2xl overflow-hidden bg-black aspect-video flex items-center justify-center border border-white/5">
+        <div className={`relative rounded-2xl overflow-hidden bg-ink flex items-center justify-center border border-cream/5 ${activeTab === 'telemetry' ? 'aspect-[32/11]' : 'aspect-video'}`}>
           {activeTab === 'desktop' ? (
             <video
               src="/video/1109.mp4"
@@ -168,17 +168,17 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
         </div>
 
         {/* Caption Bar */}
-        <div className="mt-4 px-3 py-3 rounded-2xl bg-white/5 border border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-white">
+        <div className="mt-4 px-3 py-3 rounded-2xl bg-cream/5 border border-cream/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-cream">
           <div>
-            <h4 className="font-display font-bold text-sm text-[#F3EEE3] flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#D9541E]"></span>
+            <h4 className="font-display font-bold text-sm text-cream flex items-center gap-2">
+              <span className="w-1.5 h-1.5 rounded-full bg-burnt"></span>
               {current.title}
             </h4>
-            <p className="text-xs text-white/70 mt-0.5 leading-relaxed">
+            <p className="text-xs text-cream/70 mt-0.5 leading-relaxed">
               {current.desc}
             </p>
           </div>
-          <span className="px-3 py-1 rounded-full bg-[#D9541E]/20 text-[#D9541E] text-[11px] font-mono shrink-0 font-medium">
+          <span className="px-3 py-1 rounded-full bg-burnt/20 text-accent-text text-[11px] font-mono shrink-0 font-medium">
             {activeTab === 'desktop' ? 'Dokumentasi v0.1.5 Asli' : t.simulator.tag}
           </span>
         </div>

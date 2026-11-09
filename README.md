@@ -15,8 +15,8 @@
 
 <p align="center">
   <a href="https://github.com/Raflyf/desktop-suite-web/actions"><img src="https://img.shields.io/badge/Vercel-Production%20Ready-111111?style=flat&logo=vercel" alt="Vercel Ready"></a>
-  <a href="https://github.com/Raflyf/WallpaperLive"><img src="https://img.shields.io/badge/WallpaperLive-v0.1.6-D9541E?style=flat&logo=windows" alt="WallpaperLive"></a>
-  <a href="https://github.com/Raflyf/TransparentBar"><img src="https://img.shields.io/badge/TransparentBar-v0.2.3-285ac7?style=flat&logo=rust" alt="TransparentBar"></a>
+  <a href="https://github.com/Raflyf/WallpaperLive"><img src="https://img.shields.io/github/v/release/Raflyf/WallpaperLive?color=D9541E" alt="WallpaperLive"></a>
+  <a href="https://github.com/Raflyf/TransparentBar"><img src="https://img.shields.io/github/v/release/Raflyf/TransparentBar?color=111111" alt="TransparentBar"></a>
   <a href="https://yapp.ink/raflyf"><img src="https://img.shields.io/badge/Support-Yapp.ink-ff4b4b?style=flat&logo=ko-fi" alt="Yapp.ink"></a>
   <a href="#license"><img src="https://img.shields.io/badge/license-GPL--3.0%20%7C%20MIT-586575" alt="License"></a>
 </p>
@@ -74,16 +74,17 @@ These are [displayed values at capture time](https://github.com/Raflyf/Transpare
 
 ## Product Showcase
 
-The first tab keeps the existing desktop demo video. Other tabs show the v0.1.6 native library, TransparentBar detail, and the original v0.1.5 Task Manager tray/auto-pause figure. The [Task Manager image](<public/images/resource-use-v0.1.5.png>) is bundled locally with its source bytes unchanged, so upstream renames or deletions cannot break that tab. Captions preserve capture versions; no browser HUD or live telemetry is simulated.
+The first tab keeps the existing desktop demo video. Other tabs show the v0.1.6 native library, TransparentBar detail, and the retained v0.1.5 Task Manager tray/auto-pause figure. The [updated figure](<public/images/resource-use-orange.png>) uses the author’s Burnt Orange metric annotations; Task Manager photo bands and measurements are unchanged. It is bundled locally and displayed at its native aspect ratio. [Photo provenance](<public/images/SOURCES.md>). Capture versions remain historical, not the current download version.
 
 ---
 
 ## Features
 
-- **Editorial Warm Minimalist Aesthetic:** Curated color palette (Cream `#F3EEE3`, Ink Black `#111111`, Burnt Orange `#D9541E`).
+- **Light and dark themes:** Navbar switch keeps Cream `#F3EEE3`, Ink Black `#111111`, and Burnt Orange `#D9541E`. Light stays the default; your choice is saved when browser storage is available.
+- **Official product icons:** Current WallpaperLive and TransparentBar logos are bundled unchanged, including their original colors. [Icon sources](<public/icons/SOURCES.md>).
 - **Factual Presentation:** Complete transparency on resource metrics (acknowledging initial conversion peaks alongside resting tray efficiency).
 - **Bilingual Support (ID / EN):** One-click language switching between Indonesian and English.
-- **Download Hub:** Direct GitHub Releases links for installers (`.exe`), portable archives (`.zip`), and source code repositories.
+- **Shared release metadata:** Hero versions and download cards use the same GitHub `/releases/latest` response on page load. Drafts and prereleases are excluded from the current version. Installer links and decimal MB sizes follow that release; cumulative counts include `.exe` and `.zip` assets across paginated public releases. API errors show unavailable status and link to GitHub’s latest release, never an invented or hardcoded fallback version. No continuous polling.
 - **Sponsorship Integration:** Direct tipping integration via [yapp.ink/raflyf](https://yapp.ink/raflyf).
 
 ---
@@ -127,9 +128,9 @@ bun run dev
 npm run dev
 ```
 
-### Verify resource-use data
+### Verification
 
-Run `node benchmark-check.mjs` with Node.js 22.18+ or 24. The check compares both languages and this README with the pinned upstream table and confirms the published demo video is unchanged. Internet access is required.
+Run `node release-check.mjs` for release selection, link validation, pagination, error states, and theme bootstrap checks. Run `node benchmark-check.mjs` for source figures, both languages, and unchanged demo-video bytes. Node.js 22.18+ or 24 is required; the benchmark check also needs internet access.
 
 ### Build for Production
 ```bash

@@ -8,12 +8,12 @@ interface FeaturesProps {
 
 export const Features: React.FC<FeaturesProps> = ({ t }) => {
   const icons = [
-    <Video className="w-5 h-5 text-[#D9541E]" />,
-    <Cpu className="w-5 h-5 text-[#D9541E]" />,
-    <BatteryMedium className="w-5 h-5 text-[#D9541E]" />,
-    <MonitorCheck className="w-5 h-5 text-[#D9541E]" />,
-    <Lock className="w-5 h-5 text-[#D9541E]" />,
-    <SlidersHorizontal className="w-5 h-5 text-[#D9541E]" />
+    <Video className="w-5 h-5 text-accent-text" />,
+    <Cpu className="w-5 h-5 text-accent-text" />,
+    <BatteryMedium className="w-5 h-5 text-accent-text" />,
+    <MonitorCheck className="w-5 h-5 text-accent-text" />,
+    <Lock className="w-5 h-5 text-accent-text" />,
+    <SlidersHorizontal className="w-5 h-5 text-accent-text" />
   ];
 
   const featureItems = [
@@ -30,13 +30,13 @@ export const Features: React.FC<FeaturesProps> = ({ t }) => {
       
       {/* Header */}
       <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#111111]/5 border border-[#111111]/10 text-xs font-mono text-[#111111]">
+        <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-fg/5 border border-fg/10 text-xs font-mono text-fg">
           <span>{t.features.badge}</span>
         </div>
-        <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-[#111111] tracking-tight">
+        <h2 className="font-display text-3xl sm:text-5xl font-extrabold text-fg tracking-tight">
           {t.features.title}
         </h2>
-        <p className="text-sm sm:text-base text-[#111111]/70 leading-relaxed">
+        <p className="text-sm sm:text-base text-fg/70 leading-relaxed">
           {t.features.subtitle}
         </p>
       </div>
@@ -46,22 +46,22 @@ export const Features: React.FC<FeaturesProps> = ({ t }) => {
         {featureItems.map((item, idx) => (
           <div
             key={idx}
-            className="bg-[#FAF7F2] p-7 rounded-3xl border border-[#111111]/8 hover:border-[#D9541E]/40 transition-all transform hover:-translate-y-1 shadow-xs hover:shadow-md flex flex-col justify-between"
+            className="bg-surface p-7 rounded-3xl border border-fg/8 hover:border-burnt/40 transition-all transform hover:-translate-y-1 shadow-xs hover:shadow-md flex flex-col justify-between"
           >
             <div>
-              <div className="w-11 h-11 rounded-2xl bg-[#111111]/5 flex items-center justify-center mb-5">
+              <div className="w-11 h-11 rounded-2xl bg-fg/5 flex items-center justify-center mb-5">
                 {icons[idx]}
               </div>
-              <h3 className="font-display text-lg font-bold text-[#111111] mb-2.5">
+              <h3 className="font-display text-lg font-bold text-fg mb-2.5">
                 {item.title}
               </h3>
-              <p className="text-xs sm:text-sm text-[#111111]/75 leading-relaxed">
+              <p className="text-xs sm:text-sm text-fg/75 leading-relaxed">
                 {item.desc}
               </p>
             </div>
-            <div className="mt-5 pt-4 border-t border-[#111111]/5 flex items-center justify-between text-[11px] font-mono text-[#111111]/40">
+            <div className="mt-5 pt-4 border-t border-fg/5 flex items-center justify-between text-[11px] font-mono text-fg/70">
               <span>0{idx + 1} / 06</span>
-              <span className="text-[#D9541E] font-medium">Native Win32</span>
+              <span className="text-accent-text font-medium">Native Win32</span>
             </div>
           </div>
         ))}
