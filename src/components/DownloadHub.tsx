@@ -6,14 +6,32 @@ interface DownloadHubProps {
   t: Translation;
 }
 
-export const DownloadHub: React.FC<DownloadHubProps> = ({ t }) => {
-  // Baseline real download counts as verified from GitHub API
-  const [wlDownloads, setWlDownloads] = useState<number>(37);
-  const [tbDownloads, setTbDownloads] = useState<number>(66);
+interface ReleaseState {
+  version: string;
+  downloadUrl: string;
+  sizeMb: string;
+  downloads: number;
+}
 
+export const DownloadHub: React.FC<DownloadHubProps> = ({ t }) => {
+  // Baseline initial state (graceful fallback if offline or GitHub rate-limited)
+  const [wl, setWl] = useState<ReleaseState>({
+    version: 'v0.1.5',
+    downloadUrl: 'https://github.com/Raflyf/WallpaperLive/releases/download/v0.1.5/wallpaperlivesetup-v0.1.5.exe',
+    sizeMb: '3.1 MB',
+    downloads: 37,
+  });
+
+  const [tb, setTb] = useState<ReleaseState>({
+    version: 'v0.2.3',
+    downloadUrl: 'https://github.com/Raflyf/TransparentBar/releases/download/v0.2.3/TransparentBar-setup-v0.2.3.exe',
+    sizeMb: '2.2 MB',
+    downloads: 66,
+  });
+
+  // Automated fetch from GitHub API on every page visit
   useEffect(() => {
-    // Live update from GitHub Releases API
-    async function fetchCounts() {
+    async function syncLatestReleases() {
       try {
         const [resWl, resTb] = await Promise.all([
           fetch('https://api.github.com/repos/Raflyf/WallpaperLive/releases'),
@@ -21,32 +39,52 @@ export const DownloadHub: React.FC<DownloadHubProps> = ({ t }) => {
         ]);
 
         if (resWl.ok) {
-          const dataWl = await resWl.json();
-          let countWl = 0;
-          for (const rel of dataWl) {
-            for (const asset of rel.assets || []) {
-              countWl += asset.download_count || 0;
+          const releasesWl = await resWl.json();
+          if (Array.isArray(releasesWl) && releasesWl.length > 0) {
+            const latest = releasesWl[0];
+            const exeAsset = latest.assets?.find((a: any) => a.name.endsWith('.exe')) || latest.assets?.[0];
+            let totalDl = 0;
+            for (const rel of releasesWl) {
+              for (const a of rel.assets || []) {
+                totalDl += a.download_count || 0;
+              }
             }
+
+            setWl({
+              version: latest.tag_name || 'v0.1.5',
+              downloadUrl: exeAsset?.browser_download_url || 'https://github.com/Raflyf/WallpaperLive/releases/latest',
+              sizeMb: exeAsset?.size ? `${(exeAsset.size / (1024 * 1024)).toFixed(1)} MB` : '3.1 MB',
+              downloads: totalDl > 0 ? totalDl : 37,
+            });
           }
-          if (countWl > 0) setWlDownloads(countWl);
         }
 
         if (resTb.ok) {
-          const dataTb = await resTb.json();
-          let countTb = 0;
-          for (const rel of dataTb) {
-            for (const asset of rel.assets || []) {
-              countTb += asset.download_count || 0;
+          const releasesTb = await resTb.json();
+          if (Array.isArray(releasesTb) && releasesTb.length > 0) {
+            const latest = releasesTb[0];
+            const exeAsset = latest.assets?.find((a: any) => a.name.endsWith('.exe')) || latest.assets?.[0];
+            let totalDl = 0;
+            for (const rel of releasesTb) {
+              for (const a of rel.assets || []) {
+                totalDl += a.download_count || 0;
+              }
             }
+
+            setTb({
+              version: latest.tag_name || 'v0.2.3',
+              downloadUrl: exeAsset?.browser_download_url || 'https://github.com/Raflyf/TransparentBar/releases/latest',
+              sizeMb: exeAsset?.size ? `${(exeAsset.size / (1024 * 1024)).toFixed(1)} MB` : '2.2 MB',
+              downloads: totalDl > 0 ? totalDl : 66,
+            });
           }
-          if (countTb > 0) setTbDownloads(countTb);
         }
       } catch {
-        // Fallback to verified baseline counts
+        // Keeps verified baseline silently if network error
       }
     }
 
-    fetchCounts();
+    syncLatestReleases();
   }, []);
 
   return (
@@ -74,7 +112,7 @@ export const DownloadHub: React.FC<DownloadHubProps> = ({ t }) => {
           <div>
             <div className="flex items-center justify-between mb-4">
               <span className="px-3 py-1 rounded-full bg-[#111111] text-[#F3EEE3] text-xs font-mono font-semibold">
-                v0.1.6 Latest
+                {wl.version} Latest
               </span>
               <span className="text-xs font-mono text-[#111111]/50">GPL-3.0 License</span>
             </div>
@@ -104,21 +142,22 @@ export const DownloadHub: React.FC<DownloadHubProps> = ({ t }) => {
           </div>
 
           <div className="space-y-4 pt-6 border-t border-[#111111]/10">
+            {/* Direct dynamic download link to latest .exe */}
             <a
-              href="https://github.com/Raflyf/WallpaperLive/releases/download/v0.1.6/wallpaperlivesetup-v0.1.6.exe"
+              href={wl.downloadUrl}
               className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#D9541E] text-white font-semibold text-xs sm:text-sm hover:bg-[#c24615] transition-all transform hover:-translate-y-0.5 shadow-md shadow-[#D9541E]/20"
             >
               <Download className="w-4 h-4" />
               <span>{t.download.installerBtn}</span>
             </a>
 
-            {/* Nusa Style Download Counter Metric */}
+            {/* Nusa Style Dynamic Version, Size & Download Counter Metric */}
             <div className="text-center py-0.5">
               <div className="text-[11px] text-[#111111]/50 font-mono">
-                {t.download.wpVersionSize}
+                Version {wl.version.replace(/^v/, '')}, about {wl.sizeMb}.
               </div>
               <div className="text-xs font-mono text-[#111111]/80 mt-0.5">
-                <strong className="text-[#111111] font-bold text-sm">{wlDownloads.toLocaleString()}</strong> {t.download.downloadsSoFar}
+                <strong className="text-[#111111] font-bold text-sm">{wl.downloads.toLocaleString()}</strong> {t.download.downloadsSoFar}
               </div>
             </div>
 
@@ -151,7 +190,7 @@ export const DownloadHub: React.FC<DownloadHubProps> = ({ t }) => {
           <div>
             <div className="flex items-center justify-between mb-4">
               <span className="px-3 py-1 rounded-full bg-[#D9541E] text-white text-xs font-mono font-semibold">
-                Rust Native
+                {tb.version} Latest
               </span>
               <span className="text-xs font-mono text-[#111111]/50">MIT License</span>
             </div>
@@ -181,23 +220,22 @@ export const DownloadHub: React.FC<DownloadHubProps> = ({ t }) => {
           </div>
 
           <div className="space-y-4 pt-6 border-t border-[#111111]/10">
+            {/* Direct dynamic download link to latest .exe */}
             <a
-              href="https://github.com/Raflyf/TransparentBar/releases/latest"
-              target="_blank"
-              rel="noopener noreferrer"
+              href={tb.downloadUrl}
               className="w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#111111] text-[#F3EEE3] font-semibold text-xs sm:text-sm hover:bg-[#1a1a1a] transition-all transform hover:-translate-y-0.5 shadow-sm"
             >
               <Download className="w-4 h-4 text-[#D9541E]" />
               <span>{t.download.installerBtn}</span>
             </a>
 
-            {/* Nusa Style Download Counter Metric */}
+            {/* Nusa Style Dynamic Version, Size & Download Counter Metric */}
             <div className="text-center py-0.5">
               <div className="text-[11px] text-[#111111]/50 font-mono">
-                {t.download.tbVersionSize}
+                Version {tb.version.replace(/^v/, '')}, about {tb.sizeMb}.
               </div>
               <div className="text-xs font-mono text-[#111111]/80 mt-0.5">
-                <strong className="text-[#111111] font-bold text-sm">{tbDownloads.toLocaleString()}</strong> {t.download.downloadsSoFar}
+                <strong className="text-[#111111] font-bold text-sm">{tb.downloads.toLocaleString()}</strong> {t.download.downloadsSoFar}
               </div>
             </div>
 
