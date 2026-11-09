@@ -34,7 +34,7 @@
 **LivelyDesk** is the official unified web portal for two high-performance, native Windows desktop utilities created by [@Raflyf](https://github.com/Raflyf):
 
 1. **[WallpaperLive](https://github.com/Raflyf/WallpaperLive):** Native Windows live wallpaper engine. Plays local videos (MP4, WebM, GIF, MKV) with hardware-accelerated D3D11 decoding via native libmpv and an in-app 3x3 thumbnail library. Playback auto-pauses for maximized or fullscreen apps; resource-use snapshots are documented below.
-2. **[TransparentBar](https://github.com/Raflyf/TransparentBar):** Pure native Windows taskbar transparency utility written in Rust. Hooks directly into Windows DWM to remove taskbar opacity without blur or a browser engine. Includes an optional maximized-window connector strip.
+2. **[TransparentBar](https://github.com/Raflyf/TransparentBar):** Native Rust taskbar transparency with legacy and XAML taskbar support. The tray controls an optional maximized-window connector, its grid pattern and color transitions, startup at sign-in (off by default), and GitHub release checks.
 
 The website presents a desktop demo video, native-app screenshots, and resource-use captures before download.
 
@@ -61,9 +61,11 @@ Cache preparation is temporary; its app-and-worker row is not steady playback us
 
 | Host process memory | CPU | Disk | Network |
 | ---: | ---: | ---: | ---: |
-| 1.6 MB | 0% | 0 MB/s | 0 Mbps |
+| 3.9 MB | 0% | 0 MB/s | 0 Mbps |
 
-These are [displayed values at capture time](https://github.com/Raflyf/TransparentBar#resource-use), not a benchmark or upper limit. The row covers the host process only, **excluding the bridge loaded inside Explorer**. CPU is rounded. The two projects were captured separately; these figures are not a measured combined-suite total.
+Values follow the [updated TransparentBar README](https://github.com/Raflyf/TransparentBar/blob/e6c17bf9f730921666fb74a82517669e2fdcd056/README.md#resource-use) and its [v0.2.4 Task Manager crop](<public/images/transparentbar-resource-use-v0.2.4.png>). The row covers the host process only, **excluding the bridge loaded inside Explorer**. CPU is rounded; these are capture-time values, not a benchmark or upper limit. The two projects were captured separately.
+
+TransparentBar requires Windows 10 or 11 on x64; ARM64 is not supported. Its connector supports primary and secondary bottom-docked taskbars with auto-hide off. Fullscreen windows hide the connector; display sleep and session lock pause sampling. Keep the portable executable and its versioned bridge DLL together. Select **Exit** to restore the saved taskbar appearance.
 
 ---
 

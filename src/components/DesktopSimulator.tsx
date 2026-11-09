@@ -39,7 +39,7 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
       alt: 'TransparentBar on Windows 11 desktop with enlarged taskbar detail',
       title: t.simulator.captions.taskbarTitle,
       desc: t.simulator.captions.taskbarDesc,
-      tag: 'Pure Rust DWM Hook',
+      tag: 'Native Rust · legacy / XAML',
       repoLink: 'https://github.com/Raflyf/TransparentBar',
     },
     telemetry: {

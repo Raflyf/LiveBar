@@ -134,17 +134,20 @@ export const DownloadHub: React.FC<DownloadHubProps> = ({ t, releases }) => {
             <ul className="text-xs font-mono text-fg/70 space-y-2 mb-8">
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-burnt"></span>
-                Task Manager host snapshot: 1.6 MB RAM
+                {t.benchmark.tbRowRam} · {t.hero.stat2Sub}
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-burnt"></span>
-                Taskbar transparency via Windows DWM hooks
+                {t.features.items.f2Title}
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-burnt"></span>
-                Native tray menu with startup at sign-in
+                {t.download.tbStartup}
               </li>
             </ul>
+            <p className="text-xs text-fg/70 leading-relaxed mb-6">
+              {t.download.tbCompatibility}
+            </p>
           </div>
 
           <div className="space-y-4 pt-6 border-t border-fg/10">
