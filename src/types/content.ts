@@ -117,6 +117,9 @@ export interface Translation {
     sourceBtn: string;
     requirements: string;
     checksumNote: string;
+    downloadsSoFar: string;
+    wpVersionSize: string;
+    tbVersionSize: string;
   };
   support: {
     badge: string;
@@ -268,6 +271,9 @@ export const translations: Record<Language, Translation> = {
       sourceBtn: "Source Code di GitHub",
       requirements: "Kebutuhan Sistem: Windows 10 (versi 1903+) atau Windows 11 (64-bit). Setup unsigned.",
       checksumNote: "Dekoder libmpv diunduh terpisah saat instalasi sesuai ketentuan lisensi.",
+      downloadsSoFar: "unduhan sejauh ini",
+      wpVersionSize: "Versi 0.1.6, sekitar 4.8 MB",
+      tbVersionSize: "Versi 0.2.3, sekitar 1.2 MB",
     },
     support: {
       badge: "Dukung Pengembang",
@@ -417,6 +423,9 @@ export const translations: Record<Language, Translation> = {
       sourceBtn: "Source Code on GitHub",
       requirements: "System Requirements: Windows 10 (1903+) or Windows 11 (64-bit). Unsigned binaries.",
       checksumNote: "Native libmpv decoder is downloaded with user consent during setup per licensing rules.",
+      downloadsSoFar: "downloads so far",
+      wpVersionSize: "Version 0.1.6, about 4.8 MB",
+      tbVersionSize: "Version 0.2.3, about 1.2 MB",
     },
     support: {
       badge: "Support Independent Dev",
