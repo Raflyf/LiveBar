@@ -11,7 +11,13 @@ import { FAQ } from './components/FAQ';
 import { Footer } from './components/Footer';
 
 export default function App() {
-  const [lang, setLang] = useState<Language>('id');
+  const [lang, setLang] = useState<Language>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = localStorage.getItem('lang') as Language;
+      if (saved === 'en' || saved === 'id') return saved;
+    }
+    return 'en';
+  });
   const t = translations[lang];
 
   // Clean any #hash from address bar on mount while preserving scroll target
@@ -31,7 +37,7 @@ export default function App() {
 
   return (
     <div id="top" className="min-h-screen bg-[#F3EEE3] text-[#111111] flex flex-col font-sans selection:bg-[#D9541E] selection:text-white">
-      <Navbar t={t} lang={lang} onToggleLang={setLang} />
+      <Navbar t={t} lang={lang} onToggleLang={(l) => { setLang(l); localStorage.setItem('lang', l); }} />
       <main className="flex-1">
         <Hero t={t} />
         <DesktopSimulator t={t} />
