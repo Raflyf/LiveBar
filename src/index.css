@@ -171,6 +171,49 @@ header nav button:is(:hover, :focus-visible)::after { scale: 1; }
   animation-play-state: paused !important;
 }
 
+.support-shell {
+  box-shadow: 0 20px 48px color-mix(in srgb, var(--color-ink) 12%, transparent);
+}
+
+.support-platform-yapp {
+  background: var(--color-cream);
+  --support-art: var(--color-burnt);
+}
+
+.support-platform-saweria {
+  background: var(--color-ink);
+  --support-art: var(--color-burnt);
+}
+
+.support-platform {
+  box-shadow: 0 12px 28px color-mix(in srgb, var(--color-ink) 14%, transparent);
+}
+
+.support-platform:focus-visible { outline-offset: 5px; }
+.support-platform-yapp { outline-color: var(--color-burnt); }
+.support-platform-saweria { outline-color: var(--color-cream); }
+
+.support-card-art {
+  position: absolute;
+  z-index: -1;
+  top: 22px;
+  right: -20px;
+  width: 160px;
+  height: 160px;
+  color: var(--support-art);
+  opacity: .14;
+  rotate: -12deg;
+  pointer-events: none;
+  transition: rotate 420ms var(--motion-ease), scale 420ms var(--motion-ease);
+}
+
+.support-card-symbol { width: 100%; height: 100%; }
+.support-platform-saweria .support-card-art { opacity: .2; rotate: 12deg; }
+
+@media (hover: hover) and (pointer: fine) {
+  .support-platform:hover .support-card-art { rotate: 0deg; scale: 1.05; }
+}
+
 @keyframes section-reveal {
   from { opacity: 0; transform: translateY(calc(var(--reveal-direction, 1) * var(--reveal-distance))); }
   to { opacity: 1; transform: translateY(0); }
