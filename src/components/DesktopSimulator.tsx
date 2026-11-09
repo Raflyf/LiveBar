@@ -17,7 +17,7 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
       alt: 'WallpaperLive playing live video on Windows 11 with transparent taskbar and Task Manager',
       title: t.simulator.captions.desktopTitle,
       desc: t.simulator.captions.desktopDesc,
-      tag: 'Windows 11 x64 · Live Playback',
+      tag: 'Windows 11 x64 · Live Playback (Video Asli)',
       repoLink: 'https://github.com/Raflyf/WallpaperLive',
     },
     library: {
@@ -139,15 +139,32 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
           </a>
         </div>
 
-        {/* High-Resolution Capture Display */}
+        {/* High-Resolution Video / Capture Display */}
         <div className="relative rounded-2xl overflow-hidden bg-black aspect-video flex items-center justify-center border border-white/5">
-          <img
-            key={current.image}
-            src={current.image}
-            alt={current.alt}
-            className="w-full h-full object-contain select-none animate-fade-in"
-            loading="lazy"
-          />
+          {activeTab === 'desktop' ? (
+            <video
+              src="/video/1109.mp4"
+              poster="https://raw.githubusercontent.com/Raflyf/WallpaperLive/main/assets/screenshots/preview-v0.1.5.png"
+              autoPlay
+              loop
+              muted
+              playsInline
+              controls
+              className="w-full h-full object-contain select-none"
+            >
+              <source src="/video/1109.mp4" type="video/mp4" />
+              <source src="/video/1109.mp4" type="video/mp4" />
+              Browser Anda tidak mendukung tag video.
+            </video>
+          ) : (
+            <img
+              key={current.image}
+              src={current.image}
+              alt={current.alt}
+              className="w-full h-full object-contain select-none animate-fade-in"
+              loading="lazy"
+            />
+          )}
         </div>
 
         {/* Caption Bar */}
