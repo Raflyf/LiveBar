@@ -134,11 +134,11 @@ export const DownloadHub: React.FC<DownloadHubProps> = ({ t, releases }) => {
             <ul className="text-xs font-mono text-fg/70 space-y-2 mb-8">
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-burnt"></span>
-                Zero background bloat (1.6 MB RAM)
+                Task Manager host snapshot: 1.6 MB RAM
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-burnt"></span>
-                100% True transparency via Windows DWM hooks
+                Taskbar transparency via Windows DWM hooks
               </li>
               <li className="flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-burnt"></span>

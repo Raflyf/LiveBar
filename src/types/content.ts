@@ -165,7 +165,7 @@ export const translations: Record<Language, Translation> = {
       badge: "Tersedia untuk Windows 10 & 11 · 64-bit · Native Rust",
       titlePart1: "Desktop Anda,",
       titlePart2: "hidup dan transparan.",
-      subtitle: "WallpaperLive memutar video dan GIF lokal dengan dekoder libmpv native. TransparentBar menghapus latar taskbar melalui hook Win32 DWM murni berbasis Rust. Ringan, transparan, dan tanpa overclaim.",
+      subtitle: "WallpaperLive memutar video dan GIF lokal dengan dekoder libmpv native. TransparentBar menghapus latar taskbar melalui hook Win32 DWM murni berbasis Rust.",
       ctaPrimary: "Unduh Gratis (Windows)",
       ctaSecondary: "Dukung di Yapp.ink",
       metaInfo: "Bebas Iklan",
@@ -177,14 +177,14 @@ export const translations: Record<Language, Translation> = {
       stat3Sub: "Auto-pause · cuplikan v0.1.5 (0% CPU)",
     },
     simulator: {
-      title: "Tampilan Antarmuka & Bukti Nyata",
-      subtitle: "Tangkapan layar asli dari aplikasi yang berjalan di Windows 11. Tanpa animasi kanvas buatan, tanpa mockup fiktif.",
+      title: "Tampilan Aplikasi di Windows 11",
+      subtitle: "Video desktop dan tangkapan layar WallpaperLive serta TransparentBar di Windows 11.",
       tag: "Tangkapan Layar Resmi (Windows 11)",
       tabs: {
         desktop: "Desktop & Taskbar Transparan",
         library: "Panel Kontrol & Library 3x3",
         taskbar: "Detail TransparentBar",
-        telemetry: "Bukti Task Manager",
+        telemetry: "Task Manager",
       },
       captions: {
         desktopTitle: "Wallpaper Aktif dengan Taskbar Tembus Pandang",
@@ -198,7 +198,7 @@ export const translations: Record<Language, Translation> = {
       },
     },
     features: {
-      badge: "Spesifikasi Nyata",
+      badge: "Spesifikasi",
       title: "Arsitektur Native Tanpa Runtime Web.",
       subtitle: "Dibangun murni dengan Rust dan Win32 API. Tanpa Chromium, tanpa Node.js di desktop, tanpa akun wajib.",
       items: {
@@ -212,7 +212,7 @@ export const translations: Record<Language, Translation> = {
         f4Desc: "Fitur opsional strip gradasi lembut di tepi bawah jendela yang dimaksimalkan, mengambil sampel 4 piksel pada 16ms/64ms.",
         f5Title: "Framerate Cap 24 / 30 / 45 / 60 FPS",
         f5Desc: "Pengaturan FPS langsung dari menu Placement tanpa konversi ulang file atau intervensi frame interpolation buatan.",
-        f6Title: "Privasi Penuh & Zero Telemetry",
+        f6Title: "Pemrosesan Lokal",
         f6Desc: "Seluruh berkas media dan piksel berada di memori lokal. Jaringan hanya digunakan jika pengguna memilih cek update GitHub.",
       },
     },
@@ -249,8 +249,8 @@ export const translations: Record<Language, Translation> = {
     },
     download: {
       badge: "Pusat Unduhan",
-      title: "Unduh Rilis Asli & Bebas Iklan.",
-      subtitle: "Paket instalasi per-user tanpa hak administrator. Kode sumber terbuka dan diverifikasi oleh GitHub CI.",
+      title: "Unduh Aplikasi.",
+      subtitle: "Instalasi per pengguna tanpa hak administrator. Installer dan kode sumber tersedia di GitHub.",
       wpTitle: "WallpaperLive",
       wpDesc: "Engine wallpaper video & GIF dengan akselerasi libmpv hardware decoding dan cache lokal.",
       tbTitle: "TransparentBar",
@@ -283,7 +283,7 @@ export const translations: Record<Language, Translation> = {
     },
     faq: {
       badge: "Pertanyaan Umum",
-      title: "Fakta Teknis yang Perlu Diketahui",
+      title: "Pertanyaan Teknis",
       q1: "Berapa penggunaan RAM sebenarnya saat video diputar?",
       a1: "Cuplikan v0.1.6 pada 9 November 2026 menunjukkan 437.5 MB / 42.4% CPU saat menyiapkan cache 4K, 41.4–47.4 MB / 1.3–2.5% CPU dengan panel terbuka, dan 37.8 MB / 1.5% CPU saat pemutaran desktop. Angka tray 20.3 MB / 0.5% CPU dan auto-pause 4.5 MB / 0% CPU berasal dari cuplikan v0.1.5. Pemakaian bisa berbeda sesuai media, perangkat, dan status cache.",
       q2: "Berapa penggunaan RAM untuk TransparentBar?",
@@ -297,7 +297,7 @@ export const translations: Record<Language, Translation> = {
       rights: "Hak Cipta © 2026 Raflyf. Dibuat dengan dedikasi untuk pengguna Windows.",
       byDeveloper: "Proyek oleh Raflyf",
       licensedUnder: "WallpaperLive berlisensi GPL-3.0 · TransparentBar berlisensi MIT.",
-      openSourcePromise: "Tanpa bloatware · Tanpa spyware · Data pengujian diverifikasi dari repositori resmi",
+      openSourcePromise: "Kode sumber tersedia di GitHub.",
     },
   },
   en: {
@@ -314,7 +314,7 @@ export const translations: Record<Language, Translation> = {
       badge: "Available for Windows 10 & 11 · 64-bit · Native Rust",
       titlePart1: "Your desktop,",
       titlePart2: "alive and transparent.",
-      subtitle: "WallpaperLive plays local videos and GIFs with a native libmpv decoder. TransparentBar removes the taskbar background via pure Rust Win32 DWM hooks. Lightweight, transparent, zero overclaim.",
+      subtitle: "WallpaperLive plays local videos and GIFs with a native libmpv decoder. TransparentBar removes the taskbar background via pure Rust Win32 DWM hooks.",
       ctaPrimary: "Download for Windows",
       ctaSecondary: "Support on Yapp.ink",
       metaInfo: "Ad-Free",
@@ -326,14 +326,14 @@ export const translations: Record<Language, Translation> = {
       stat3Sub: "Auto-pause · v0.1.5 snapshot (0% CPU)",
     },
     simulator: {
-      title: "Authentic Interface & Verified Captures",
-      subtitle: "Actual captures of both utilities running live on Windows 11. No simulated canvas gimmicks, no fabricated mockups.",
+      title: "The Apps on Windows 11",
+      subtitle: "Desktop video and screenshots of WallpaperLive and TransparentBar on Windows 11.",
       tag: "Official Windows 11 Captures",
       tabs: {
         desktop: "Live Desktop & Transparent Taskbar",
         library: "Control Panel & 3x3 Library",
         taskbar: "TransparentBar Detail",
-        telemetry: "Task Manager Evidence",
+        telemetry: "Task Manager",
       },
       captions: {
         desktopTitle: "Active Live Wallpaper & Transparent Taskbar",
@@ -342,12 +342,12 @@ export const translations: Record<Language, Translation> = {
         libraryDesc: "Pure Win32/Rust v0.1.6 control panel featuring a 3x3 thumbnail library grid, folder filters, and placement controls.",
         taskbarTitle: "True Windows 11 Taskbar Transparency",
         taskbarDesc: "Wallpaper remains fully visible behind pinned icons without artificial blur overlays. Powered by native DWM hooks.",
-        telemetryTitle: "Original Task Manager Evidence",
+        telemetryTitle: "Task Manager Captures",
         telemetryDesc: "Original v0.1.5 captures retained by the repo: wallpaperlive.exe shows 20.3 MB / 0.5% CPU in tray and 4.5 MB / 0% CPU while auto-paused. Separate moments, not new v0.1.6 measurements.",
       },
     },
     features: {
-      badge: "Factual Specifications",
+      badge: "Specifications",
       title: "Native Architecture Without Web Runtimes.",
       subtitle: "Engineered purely with Rust and Win32 APIs. No Chromium webviews, no Node runtimes on desktop, no mandatory accounts.",
       items: {
@@ -361,7 +361,7 @@ export const translations: Record<Language, Translation> = {
         f4Desc: "Optional soft gradient strip that follows the bottom edge of maximized windows, sampling 4 pixels at 16ms to 64ms.",
         f5Title: "Selectable 24 / 30 / 45 / 60 FPS",
         f5Desc: "Runtime FPS cap under Placement without re-encoding or synthetic frame interpolation.",
-        f6Title: "Full Privacy & Zero Telemetry",
+        f6Title: "Local Processing",
         f6Desc: "All files and sampled screen pixels remain in local memory. Network access is strictly used only when checking GitHub Releases.",
       },
     },
@@ -398,8 +398,8 @@ export const translations: Record<Language, Translation> = {
     },
     download: {
       badge: "Download Hub",
-      title: "Get The Authentic Builds.",
-      subtitle: "Per-user installation without administrator privileges. Open-source code verified on GitHub CI.",
+      title: "Download the Apps.",
+      subtitle: "Per-user installation without administrator privileges. Installers and source code are available on GitHub.",
       wpTitle: "WallpaperLive",
       wpDesc: "High-performance video & GIF live wallpaper engine with libmpv hardware decode and local cache.",
       tbTitle: "TransparentBar",
@@ -432,7 +432,7 @@ export const translations: Record<Language, Translation> = {
     },
     faq: {
       badge: "FAQ",
-      title: "Factual Questions Answered",
+      title: "Technical Questions",
       q1: "What is the actual RAM usage during video playback?",
       a1: "The v0.1.6 captures from 9 November 2026 show 437.5 MB / 42.4% CPU during 4K cache preparation, 41.4–47.4 MB / 1.3–2.5% CPU with the panel open, and 37.8 MB / 1.5% CPU during desktop playback. Tray figures of 20.3 MB / 0.5% CPU and auto-pause figures of 4.5 MB / 0% CPU come from earlier v0.1.5 captures. Usage varies with media, hardware, and cache state.",
       q2: "What is TransparentBar's RAM footprint?",
@@ -446,7 +446,7 @@ export const translations: Record<Language, Translation> = {
       rights: "Copyright © 2026 Raflyf. Built for clean and productive Windows desktops.",
       byDeveloper: "A project by Raflyf",
       licensedUnder: "WallpaperLive licensed under GPL-3.0 · TransparentBar licensed under MIT.",
-      openSourcePromise: "Zero bloatware · Zero spyware · Verified test numbers from official repositories",
+      openSourcePromise: "Source code available on GitHub.",
     },
   },
 };

@@ -84,7 +84,7 @@ The first tab keeps the existing desktop demo video. Other tabs show the v0.1.6 
 - **Smooth scrolling:** Lenis smooths wheel input and section navigation with one shared scroll engine. Touch scrolling stays native. Its frame loop runs only during input/inertia, stops when idle, and is canceled while the page is hidden. Keyboard scrolling can interrupt inertia. No canvas, blur, or scroll-linked React state.
 - **Light and dark themes:** Navbar switch keeps Cream `#F3EEE3`, Ink Black `#111111`, and Burnt Orange `#D9541E`. Dark is the default; an explicitly saved light theme is preserved when browser storage is available.
 - **Official product icons:** Current WallpaperLive and TransparentBar logos are bundled unchanged, including their original colors. [Icon sources](<public/icons/SOURCES.md>).
-- **Factual Presentation:** Complete transparency on resource metrics (acknowledging initial conversion peaks alongside resting tray efficiency).
+- **Resource usage:** Task Manager captures cover cache preparation, desktop playback, and auto-pause.
 - **Bilingual Support (ID / EN):** One-click language switching between Indonesian and English.
 - **Shared release metadata:** Hero versions and download cards use the same GitHub `/releases/latest` response on page load. Drafts and prereleases are excluded from the current version. Installer links and decimal MB sizes follow that release; cumulative counts include `.exe` and `.zip` assets across paginated public releases. API errors show unavailable status and link to GitHub’s latest release, never an invented or hardcoded fallback version. No continuous polling.
 - **Sponsorship Integration:** Direct tipping integration via [yapp.ink/raflyf](https://yapp.ink/raflyf).
@@ -158,7 +158,7 @@ The native Git integration handles deployment; no parallel Actions deployment or
 
 ## Support
 
-Both **WallpaperLive** and **TransparentBar** are completely free, open-source, and privacy-respecting (zero analytics, zero ads).
+WallpaperLive and TransparentBar are free, open-source Windows apps.
 
 If you find these projects helpful, consider supporting their ongoing development:
 
