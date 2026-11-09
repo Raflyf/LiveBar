@@ -57,7 +57,7 @@ export const Hero: React.FC<HeroProps> = ({ t, releases }) => {
         </div>
 
         <p data-reveal className="text-xs font-mono text-fg/70 pt-1">
-          WallpaperLive {releases.WallpaperLive.version ?? '—'} · TransparentBar {releases.TransparentBar.version ?? '—'} · {t.hero.metaInfo}
+          WallpaperLive {releases.WallpaperLive.version ?? '...'} · TransparentBar {releases.TransparentBar.version ?? '...'} · {t.hero.metaInfo}
           {(releases.WallpaperLive.status !== 'ready' || releases.TransparentBar.status !== 'ready') && (
             <span className="block mt-1">{releases.WallpaperLive.status === 'unavailable' || releases.TransparentBar.status === 'unavailable'
               ? t.download.releaseUnavailable : t.download.releaseLoading}</span>

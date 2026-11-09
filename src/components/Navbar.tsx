@@ -1,6 +1,6 @@
 import React from 'react';
 import { Translation, Language } from '../types/content';
-import { Monitor, Heart, Download, Moon, Sun } from 'lucide-react';
+import { Heart, Download, Moon, Sun } from 'lucide-react';
 import { scrollToSection } from '../utils/scroll';
 
 interface NavbarProps {
@@ -19,12 +19,10 @@ export const Navbar: React.FC<NavbarProps> = ({ t, lang, onToggleLang, isDark, o
         {/* Brand */}
         <button 
           onClick={scrollToSection('top')}
-          aria-label="LivelyDesk — WallpaperLive & TransparentBar"
+          aria-label="LivelyDesk: WallpaperLive & TransparentBar"
           className="flex min-w-0 items-center gap-2.5 group cursor-pointer text-left"
         >
-          <div className="w-9 h-9 rounded-xl bg-inverse flex items-center justify-center text-on-inverse shadow-sm group-hover:scale-105 transition-transform">
-            <Monitor className="w-5 h-5 text-burnt" />
-          </div>
+          <img src="/favicon.svg" alt="" width="36" height="36" className="h-9 w-9 shrink-0 group-hover:scale-105 transition-transform" />
           <div className="hidden sm:flex flex-col">
             <span className="font-display font-bold text-base tracking-tight text-fg leading-none">
               LivelyDesk

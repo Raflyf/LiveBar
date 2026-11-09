@@ -1,13 +1,8 @@
 <p align="center">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="88" height="88">
-    <rect width="100" height="100" rx="24" fill="#111111"/>
-    <rect x="12" y="12" width="76" height="76" rx="16" fill="#F3EEE3"/>
-    <path d="M30 68 L50 32 L70 68 Z" fill="#D9541E"/>
-    <circle cx="50" cy="54" r="6" fill="#111111"/>
-  </svg>
+  <img src="public/favicon.svg" alt="LivelyDesk" width="88" height="88">
 </p>
 
-<h1 align="center">Desktop Suite Web</h1>
+<h1 align="center">LivelyDesk</h1>
 <p align="center">
   <strong>Your desktop, alive and transparent.</strong><br>
   Official interactive showcase for <a href="https://github.com/Raflyf/WallpaperLive">WallpaperLive</a> and <a href="https://github.com/Raflyf/TransparentBar">TransparentBar</a>.
@@ -36,7 +31,7 @@
 
 ## Overview
 
-**Desktop Suite Web** is the official unified web portal for two high-performance, native Windows desktop utilities created by [@Raflyf](https://github.com/Raflyf):
+**LivelyDesk** is the official unified web portal for two high-performance, native Windows desktop utilities created by [@Raflyf](https://github.com/Raflyf):
 
 1. **[WallpaperLive](https://github.com/Raflyf/WallpaperLive):** Native Windows live wallpaper engine. Plays local videos (MP4, WebM, GIF, MKV) with hardware-accelerated D3D11 decoding via native libmpv and an in-app 3x3 thumbnail library. Playback auto-pauses for maximized or fullscreen apps; resource-use snapshots are documented below.
 2. **[TransparentBar](https://github.com/Raflyf/TransparentBar):** Pure native Windows taskbar transparency utility written in Rust. Hooks directly into Windows DWM to remove taskbar opacity without blur or a browser engine. Includes an optional maximized-window connector strip.
@@ -92,6 +87,8 @@ The first tab keeps the existing desktop demo video. Other tabs show the v0.1.6 
 ---
 
 ## Design Identity
+
+The [LivelyDesk mark](<public/favicon.svg>) uses layered desktop panels, copper-colored edges, a wallpaper wave, and a translucent taskbar. Browser icons, header, and footer share the design. WallpaperLive and TransparentBar retain their own product icons.
 
 | Role | Color | Hex Code | Purpose |
 | :--- | :--- | :--- | :--- |

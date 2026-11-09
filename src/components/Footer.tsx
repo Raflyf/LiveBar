@@ -1,6 +1,6 @@
 import React from 'react';
 import { Translation } from '../types/content';
-import { Monitor, Github, Heart } from 'lucide-react';
+import { Github, Heart } from 'lucide-react';
 
 interface FooterProps {
   t: Translation;
@@ -13,9 +13,7 @@ export const Footer: React.FC<FooterProps> = ({ t }) => {
         
         {/* Brand */}
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-inverse flex items-center justify-center text-accent-text">
-            <Monitor className="w-4 h-4" />
-          </div>
+          <img src="/favicon.svg" alt="LivelyDesk" width="32" height="32" loading="lazy" className="h-8 w-8 shrink-0" />
           <div>
             <div className="font-display font-bold text-sm text-fg">
               WallpaperLive &amp; TransparentBar
