@@ -57,7 +57,7 @@ export const Benchmark: React.FC<BenchmarkProps> = ({ t }) => {
                 <td className="py-3.5 px-4 text-white/60 text-xs hidden md:table-cell">{t.benchmark.row2Notes}</td>
               </tr>
 
-              {/* Row 3: Minimized to tray */}
+              {/* Row 3: Desktop playback */}
               <tr className="bg-[#D9541E]/10 border-l-2 border-[#D9541E] hover:bg-[#D9541E]/15 transition-colors">
                 <td className="py-3.5 px-4 font-sans font-bold text-white">{t.benchmark.row3State}</td>
                 <td className="py-3.5 px-4 font-bold text-[#D9541E] text-base">{t.benchmark.row3Ram}</td>
@@ -88,7 +88,7 @@ export const Benchmark: React.FC<BenchmarkProps> = ({ t }) => {
         <div className="bg-white/5 border border-white/10 rounded-2xl p-5 flex items-start gap-3.5 text-xs font-mono text-white/70 leading-relaxed">
           <AlertCircle className="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
           <div>
-            <span className="font-bold text-white block mb-1">Konteks Pengujian Resmi (Bukan Klaim Universal):</span>
+            <span className="font-bold text-white block mb-1">{t.benchmark.contextTitle}</span>
             <span>{t.benchmark.disclaimer}</span>
           </div>
         </div>

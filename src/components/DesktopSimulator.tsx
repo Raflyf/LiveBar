@@ -21,11 +21,11 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
       repoLink: 'https://github.com/Raflyf/WallpaperLive',
     },
     library: {
-      image: 'https://raw.githubusercontent.com/Raflyf/WallpaperLive/main/assets/screenshots/cache-ready-v0.1.5.png',
+      image: 'https://raw.githubusercontent.com/Raflyf/WallpaperLive/main/assets/screenshots/cache-ready-v0.1.6.png',
       alt: 'WallpaperLive native 3x3 thumbnail library and placement controls',
       title: t.simulator.captions.libraryTitle,
       desc: t.simulator.captions.libraryDesc,
-      tag: 'Native Win32 / Rust UI',
+      tag: 'WallpaperLive v0.1.6 · Rust / Win32',
       repoLink: 'https://github.com/Raflyf/WallpaperLive',
     },
     taskbar: {
@@ -37,11 +37,11 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
       repoLink: 'https://github.com/Raflyf/TransparentBar',
     },
     telemetry: {
-      image: 'https://raw.githubusercontent.com/Raflyf/WallpaperLive/main/assets/screenshots/resource-use-v0.1.5.png',
-      alt: 'Official Task Manager capture of tray playback at 20.3 MB and auto-pause at 4.5 MB',
+      image: 'https://raw.githubusercontent.com/Raflyf/WallpaperLive/main/assets/screenshots/resource-use-v0.1.6.png',
+      alt: 'Task Manager composition: WallpaperLive v0.1.6 desktop playback at 37.8 MB and 1.5 percent CPU; earlier v0.1.5 auto-pause at 4.5 MB and 0 percent CPU',
       title: t.simulator.captions.telemetryTitle,
       desc: t.simulator.captions.telemetryDesc,
-      tag: 'Tangkapan Asli Task Manager',
+      tag: 'Task Manager · v0.1.6 / v0.1.5',
       repoLink: 'https://github.com/Raflyf/WallpaperLive#resource-use',
     },
   };
@@ -179,7 +179,7 @@ export const DesktopSimulator: React.FC<SimulatorProps> = ({ t }) => {
             </p>
           </div>
           <span className="px-3 py-1 rounded-full bg-[#D9541E]/20 text-[#D9541E] text-[11px] font-mono shrink-0 font-medium">
-            Dokumentasi v0.1.5 Asli
+            {activeTab === 'desktop' ? 'Dokumentasi v0.1.5 Asli' : t.simulator.tag}
           </span>
         </div>
 

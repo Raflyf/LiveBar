@@ -22,7 +22,7 @@
 </p>
 
 <p align="center">
-  <a href="#interactive-simulator">Simulator</a> ·
+  <a href="#product-showcase">Showcase</a> ·
   <a href="#real-world-task-manager-data">Real Test Data</a> ·
   <a href="#features">Features</a> ·
   <a href="#design-identity">Design Identity</a> ·
@@ -38,44 +38,43 @@
 
 **Desktop Suite Web** is the official unified web portal for two high-performance, native Windows desktop utilities created by [@Raflyf](https://github.com/Raflyf):
 
-1. **[WallpaperLive](https://github.com/Raflyf/WallpaperLive):** Native Windows live wallpaper engine. Plays local videos (MP4, WebM, GIF, MKV) with hardware-accelerated D3D11 decoding via native libmpv and an in-app 3x3 thumbnail library. When an app is maximized or fullscreen, auto-pause drops RAM to 4.5 MB.
-2. **[TransparentBar](https://github.com/Raflyf/TransparentBar):** Pure native Windows taskbar transparency utility written in Rust. Hooks directly into Windows DWM to remove taskbar opacity without blur or bulky UI runtimes (1.6 MB memory footprint). Includes an optional maximized-window connector strip.
+1. **[WallpaperLive](https://github.com/Raflyf/WallpaperLive):** Native Windows live wallpaper engine. Plays local videos (MP4, WebM, GIF, MKV) with hardware-accelerated D3D11 decoding via native libmpv and an in-app 3x3 thumbnail library. Playback auto-pauses for maximized or fullscreen apps; resource-use snapshots are documented below.
+2. **[TransparentBar](https://github.com/Raflyf/TransparentBar):** Pure native Windows taskbar transparency utility written in Rust. Hooks directly into Windows DWM to remove taskbar opacity without blur or a browser engine. Includes an optional maximized-window connector strip.
 
-Inspired by [Nusa](https://rama2555.github.io/nusa), this landing page features an in-browser **Interactive Desktop Simulator**, allowing users to experience live dynamic wallpapers and toggle taskbar features before downloading.
+Inspired by [Nusa](https://rama2555.github.io/nusa), this landing page presents a desktop demo video, native-app screenshots, and source-linked resource-use captures before download.
 
 ---
 
-## Real-World Task Manager Data (Measured Evidence)
+## Real-World Task Manager Data
 
-No synthetic benchmarks or exaggerated marketing numbers. Below are the author-documented Windows 11 x64 Task Manager captures recorded on **8 November 2026** directly from the official repositories.
+Latest WallpaperLive captures were supplied on 9 November 2026. Values below reproduce the author's [resource-use documentation](https://github.com/Raflyf/WallpaperLive/blob/2307daf3033084f3d4a4f3aa2d2abe85610d802a/README.md#resource-use) and [screenshot source record](https://github.com/Raflyf/WallpaperLive/blob/2307daf3033084f3d4a4f3aa2d2abe85610d802a/assets/screenshots/SOURCES.md). They show separate moments on one Windows setup, not a controlled benchmark.
 
-### 1. WallpaperLive Resource Usage (v0.1.5 capture)
+### WallpaperLive
 
-| State captured in Task Manager | Memory shown | CPU shown | What the row includes |
+| State captured in Task Manager | Memory shown | CPU shown | Scope |
 | :--- | ---: | ---: | :--- |
-| **Background cache preparation** | **348.9 MB – 409.3 MB** | **42.5% – 50.3%** | App plus background cache worker (temporary conversion; ~350 MB on 1080p, up to ~409 MB peak specifically when converting 4K media) |
-| **Cache ready, panel open** | **43.1 MB – 45.4 MB** | **1.3% – 2.6%** | WallpaperLive app with library and controls visible |
-| **Minimized to tray (live playback)** | **20.3 MB** | **0.5%** | WallpaperLive actively rendering live wallpaper on desktop (Disk: 0.5 MB/s, Net: 0) |
-| **Fullscreen/maximized auto-pause** | **4.5 MB** | **0%** | Playback paused automatically, resident pages trimmed down |
+| 4K cache preparation (v0.1.6) | 437.5 MB | 42.4% | App plus background cache worker during temporary conversion |
+| Cache ready, 3x3 panel open (v0.1.6) | 41.4 MB – 47.4 MB | 1.3% – 2.5% | Two captures: 41.4 MB / 2.5% CPU and 47.4 MB / 1.3% CPU |
+| Desktop live playback (v0.1.6) | 37.8 MB | 1.5% | Active wallpaper with Task Manager visible; disk 0 MB/s, network 0 Mbps |
+| Fullscreen/maximized auto-pause (v0.1.5 capture) | 4.5 MB | 0% | Earlier paused snapshot reused in the latest documentation |
 
-> **Author context note:** The author reports a temporary peak around **350 MB for 1080p and up to ~409 MB specifically when converting high-resolution 4K wallpapers** (where two decoder/encoder processes run concurrently during initial background cache generation), dropping to **~43–45 MB with the control panel open**, and settling to **20.3 MB / 0.5% CPU when minimized to the system tray**. When an application is maximized or fullscreen, auto-pause reclaims resident pages down to **4.5 MB / 0% CPU**. Initial conversion memory peaks are strictly temporary while encoding the display cache; once prepared, playback uses only ~20.3 MB in tray.
+The earlier v0.1.5 tray-playback capture from 8 November 2026 shows **20.3 MB / 0.5% CPU**. It is not a new v0.1.6 measurement. The updated resource-use composition pairs v0.1.6 desktop playback with the earlier v0.1.5 auto-pause capture.
 
-### 2. TransparentBar Resource Usage (Capture time)
+Cache preparation is temporary; its app-and-worker row is not steady playback usage. Task Manager rounds CPU values, so displayed 0% does not prove zero work. Its Memory column does not establish total private allocation, all process-tree memory, or dedicated VRAM. Media, codec, display resolution, driver, and cache state affect usage. These captures do not measure GPU utilization or guarantee a RAM ceiling or GPU/VRAM savings.
 
-| Host Process Memory | CPU | Disk | Network |
-| :--- | :--- | :--- | :--- |
-| **1.6 MB** | **0%** | **0 MB/s** | **0 Mbps** |
+### TransparentBar
 
-> **Author context note:** The highlighted row covers the host process. Usage varies with Windows version and desktop activity. Pure native Rust with zero webview or bundled browser engine.
+| Host process memory | CPU | Disk | Network |
+| ---: | ---: | ---: | ---: |
+| 1.6 MB | 0% | 0 MB/s | 0 Mbps |
+
+These are [displayed values at capture time](https://github.com/Raflyf/TransparentBar#resource-use), not a benchmark or upper limit. The row covers the host process only, **excluding the bridge loaded inside Explorer**. CPU is rounded. The two projects were captured separately; these figures are not a measured combined-suite total.
 
 ---
 
-## Interactive Simulator
+## Product Showcase
 
-The website provides a 60 FPS procedural desktop canvas demonstrating both utilities in action:
-- **Procedural Wallpapers:** Warm Sunset Mesh, Cyberpunk Horizon Grid, and Minimal Aurora Wave.
-- **Taskbar Modes:** Transparent (Clear background), Maximized-Window Connector Strip, and Default Windows Opaque.
-- **Interactive HUD:** Displays real-time Task Manager metrics (20.3 MB active, 4.5 MB auto-paused, 1.6 MB taskbar).
+The first tab keeps the existing desktop demo video. Other tabs show the native library, TransparentBar detail, and Task Manager captures. The WallpaperLive library and resource-use images now use the latest v0.1.6 compositions. Resource-use captions identify the reused v0.1.5 auto-pause capture; no browser HUD or live telemetry is simulated.
 
 ---
 
@@ -127,6 +126,10 @@ bun run dev
 # or
 npm run dev
 ```
+
+### Verify resource-use data
+
+Run `node benchmark-check.mjs` with Node.js 22.18+ or 24. The check compares both languages and this README with the pinned upstream table and confirms the published demo video is unchanged. Internet access is required.
 
 ### Build for Production
 ```bash
