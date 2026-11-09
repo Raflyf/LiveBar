@@ -86,7 +86,7 @@ The first tab keeps the existing desktop demo video. Other tabs show the v0.1.6 
 - **Resource usage:** Task Manager captures cover cache preparation, desktop playback, and auto-pause.
 - **Bilingual Support (ID / EN):** One-click language switching between Indonesian and English.
 - **Shared release metadata:** Hero versions and download cards use the same GitHub `/releases/latest` response on page load. Drafts and prereleases are excluded from the current version. Installer links and decimal MB sizes follow that release; cumulative counts include `.exe` and `.zip` assets across paginated public releases. API errors show unavailable status and link to GitHub’s latest release, never an invented or hardcoded fallback version. No continuous polling.
-- **Support options:** Direct links to [Yapp](https://yapp.ink/raflyf) and [Saweria](https://saweria.co/BuyMatcha).
+- **Support options:** Separate [Yapp](https://yapp.ink/raflyf) and [Saweria](https://saweria.co/BuyMatcha) cards, side by side on wider screens and stacked on phones. Each card opens its own platform, where the contribution amount is chosen.
 
 ---
 

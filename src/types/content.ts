@@ -125,10 +125,8 @@ export interface Translation {
     title: string;
     subtitle: string;
     desc: string;
-    tier1: string;
-    tier2: string;
-    tier3: string;
-    customTip: string;
+    yappDesc: string;
+    saweriaDesc: string;
     yappBtn: string;
     saweriaBtn: string;
     guarantee: string;
@@ -279,11 +277,9 @@ export const translations: Record<Language, Translation> = {
       title: "Dukung Proyek Bebas Iklan Ini.",
       subtitle: "WallpaperLive dan TransparentBar adalah proyek independen dan gratis. Jika membantu desktop Anda, dukung pengembang melalui Yapp atau Saweria.",
       desc: "Donasi membantu riset kompatibilitas Windows updates, pengujian layar multi-monitor DPI, dan pemeliharaan repositori.",
-      tier1: "☕ Traktir Kopi ($2)",
-      tier2: "🍕 Traktir Pizza ($5)",
-      tier3: "🚀 Sponsor Server ($10)",
-      customTip: "Beri Tip Sukarela di Yapp",
-      yappBtn: "Buka Profil Yapp (raflyf)",
+      yappDesc: "Pilih nominal dukungan langsung di halaman Yapp.",
+      saweriaDesc: "Pilih nominal dukungan langsung di halaman Saweria BuyMatcha.",
+      yappBtn: "Dukung lewat Yapp",
       saweriaBtn: "Dukung lewat Saweria",
       guarantee: "Pembayaran diproses di platform pilihan Anda.",
     },
@@ -431,11 +427,9 @@ export const translations: Record<Language, Translation> = {
       title: "Keep Free Software Alive.",
       subtitle: "Both utilities are free, open-source, and ad-free. If they improve your Windows desktop, you can support development through Yapp or Saweria.",
       desc: "Community donations help support Windows build tools, high-DPI multi-monitor testing, and active maintenance.",
-      tier1: "☕ Buy a Coffee ($2)",
-      tier2: "🍕 Buy a Pizza ($5)",
-      tier3: "🚀 Server Sponsor ($10)",
-      customTip: "Send Any Tip on Yapp",
-      yappBtn: "Open Yapp Profile (raflyf)",
+      yappDesc: "Choose your contribution amount on the Yapp page.",
+      saweriaDesc: "Choose your contribution amount on the Saweria BuyMatcha page.",
+      yappBtn: "Support on Yapp",
       saweriaBtn: "Support on Saweria",
       guarantee: "Payments are handled by your chosen platform.",
     },
