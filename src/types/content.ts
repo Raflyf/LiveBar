@@ -160,7 +160,7 @@ export const translations: Record<Language, Translation> = {
       download: "Unduh",
       support: "Dukungan",
       downloadBtn: "Unduh Suite",
-      supportBtn: "Traktir di Yapp",
+      supportBtn: "Dukung",
     },
     hero: {
       badge: "Tersedia untuk Windows 10 & 11 · 64-bit · Native Rust",
@@ -310,7 +310,7 @@ export const translations: Record<Language, Translation> = {
       download: "Download",
       support: "Support",
       downloadBtn: "Download Suite",
-      supportBtn: "Tip on Yapp",
+      supportBtn: "Support",
     },
     hero: {
       badge: "Available for Windows 10 & 11 · 64-bit · Native Rust",

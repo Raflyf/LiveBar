@@ -119,16 +119,14 @@ export const Navbar: React.FC<NavbarProps> = ({ t, lang, onToggleLang, isDark, o
             </span>
           </button>
 
-          {/* Support Button (External Yapp Link) */}
-          <a
-            href="https://yapp.ink/raflyf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-burnt/30 text-xs font-semibold text-accent-text hover:bg-burnt/10 transition-colors"
+          <button
+            type="button"
+            onClick={scrollToSection('support')}
+            className="motion-button hidden min-h-11 sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-burnt/30 text-xs font-semibold text-accent-text hover:bg-burnt/10 transition-colors cursor-pointer"
           >
-            <Heart className="w-3.5 h-3.5 fill-burnt" />
-            <span>Support</span>
-          </a>
+            <Heart className="w-3.5 h-3.5 fill-burnt" aria-hidden="true" />
+            <span>{t.nav.supportBtn}</span>
+          </button>
 
           {/* Primary Download CTA Button (Clean Scroll) */}
           <button
