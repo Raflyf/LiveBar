@@ -59,12 +59,6 @@ export const Navbar: React.FC<NavbarProps> = ({ t, lang, onToggleLang, isDark, o
           >
             {t.nav.download}
           </button>
-          <button 
-            onClick={scrollToSection('support')} 
-            className="hover:text-accent-text transition-colors cursor-pointer"
-          >
-            {t.nav.support}
-          </button>
         </nav>
 
         {/* Action Controls */}
