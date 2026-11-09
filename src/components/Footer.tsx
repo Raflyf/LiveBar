@@ -1,12 +1,13 @@
 import React from 'react';
-import { Translation } from '../types/content';
+import { Translation, type Language } from '../types/content';
 import { Github, Heart } from 'lucide-react';
 
 interface FooterProps {
   t: Translation;
+  lang: Language;
 }
 
-export const Footer: React.FC<FooterProps> = ({ t }) => {
+export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
   return (
     <footer className="border-t border-fg/10 bg-surface text-fg pt-12 pb-10 px-4 sm:px-6">
       <div data-reveal className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
@@ -26,6 +27,9 @@ export const Footer: React.FC<FooterProps> = ({ t }) => {
 
         {/* Links */}
         <div className="flex flex-wrap items-center gap-6 text-xs font-mono text-fg/70">
+          <a href={lang === 'id' ? '/doc/id' : '/doc'} className="hover:text-accent-text transition-colors">
+            {t.nav.docs}
+          </a>
           <a
             href="https://github.com/Raflyf/WallpaperLive"
             target="_blank"

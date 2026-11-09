@@ -113,6 +113,14 @@ The [LivelyDesk mark](<public/favicon.svg>) uses layered desktop panels, copper-
 
 ---
 
+## Documentation
+
+The [English guide](https://livelydesk.vercel.app/doc) and [Indonesian guide](https://livelydesk.vercel.app/doc/id) cover installation, local media, playback, taskbar controls, updates, data handling, and troubleshooting. The Docs link in the navbar and footer follows the selected language.
+
+[Guide content](<src/docs/content.ts>) records the upstream README revisions in `docSources`. Update both languages together when those instructions change. Vite renders the content into HTML at build time using [the documentation renderer](<src/docs/render.ts>); it does not fetch remote documentation during a build. Both guides remain readable without JavaScript. A small enhancement handles the saved theme, language preference, and mobile table of contents. Documentation uses native anchors and does not load the homepage's reveal, smooth-scroll, video, or release-fetch code.
+
+Production routes are restricted to `/doc` and `/doc/id` in [vercel.json](<vercel.json>). Other unknown paths retain normal 404 behavior; the Google verification file is unchanged. Local Vite serves the pages at `/doc/` and `/doc/id/`.
+
 ## Quick Start
 
 ```bash
@@ -132,6 +140,8 @@ npm run dev
 ```
 
 ### Verification
+
+Run `node docs-check.mjs` after `bun run build` to check guide parity, static output, section links, metadata, escaping, and source references without external API requests.
 
 Run `node motion-check.mjs` for repeat reveals, scroll direction, video visibility and focus, resume position, manual pause, and cleanup.
 

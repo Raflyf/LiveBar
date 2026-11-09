@@ -1,6 +1,6 @@
 import React from 'react';
 import { Translation, Language } from '../types/content';
-import { Heart, Download, Moon, Sun } from 'lucide-react';
+import { Heart, Download, Moon, Sun, BookOpen } from 'lucide-react';
 import { scrollToSection } from '../utils/scroll';
 
 interface NavbarProps {
@@ -62,7 +62,15 @@ export const Navbar: React.FC<NavbarProps> = ({ t, lang, onToggleLang, isDark, o
         </nav>
 
         {/* Action Controls */}
-        <div className="flex shrink-0 items-center gap-2">
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+          <a
+            href={lang === 'id' ? '/doc/id' : '/doc'}
+            aria-label={t.nav.docs}
+            className="motion-button min-h-11 min-w-10 inline-flex items-center justify-center gap-1.5 rounded-lg px-2 text-xs font-semibold text-fg/80 hover:text-accent-text"
+          >
+            <BookOpen className="h-4 w-4" aria-hidden="true" />
+            <span className="hidden sm:inline">Docs</span>
+          </a>
           {/* Language Switcher */}
           <div className="flex items-center bg-fg/5 rounded-lg p-0.5 border border-fg/10 text-xs font-mono">
             <button

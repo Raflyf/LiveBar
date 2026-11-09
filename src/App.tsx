@@ -91,7 +91,7 @@ export default function App() {
         <SupportYapp t={t} />
         <FAQ t={t} />
       </main>
-      <Footer t={t} />
+      <Footer t={t} lang={lang} />
     </div>
   );
 }

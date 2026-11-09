@@ -9,6 +9,7 @@ export interface Translation {
     support: string;
     downloadBtn: string;
     supportBtn: string;
+    docs: string;
   };
   hero: {
     badge: string;
@@ -161,6 +162,7 @@ export const translations: Record<Language, Translation> = {
       support: "Dukungan",
       downloadBtn: "Unduh Suite",
       supportBtn: "Dukung",
+      docs: "Dokumentasi",
     },
     hero: {
       badge: "Tersedia untuk Windows 10 & 11 · 64-bit · Native Rust",
@@ -311,6 +313,7 @@ export const translations: Record<Language, Translation> = {
       support: "Support",
       downloadBtn: "Download Suite",
       supportBtn: "Support",
+      docs: "Documentation",
     },
     hero: {
       badge: "Available for Windows 10 & 11 · 64-bit · Native Rust",
