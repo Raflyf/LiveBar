@@ -4,8 +4,6 @@
   -webkit-font-smoothing: antialiased;
 }
 .docs-page a { color: inherit; }
-.docs-page a:hover, .docs-page button:hover { translate: none; }
-.docs-page a:active, .docs-page button:active { scale: 1; }
 .docs-page :target { scroll-margin-top: 6rem; }
 .docs-page :focus-visible { outline-color: var(--accent-text); }
 .docs-skip {
@@ -106,4 +104,5 @@
   .docs-main { max-width: none; }
   .docs-page { background: white; color: black; }
   .docs-section { break-inside: auto; }
+  .docs-page [data-reveal] { opacity: 1 !important; animation: none !important; }
 }

@@ -28,7 +28,7 @@ export function renderSiteHeader(lang: 'en' | 'id', paths: Record<'en' | 'id', s
   const labels = id
     ? {home:'Beranda',docs:'Navigasi',language:'Bahasa',theme:'Mode gelap',download:'Unduh'}
     : {home:'Home',docs:'Navigation',language:'Language',theme:'Dark mode',download:'Download'};
-  return '<header class="docs-topbar"><div class="docs-topbar-inner"><a href="' + home + '" class="docs-brand" aria-label="LivelyDesk: ' + labels.home + '"><img src="/favicon.svg" alt="" width="36" height="36" /><span>LivelyDesk</span></a>' +
+  return '<header class="docs-topbar"><div data-reveal class="docs-topbar-inner"><a href="' + home + '" class="docs-brand" aria-label="LivelyDesk: ' + labels.home + '"><img src="/favicon.svg" alt="" width="36" height="36" /><span>LivelyDesk</span></a>' +
     '<nav class="docs-controls" aria-label="' + labels.docs + '"><a href="' + home + '">' + labels.home + '</a><div class="docs-language" role="group" aria-label="' + labels.language + '">' +
     '<a href="' + paths.id + '" hreflang="id" lang="id" data-docs-language' + (id ? ' aria-current="page"' : '') + '>ID</a>' +
     '<a href="' + paths.en + '" hreflang="en" lang="en" data-docs-language' + (!id ? ' aria-current="page"' : '') + '>EN</a></div>' +
@@ -41,7 +41,7 @@ export function renderSiteHeader(lang: 'en' | 'id', paths: Record<'en' | 'id', s
 export function renderSiteFooter(lang: 'en' | 'id') {
   const id = lang === 'id';
   const suffix = id ? '/id' : '';
-  return '<footer class="docs-footer"><div><span>LivelyDesk</span><a href="/wallpaperlive' + suffix + '">WallpaperLive</a><a href="/transparentbar' + suffix + '">TransparentBar</a><a href="/doc' + suffix + '">' + (id ? 'Panduan' : 'User guide') + '</a><a href="' + (id ? '/id' : '/') + '#support">' + (id ? 'Dukung pengembangan' : 'Support development') + '</a><a href="#docs-main">' + (id ? 'Kembali ke atas' : 'Back to top') + '</a></div></footer>';
+  return '<footer class="docs-footer"><div data-reveal><span>LivelyDesk</span><a href="/wallpaperlive' + suffix + '">WallpaperLive</a><a href="/transparentbar' + suffix + '">TransparentBar</a><a href="/doc' + suffix + '">' + (id ? 'Panduan' : 'User guide') + '</a><a href="' + (id ? '/id' : '/') + '#support">' + (id ? 'Dukung pengembangan' : 'Support development') + '</a><a href="#docs-main">' + (id ? 'Kembali ke atas' : 'Back to top') + '</a></div></footer>';
 }
 
 export function renderDocumentation(lang: 'en' | 'id') {
@@ -87,15 +87,15 @@ export function renderDocumentation(lang: 'en' | 'id') {
     '<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />',
   ].join('\n');
   const toc = (Object.entries(content.groups) as [DocGroup, string][]).map(([group, name]) =>
-    '<div class="docs-toc-group"><p class="docs-toc-title">' + escapeHtml(name) + '</p><ul>' + content.sections.filter(section => section.group === group).map(section => '<li><a href="#' + escapeHtml(section.id) + '">' + escapeHtml(section.title) + '</a></li>').join('') + '</ul></div>'
+    '<div data-reveal class="docs-toc-group"><p class="docs-toc-title">' + escapeHtml(name) + '</p><ul>' + content.sections.filter(section => section.group === group).map(section => '<li><a href="#' + escapeHtml(section.id) + '">' + escapeHtml(section.title) + '</a></li>').join('') + '</ul></div>'
   ).join('');
-  const sections = content.sections.map(section => '<section id="' + escapeHtml(section.id) + '" class="docs-section"><h2>' + escapeHtml(section.title) + '<a class="docs-heading-link" href="#' + escapeHtml(section.id) + '" aria-label="' + escapeHtml(labels.section + ' ' + section.title) + '">#</a></h2>' + section.blocks.map(block => renderBlock(block, section.title)).join('') + '</section>').join('\n');
+  const sections = content.sections.map(section => '<section data-reveal id="' + escapeHtml(section.id) + '" class="docs-section"><h2>' + escapeHtml(section.title) + '<a class="docs-heading-link" href="#' + escapeHtml(section.id) + '" aria-label="' + escapeHtml(labels.section + ' ' + section.title) + '">#</a></h2>' + section.blocks.map(block => renderBlock(block, section.title)).join('') + '</section>').join('\n');
   const body =
     '<a class="docs-skip" href="#docs-main">' + labels.skip + '</a>' +
     renderSiteHeader(lang, {en:'/doc',id:'/doc/id'}) +
-    '<div class="docs-layout"><aside class="docs-sidebar"><details class="docs-contents" open><summary>' + labels.contents + '</summary><nav aria-label="' + labels.contents + '">' + toc + '</nav></details></aside>' +
+    '<div class="docs-layout"><aside class="docs-sidebar" data-lenis-prevent-wheel><details class="docs-contents" open><summary>' + labels.contents + '</summary><nav aria-label="' + labels.contents + '">' + toc + '</nav></details></aside>' +
     '<main id="docs-main" tabindex="-1" class="docs-main"><nav class="docs-breadcrumbs" aria-label="Breadcrumb"><a href="' + (id ? '/id' : '/') + '">' + labels.home + '</a><span aria-hidden="true">/</span><span aria-current="page">' + labels.docs + '</span></nav>' +
-    '<div class="docs-intro"><h1>' + escapeHtml(content.title) + '</h1><p>' + escapeHtml(content.summary) + '</p><div class="docs-source-list"><span>' + labels.source + ':</span>' + docSources.map(source => externalLink(source.name + ' README', source.url)).join('') + '</div></div>' +
+    '<div data-reveal class="docs-intro hero-line"><h1>' + escapeHtml(content.title) + '</h1><p>' + escapeHtml(content.summary) + '</p><div class="docs-source-list"><span>' + labels.source + ':</span>' + docSources.map(source => externalLink(source.name + ' README', source.url)).join('') + '</div></div>' +
     sections + '</main></div>' +
     renderSiteFooter(lang);
   return { head, body };

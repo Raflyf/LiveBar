@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
+import { stripTypeScriptTypes } from 'node:module';
+import { runInNewContext } from 'node:vm';
 const css = readFileSync('src/index.css', 'utf8');
 assert.ok(css.includes('@keyframes section-reveal'));
 assert.ok(!css.includes('prefers-reduced-motion'));
@@ -55,4 +57,67 @@ windowListeners.get('focus')(); assert.ok(!video.paused);
 video.pause(); const manualCount = plays; show(0); show(.6); assert.equal(plays, manualCount);
 stopVideo(); assert.ok(visibility.disconnected); assert.equal(mediaListeners.size, 0); assert.equal(windowListeners.size, 0);
 assert.ok(readFileSync('src/components/FAQ.tsx', 'utf8').includes('inert={openIdx !== idx}'));
-console.log('PASS: repeat reveal, direction, video visibility/focus, resume position, manual pause, and cleanup.');
+// Exercise the actual shared page entry without loading CSS or a browser.
+const pageListeners = new Map(), pageWindowListeners = new Map(), calls = [];
+const languageLinks = [{ hash: '' }, { hash: '' }];
+const toc = { open: false, contains: link => link.inToc };
+const target = { hasAttribute: () => false, setAttribute: (key, value) => calls.push([key, value]), focus: options => calls.push(['focus', options.preventScroll]) };
+class PageLink {
+  hash = '#setup'; target = ''; inToc = true; skip = false; download = false;
+  closest() { return this; }
+  matches() { return this.skip; }
+  hasAttribute() { return this.download; }
+}
+const location = { hash: '' };
+let starts = 0, stops = 0;
+const pageWindow = {
+  location,
+  matchMedia: () => ({ matches: false, addEventListener() {} }),
+  addEventListener: (name, callback) => pageWindowListeners.set(name, callback),
+  dispatchEvent: event => pageWindowListeners.get(event.type)?.(event),
+  history: { pushState: (_state, _title, hash) => { location.hash = hash; } },
+};
+const pageSource = readFileSync('src/docs/main.ts', 'utf8').replace(/^import .*;\r?\n/gm, '');
+runInNewContext(stripTypeScriptTypes(pageSource), {
+  Element: PageLink, HashChangeEvent: class { constructor(type) { this.type = type; } },
+  window: pageWindow, localStorage: { setItem() {} },
+  document: {
+    documentElement: { lang: 'id', dataset: { theme: 'dark' } },
+    querySelector: selector => selector === '.docs-contents' ? toc : null,
+    querySelectorAll: () => languageLinks,
+    getElementById: id => id === 'setup' ? target : null,
+    addEventListener: (name, callback) => pageListeners.set(name, callback),
+  },
+  setupMotion: () => { starts++; return () => { stops++; }; },
+  setupSmoothScroll: () => () => calls.push(['stopScroll']),
+  scrollToSection: (id, keepHash) => () => calls.push(['scroll', id, keepHash, toc.open]),
+});
+assert.equal(starts, 1);
+const click = (link, overrides = {}) => {
+  let prevented = false;
+  pageListeners.get('click')({target: link, button: 0, detail: 1, preventDefault: () => { prevented = true; }, ...overrides});
+  return prevented;
+};
+const link = new PageLink();
+toc.open = true;
+assert.ok(click(link));
+assert.equal(toc.open, false);
+assert.equal(location.hash, '#setup');
+assert.ok(languageLinks.every(item => item.hash === '#setup'));
+assert.deepEqual(calls.at(-1), ['scroll', 'setup', true, false]);
+assert.ok(click(link, { detail: 0 }));
+assert.ok(calls.some(call => call[0] === 'focus' && call[1]));
+for (const modifiers of [{ctrlKey:true}, {metaKey:true}, {shiftKey:true}, {altKey:true}, {button:1}, {defaultPrevented:true}]) assert.equal(click(link, modifiers), false);
+for (const property of ['skip', 'download']) { link[property] = true; assert.equal(click(link), false); link[property] = false; }
+for (const hash of ['#missing', '#%invalid']) { link.hash = hash; assert.equal(click(link), false); }
+link.hash = '#setup'; link.target = '_blank'; assert.equal(click(link), false);
+pageWindowListeners.get('pagehide')();
+pageWindowListeners.get('pagehide')();
+assert.equal(stops, 1, 'Cleanup is idempotent');
+pageWindowListeners.get('pageshow')({persisted:false});
+assert.equal(starts, 1);
+pageWindowListeners.get('pageshow')({persisted:true});
+assert.equal(starts, 2);
+assert.equal(stops, 1);
+assert.equal(readFileSync('src/products/main.ts','utf8').trim(), "import '../docs/main.ts';\nimport './products.css';");
+console.log('PASS: repeat reveal, video visibility, shared page anchors, keyboard focus, modifiers, and lifecycle cleanup.');

@@ -45,18 +45,19 @@ export function setupSmoothScroll() {
   };
 }
 
-export const scrollToSection = (id: string) => (e?: React.MouseEvent) => {
+export const scrollToSection = (id: string, keepHash = false) => (e?: React.MouseEvent) => {
   e?.preventDefault();
   const el = document.getElementById(id);
   if (el) {
     if (scroller) {
+      scroller.resize();
       wakeScroll();
       scroller.scrollTo(el, { offset: -72 });
     } else {
       el.scrollIntoView({ behavior: 'smooth' });
     }
   }
-  if (window.location.hash) {
+  if (!keepHash && window.location.hash) {
     window.history.replaceState(null, '', window.location.pathname + window.location.search);
   }
 };

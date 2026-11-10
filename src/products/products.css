@@ -20,3 +20,4 @@
   .product-page-icon { grid-row: 1; margin: 0; width: 64px; height: 64px; }
   .product-page { padding-top: 1.5rem; }
 }
+.product-contents a, .product-actions a { display: inline-flex; }

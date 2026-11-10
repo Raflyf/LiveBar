@@ -27,7 +27,8 @@ for (const lang of ['en', 'id']) {
   assert.ok(map.includes('<loc>https://livelydesk.vercel.app' + route + '</loc>'));
   assert.equal((html.match(/<h1[ >]/g) || []).length, 1);
   assert.ok(!html.includes('<!--DOC_'));
-  assert.ok(!page.body.includes('data-reveal'));
+  assert.ok(page.body.includes('data-reveal'));
+  assert.ok(!page.body.includes('reveal-ready'), 'Static guide stays visible before JavaScript runs');
   assert.ok(!JSON.stringify(content).includes(String.fromCharCode(0x2014)), 'No em dash in guide copy');
   const allIds = [...page.body.matchAll(/ id="([^"]+)"/g)].map(match => match[1]);
   assert.equal(new Set(allIds).size, allIds.length);
