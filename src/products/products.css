@@ -1,0 +1,22 @@
+.product-page { max-width: 68rem; margin: auto; padding: 3rem 1.25rem 5rem; }
+.product-intro { display: grid; grid-template-columns: minmax(0, 1fr) 128px; align-items: start; gap: 2.5rem; }
+.product-name { font: 600 .85rem/1.6 var(--font-mono); color: var(--accent-text); margin-bottom: .85rem; }
+.product-intro h1 { font: 800 clamp(2rem, 4vw, 3.5rem)/1.12 var(--font-display); letter-spacing: -.03em; max-width: 22ch; margin: 0 0 1.2rem; }
+.product-intro p:not(.product-name) { max-width: 65ch; color: color-mix(in srgb, var(--fg) 82%, transparent); }
+.product-page-icon { width: 128px; height: 128px; object-fit: contain; margin-top: 2rem; }
+.product-license { margin: 1.4rem 0; font-size: .8rem; color: color-mix(in srgb, var(--fg) 74%, transparent); }
+.product-actions { display: flex; align-items: center; gap: 1.25rem; flex-wrap: wrap; margin: 1.5rem 0; font-size: .9rem; font-weight: 600; }
+.product-actions a { text-decoration: underline; text-underline-offset: .25rem; }
+.product-actions .product-download { min-height: 48px; display: inline-flex; align-items: center; padding: .6rem 1.3rem; border-radius: .65rem; color: var(--color-ink); background: var(--color-burnt); text-decoration: none; }
+.product-actions .product-download:hover { background: var(--color-burnt-hover); }
+.product-contents { display: flex; flex-wrap: wrap; gap: .6rem 1.5rem; padding: 1.3rem 0; margin: 1.5rem 0; border-block: 1px solid color-mix(in srgb, var(--fg) 14%, transparent); font-size: .82rem; }
+.product-contents a { text-decoration: underline; text-underline-offset: .25rem; }
+.product-preview { margin: 2rem 0; }
+.product-preview img { width: 100%; height: auto; border-radius: .8rem; border: 1px solid color-mix(in srgb, var(--fg) 18%, transparent); background: var(--color-ink); }
+.product-preview figcaption { margin-top: .75rem; color: color-mix(in srgb, var(--fg) 68%, transparent); font-size: .8rem; }
+.product-copy { max-width: 74ch; }
+@media(max-width: 600px) {
+  .product-intro { grid-template-columns: 1fr; gap: 1rem; }
+  .product-page-icon { grid-row: 1; margin: 0; width: 64px; height: 64px; }
+  .product-page { padding-top: 1.5rem; }
+}

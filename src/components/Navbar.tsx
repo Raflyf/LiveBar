@@ -73,30 +73,36 @@ export const Navbar: React.FC<NavbarProps> = ({ t, lang, onToggleLang, isDark, o
           </a>
           {/* Language Switcher */}
           <div className="flex items-center bg-fg/5 rounded-lg p-0.5 border border-fg/10 text-xs font-mono">
-            <button
+            <a
+              href="/id"
+              hrefLang="id"
+              lang="id"
               onClick={() => onToggleLang('id')}
-              className={`min-h-9 min-w-9 px-2 py-1 rounded-md transition-all cursor-pointer ${
+              className={`inline-flex items-center justify-center min-h-9 min-w-9 px-2 py-1 rounded-md transition-all cursor-pointer ${
                 lang === 'id' 
                   ? 'bg-inverse text-on-inverse font-bold shadow-sm'
                   : 'text-fg/70 hover:text-fg'
               }`}
-              aria-pressed={lang === 'id'}
+              aria-current={lang === 'id' ? 'page' : undefined}
               title="Bahasa Indonesia"
             >
               ID
-            </button>
-            <button
+            </a>
+            <a
+              href="/"
+              hrefLang="en"
+              lang="en"
               onClick={() => onToggleLang('en')}
-              className={`min-h-9 min-w-9 px-2 py-1 rounded-md transition-all cursor-pointer ${
+              className={`inline-flex items-center justify-center min-h-9 min-w-9 px-2 py-1 rounded-md transition-all cursor-pointer ${
                 lang === 'en' 
                   ? 'bg-inverse text-on-inverse font-bold shadow-sm'
                   : 'text-fg/70 hover:text-fg'
               }`}
-              aria-pressed={lang === 'en'}
+              aria-current={lang === 'en' ? 'page' : undefined}
               title="English"
             >
               EN
-            </button>
+            </a>
           </div>
 
           <button

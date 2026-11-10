@@ -84,7 +84,7 @@ The first tab keeps the existing desktop demo video. Other tabs show the v0.1.6 
 - **Light and dark themes:** Navbar switch keeps Cream `#F3EEE3`, Ink Black `#111111`, and Burnt Orange `#D9541E`. Dark is the default; an explicitly saved light theme is preserved when browser storage is available.
 - **Official product icons:** Current WallpaperLive and TransparentBar logos are bundled unchanged, including their original colors. [Icon sources](<public/icons/SOURCES.md>).
 - **Resource usage:** Task Manager captures cover cache preparation, desktop playback, and auto-pause.
-- **Bilingual Support (ID / EN):** One-click language switching between Indonesian and English.
+- **Bilingual Support (ID / EN):** Indonesian and English have separate URLs. The language switch follows the selected page language.
 - **Shared release metadata:** Hero versions and download cards use the same GitHub `/releases/latest` response on page load. Drafts and prereleases are excluded from the current version. Installer links and decimal MB sizes follow that release; cumulative counts include `.exe` and `.zip` assets across paginated public releases. API errors show unavailable status and link to GitHub’s latest release, never an invented or hardcoded fallback version. No continuous polling.
 - **Support options:** Separate [Yapp](https://yapp.ink/raflyf) and [Saweria](https://saweria.co/BuyMatcha) cards with cream and ink surfaces inside a shared frame, side by side on wider screens and stacked on phones. The navbar Support button scrolls to these cards rather than opening a payment platform. Each card opens its own platform, where the contribution amount is chosen.
 
@@ -119,7 +119,19 @@ The [English guide](https://livelydesk.vercel.app/doc) and [Indonesian guide](ht
 
 [Guide content](<src/docs/content.ts>) records the upstream README revisions in `docSources`. Update both languages together when those instructions change. Vite renders the content into HTML at build time using [the documentation renderer](<src/docs/render.ts>); it does not fetch remote documentation during a build. Both guides remain readable without JavaScript. A small enhancement handles the saved theme, language preference, and mobile table of contents. Documentation uses native anchors and does not load the homepage's reveal, smooth-scroll, video, or release-fetch code.
 
-Production routes are restricted to `/doc` and `/doc/id` in [vercel.json](<vercel.json>). Other unknown paths retain normal 404 behavior; the Google verification file is unchanged. Local Vite serves the pages at `/doc/` and `/doc/id/`.
+The guide routes `/doc` and `/doc/id` use explicit rewrites in [vercel.json](<vercel.json>), alongside the home and product language routes. Unknown paths retain normal 404 behavior; the Google verification file is unchanged. Local Vite serves directory pages with a trailing slash, including `/doc/` and `/doc/id/`.
+
+## Search visibility
+
+- Home: [English](https://livelydesk.vercel.app/) and [Indonesia](https://livelydesk.vercel.app/id).
+- WallpaperLive: [English](https://livelydesk.vercel.app/wallpaperlive) and [Indonesia](https://livelydesk.vercel.app/wallpaperlive/id), covering live wallpaper apps for Windows 10/11 and local video/GIF playback.
+- TransparentBar: [English](https://livelydesk.vercel.app/transparentbar) and [Indonesia](https://livelydesk.vercel.app/transparentbar/id), covering transparent taskbar setup and compatibility.
+
+Vite renders the homepage from the same React components it hydrates in the browser. The route selects the language; saved theme and live release data load after hydration. Returning to `/` with a saved Indonesian preference opens `/id`; choosing EN explicitly clears that preference before navigation. Fresh visitors receive the same English HTML regardless of user agent. Product and guide pages are static HTML with a small theme-control script. Crawlers and visitors receive the same content; no user-agent routing, invented reviews, or hidden keyword lists. Canonicals, reciprocal language alternatives, product schema, internal links, and [sitemap.xml](<public/sitemap.xml>) use the published URLs.
+
+Query wording was checked against public Google autocomplete on 10 November 2026: [live wallpaper Windows](https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=live%20wallpaper%20windows), [transparent taskbar](https://suggestqueries.google.com/complete/search?client=firefox&hl=en&gl=us&q=transparent%20taskbar), [wallpaper bergerak](https://suggestqueries.google.com/complete/search?client=firefox&hl=id&gl=id&q=wallpaper%20bergerak), and [taskbar transparan](https://suggestqueries.google.com/complete/search?client=firefox&hl=id&gl=id&q=taskbar%20transparan). These suggestions establish phrasing, not search volume, difficulty, or current rankings. The app pages do not promise downloadable wallpaper collections or a taskbar solution without running an app.
+
+After publishing, review Search Console indexing and queries for the new URLs. Compare impressions, clicks, and position over time; neither a sitemap nor these changes guarantees indexing or a top result. See [Google's SEO Starter Guide](https://developers.google.com/search/docs/fundamentals/seo-starter-guide?hl=en).
 
 ## Quick Start
 
@@ -140,6 +152,8 @@ npm run dev
 ```
 
 ### Verification
+
+Run `node seo-check.mjs` after `bun run build` to check the eight generated pages, metadata, product schema, language alternatives, and internal links without network requests.
 
 Run `node docs-check.mjs` after `bun run build` to check guide parity, static output, section links, metadata, escaping, and source references without external API requests.
 

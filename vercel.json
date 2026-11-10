@@ -2,6 +2,11 @@
   "framework": "vite",
   "trailingSlash": false,
   "rewrites": [
+    { "source": "/id", "destination": "/id/index.html" },
+    { "source": "/wallpaperlive", "destination": "/wallpaperlive/index.html" },
+    { "source": "/wallpaperlive/id", "destination": "/wallpaperlive/id/index.html" },
+    { "source": "/transparentbar", "destination": "/transparentbar/index.html" },
+    { "source": "/transparentbar/id", "destination": "/transparentbar/id/index.html" },
     { "source": "/doc", "destination": "/doc/index.html" },
     { "source": "/doc/id", "destination": "/doc/id/index.html" }
   ]

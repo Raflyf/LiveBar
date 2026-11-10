@@ -2,18 +2,50 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://livelydesk.vercel.app/</loc>
-    <lastmod>2026-11-09</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://livelydesk.vercel.app/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://livelydesk.vercel.app/id" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livelydesk.vercel.app/" />
+  </url>
+  <url>
+    <loc>https://livelydesk.vercel.app/id</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://livelydesk.vercel.app/" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://livelydesk.vercel.app/id" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livelydesk.vercel.app/" />
+  </url>
+  <url>
+    <loc>https://livelydesk.vercel.app/wallpaperlive</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://livelydesk.vercel.app/wallpaperlive" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://livelydesk.vercel.app/wallpaperlive/id" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livelydesk.vercel.app/wallpaperlive" />
+  </url>
+  <url>
+    <loc>https://livelydesk.vercel.app/wallpaperlive/id</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://livelydesk.vercel.app/wallpaperlive" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://livelydesk.vercel.app/wallpaperlive/id" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livelydesk.vercel.app/wallpaperlive" />
+  </url>
+  <url>
+    <loc>https://livelydesk.vercel.app/transparentbar</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://livelydesk.vercel.app/transparentbar" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://livelydesk.vercel.app/transparentbar/id" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livelydesk.vercel.app/transparentbar" />
+  </url>
+  <url>
+    <loc>https://livelydesk.vercel.app/transparentbar/id</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://livelydesk.vercel.app/transparentbar" />
+    <xhtml:link rel="alternate" hreflang="id" href="https://livelydesk.vercel.app/transparentbar/id" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livelydesk.vercel.app/transparentbar" />
   </url>
   <url>
     <loc>https://livelydesk.vercel.app/doc</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://livelydesk.vercel.app/doc" />
     <xhtml:link rel="alternate" hreflang="id" href="https://livelydesk.vercel.app/doc/id" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livelydesk.vercel.app/doc" />
   </url>
   <url>
     <loc>https://livelydesk.vercel.app/doc/id</loc>
     <xhtml:link rel="alternate" hreflang="en" href="https://livelydesk.vercel.app/doc" />
     <xhtml:link rel="alternate" hreflang="id" href="https://livelydesk.vercel.app/doc/id" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://livelydesk.vercel.app/doc" />
   </url>
 </urlset>

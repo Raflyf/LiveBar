@@ -53,6 +53,6 @@ for (const lang of ['en', 'id']) {
   assert.ok(page.body.includes('16 GiB') && page.body.includes('ARM64'));
 }
 const routes = JSON.parse(readFileSync('vercel.json', 'utf8')).rewrites;
-assert.deepEqual(routes, [{source:'/doc',destination:'/doc/index.html'}, {source:'/doc/id',destination:'/doc/id/index.html'}]);
+assert.deepEqual(routes.filter(route => route.source === '/doc' || route.source === '/doc/id'), [{source:'/doc',destination:'/doc/index.html'}, {source:'/doc/id',destination:'/doc/id/index.html'}]);
 assert.equal(readFileSync('dist/google462b52e1b6cba12b.html','utf8').trim(), 'google-site-verification: google462b52e1b6cba12b.html');
 console.log('PASS: bilingual guide structure, static HTML, section links, escaping, sources, metadata, and verification file.');

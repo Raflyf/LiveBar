@@ -1,14 +1,15 @@
 import React from 'react';
-import { Translation } from '../types/content';
+import { Translation, type Language } from '../types/content';
 import type { ProductReleases } from '../releases';
 import { Download, Github, Monitor, Terminal, ExternalLink } from 'lucide-react';
 
 interface DownloadHubProps {
   t: Translation;
   releases: ProductReleases;
+  lang: Language;
 }
 
-export const DownloadHub: React.FC<DownloadHubProps> = ({ t, releases }) => {
+export const DownloadHub: React.FC<DownloadHubProps> = ({ t, releases, lang }) => {
   const wl = releases.WallpaperLive;
   const tb = releases.TransparentBar;
   const statusLabel = (status: string) => status === 'loading' ? t.download.releaseLoading : t.download.releaseUnavailable;
@@ -45,11 +46,14 @@ export const DownloadHub: React.FC<DownloadHubProps> = ({ t, releases }) => {
 
             <div className="flex items-center gap-4 mb-4">
               <img src="/icons/wallpaperlive.png" alt="WallpaperLive logo" width="64" height="64" loading="lazy" className="product-icon h-16 w-16 shrink-0 object-contain" />
-              <h3 className="font-display text-2xl font-bold text-fg">{t.download.wpTitle}</h3>
+              <h3 className="font-display text-2xl font-bold text-fg"><a href={lang === 'id' ? '/wallpaperlive/id' : '/wallpaperlive'} className="hover:text-accent-text">{t.download.wpTitle}</a></h3>
             </div>
             <p className="text-sm text-fg/75 mb-6 leading-relaxed">
               {t.download.wpDesc}
             </p>
+            <a href={lang === 'id' ? '/wallpaperlive/id' : '/wallpaperlive'} className="mb-6 inline-flex text-sm font-semibold text-accent-text underline underline-offset-4">
+              {lang === 'id' ? 'Fitur dan cara memasang wallpaper bergerak' : 'Live wallpaper features and setup'}
+            </a>
 
             {/* Feature Checklist */}
             <ul className="text-xs font-mono text-fg/70 space-y-2 mb-8">
@@ -124,11 +128,14 @@ export const DownloadHub: React.FC<DownloadHubProps> = ({ t, releases }) => {
 
             <div className="flex items-center gap-4 mb-4">
               <img src="/icons/transparentbar.png" alt="TransparentBar logo" width="64" height="64" loading="lazy" className="product-icon h-16 w-16 shrink-0 object-contain" />
-              <h3 className="font-display text-2xl font-bold text-fg">{t.download.tbTitle}</h3>
+              <h3 className="font-display text-2xl font-bold text-fg"><a href={lang === 'id' ? '/transparentbar/id' : '/transparentbar'} className="hover:text-accent-text">{t.download.tbTitle}</a></h3>
             </div>
             <p className="text-sm text-fg/75 mb-6 leading-relaxed">
               {t.download.tbDesc}
             </p>
+            <a href={lang === 'id' ? '/transparentbar/id' : '/transparentbar'} className="mb-6 inline-flex text-sm font-semibold text-accent-text underline underline-offset-4">
+              {lang === 'id' ? 'Fitur dan cara membuat taskbar transparan' : 'Transparent taskbar features and setup'}
+            </a>
 
             {/* Feature Checklist */}
             <ul className="text-xs font-mono text-fg/70 space-y-2 mb-8">

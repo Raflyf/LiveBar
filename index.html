@@ -6,42 +6,7 @@
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" sizes="any" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LivelyDesk | WallpaperLive &amp; TransparentBar Windows Suite</title>
-    <meta name="description" content="LivelyDesk unites WallpaperLive and TransparentBar for Windows 10 &amp; 11. Lightweight native live wallpapers and taskbar transparency." />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://livelydesk.vercel.app/" />
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://livelydesk.vercel.app/" />
-    <meta property="og:title" content="LivelyDesk | WallpaperLive &amp; TransparentBar Windows Suite" />
-    <meta property="og:description" content="Lightweight native live wallpapers and taskbar transparency for Windows 10 &amp; 11." />
-    <meta property="og:image" content="https://livelydesk.vercel.app/icons/livelydesk.png" />
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:url" content="https://livelydesk.vercel.app/" />
-    <meta name="twitter:title" content="LivelyDesk | WallpaperLive &amp; TransparentBar Windows Suite" />
-    <meta name="twitter:description" content="Lightweight native live wallpapers and taskbar transparency for Windows 10 &amp; 11." />
-    <meta name="twitter:image" content="https://livelydesk.vercel.app/icons/livelydesk.png" />
-
-    <!-- Schema.org JSON-LD -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "LivelyDesk",
-      "operatingSystem": "Windows 10, Windows 11",
-      "applicationCategory": "DesktopEnhancementApplication",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "description": "LivelyDesk unites WallpaperLive and TransparentBar for native live wallpapers and transparent taskbars on Windows.",
-      "url": "https://livelydesk.vercel.app/"
-    }
-    </script>
+    <!--HOME_SEO-->
     <script id="theme-init">
       try {
         document.documentElement.dataset.theme = localStorage.getItem('theme') === 'light' ? 'light' : 'dark';
@@ -55,7 +20,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
   <body class="bg-canvas text-fg antialiased selection:bg-burnt selection:text-ink">
-    <div id="root"></div>
+    <div id="root" data-language="en"><!--HOME_BODY--></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

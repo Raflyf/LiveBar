@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Language, translations } from './types/content';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -13,21 +13,15 @@ import { emptyRelease, loadRelease, type ProductReleases, type ProductRepo } fro
 import { setupMotion } from './motion';
 import { setupSmoothScroll, scrollToSection } from './utils/scroll';
 
-export default function App() {
-  const [lang, setLang] = useState<Language>(() => {
-    if (typeof window !== 'undefined') {
-      try {
-        const saved = localStorage.getItem('lang');
-        if (saved === 'en' || saved === 'id') return saved;
-      } catch {
-        // Storage may be blocked; English still works in this tab.
-      }
-    }
-    return 'en';
-  });
-  const [theme, setTheme] = useState<'light' | 'dark'>(() =>
-    document.documentElement.dataset.theme === 'light' ? 'light' : 'dark'
-  );
+export default function App({ initialLang = 'en' }: { initialLang?: Language }): React.JSX.Element {
+  const lang = initialLang;
+  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+  const [themeReady, setThemeReady] = useState(false);
+  useEffect(() => {
+    setTheme(document.documentElement.dataset.theme === 'light' ? 'light' : 'dark');
+    setThemeReady(true);
+    try { localStorage.setItem('lang', lang); } catch { /* The URL still selects the language. */ }
+  }, [lang]);
   const [releases, setReleases] = useState<ProductReleases>({
     WallpaperLive: emptyRelease, TransparentBar: emptyRelease,
   });
@@ -48,13 +42,14 @@ export default function App() {
   }, []);
 
   useEffect(() => {
+    if (!themeReady) return;
     document.documentElement.dataset.theme = theme;
     try {
       localStorage.setItem('theme', theme);
     } catch {
       // The selected theme remains active when storage is unavailable.
     }
-  }, [theme]);
+  }, [theme, themeReady]);
 
   useEffect(() => {
     document.documentElement.lang = lang;
@@ -78,7 +73,6 @@ export default function App() {
         isDark={theme === 'dark'}
         onToggleTheme={() => setTheme(current => current === 'dark' ? 'light' : 'dark')}
         onToggleLang={l => {
-          setLang(l);
           try { localStorage.setItem('lang', l); } catch { /* Keep the choice in this tab. */ }
         }}
       />
@@ -87,7 +81,7 @@ export default function App() {
         <DesktopSimulator t={t} />
         <Features t={t} />
         <Benchmark t={t} />
-        <DownloadHub t={t} releases={releases} />
+        <DownloadHub t={t} releases={releases} lang={lang} />
         <SupportYapp t={t} />
         <FAQ t={t} />
       </main>
