@@ -6,6 +6,12 @@ dist-ssr
 .env.*
 .DS_Store
 
+# TypeScript build cache
+*.tsbuildinfo
+
+# Local scratch / temporary files
+scratch/
+
 # Documentation / Internal PRD
 prd.md
 

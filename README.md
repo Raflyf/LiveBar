@@ -151,16 +151,6 @@ bun run dev
 npm run dev
 ```
 
-### Verification
-
-Run `node seo-check.mjs` after `bun run build` to check the eight generated pages, metadata, product schema, language alternatives, and internal links without network requests.
-
-Run `node docs-check.mjs` after `bun run build` to check guide parity, static output, section links, metadata, escaping, and source references without external API requests.
-
-Run `node motion-check.mjs` for repeat reveals, video visibility, shared Docs/product anchor navigation, keyboard focus, modifier keys, and back/forward-cache lifecycle cleanup.
-
-Run `node release-check.mjs` for release selection, link validation, pagination, error states, and theme bootstrap checks. Run `node benchmark-check.mjs` for source figures, both languages, and unchanged demo-video bytes. Node.js 22.18+ or 24 is required; the benchmark check also needs internet access.
-
 ### Build for Production
 ```bash
 bun run build
