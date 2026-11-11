@@ -165,7 +165,7 @@ export const translations: Record<Language, Translation> = {
       docs: "Dokumentasi",
     },
     hero: {
-      badge: "Tersedia untuk Windows 10 & 11 · 64-bit · Native Rust",
+      badge: "LivelyDesk · Windows 10 & 11 · 64-bit · Native Rust",
       titlePart1: "Wallpaper bergerak,",
       titlePart2: "taskbar transparan.",
       subtitle: "Aplikasi desktop untuk Windows 10 dan 11. WallpaperLive memutar video, GIF, dan gambar milik Anda. TransparentBar membuat wallpaper terlihat di balik taskbar.",
@@ -316,7 +316,7 @@ export const translations: Record<Language, Translation> = {
       docs: "Documentation",
     },
     hero: {
-      badge: "Available for Windows 10 & 11 · 64-bit · Native Rust",
+      badge: "LivelyDesk · Windows 10 & 11 · 64-bit · Native Rust",
       titlePart1: "Live wallpapers,",
       titlePart2: "transparent taskbars.",
       subtitle: "Desktop apps for Windows 10 and 11. WallpaperLive plays your own videos, GIFs, and images. TransparentBar keeps your wallpaper visible behind the taskbar.",

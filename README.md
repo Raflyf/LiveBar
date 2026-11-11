@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Raflyf/desktop-suite-web/actions"><img src="https://img.shields.io/badge/Vercel-Production%20Ready-111111?style=flat&logo=vercel" alt="Vercel Ready"></a>
+  <a href="https://github.com/Raflyf/LivelyDesk/actions"><img src="https://img.shields.io/badge/Vercel-Production%20Ready-111111?style=flat&logo=vercel" alt="Vercel Ready"></a>
   <a href="https://github.com/Raflyf/WallpaperLive"><img src="https://img.shields.io/github/v/release/Raflyf/WallpaperLive?color=D9541E" alt="WallpaperLive"></a>
   <a href="https://github.com/Raflyf/TransparentBar"><img src="https://img.shields.io/github/v/release/Raflyf/TransparentBar?color=111111" alt="TransparentBar"></a>
   <a href="https://yapp.ink/raflyf"><img src="https://img.shields.io/badge/Support-Yapp.ink-ff4b4b?style=flat&logo=ko-fi" alt="Yapp.ink"></a>
@@ -137,7 +137,7 @@ After publishing, review Search Console indexing and queries for the new URLs. C
 
 ```bash
 # Clone the repository
-git clone https://github.com/Raflyf/desktop-suite-web.git
+git clone https://github.com/Raflyf/LivelyDesk.git
 cd desktop-suite-web
 
 # Install dependencies
@@ -162,7 +162,7 @@ npm run build
 
 ## Deploy to Vercel
 
-1. Connect `Raflyf/LiveBar` to the existing Vercel project `desktop-suite-web` with Production Branch `main`.
+1. Connect `Raflyf/LivelyDesk` to the existing Vercel project `desktop-suite-web` with Production Branch `main`.
 2. Use the **Vite** preset and output directory `dist`.
 3. Enable GitHub deployment records in Project Settings > Git (`gitProviderOptions.createDeployments: "enabled"`). Vercel records deployment state and the production URL in GitHub.
 4. Push to `main` and verify the resulting deployment SHA and [production website](https://livelydesk.vercel.app/).

@@ -23,7 +23,7 @@ export const products: Record<ProductSlug, Product> = {
     name: 'WallpaperLive', icon: '/icons/wallpaperlive.png', license: 'GPL-3.0-or-later', repository: 'https://github.com/Raflyf/WallpaperLive',
     copy: {
       en: {
-        title: 'WallpaperLive: Live Wallpaper for Windows 11 & 10',
+        title: 'WallpaperLive: Live Wallpaper App for Windows 11 & 10 | LivelyDesk',
         heading: 'Live wallpaper for Windows 11 and Windows 10',
         description: 'Turn your own videos, GIFs, and images into Windows live wallpapers with WallpaperLive. Per-display controls, FPS limits, auto-pause, and installation guide.',
         intro: 'WallpaperLive is a native Windows app for playing local media behind your desktop icons. Import files you already have, choose a monitor, and apply a wallpaper without changing the other displays.',
@@ -62,7 +62,7 @@ export const products: Record<ProductSlug, Product> = {
         ]
       },
       id: {
-        title: 'WallpaperLive: Wallpaper Bergerak Windows 11 & 10',
+        title: 'WallpaperLive: Aplikasi Wallpaper Bergerak Windows 11 & 10 | LivelyDesk',
         heading: 'Wallpaper bergerak untuk Windows 11 dan Windows 10',
         description: 'Jadikan video, GIF, dan gambar milik Anda sebagai wallpaper bergerak di Windows. WallpaperLive mendukung banyak monitor, batas FPS, auto-pause, dan cache lokal.',
         intro: 'WallpaperLive adalah aplikasi Windows untuk memutar media lokal di belakang ikon desktop. Impor berkas yang sudah Anda miliki, pilih monitor, lalu terapkan wallpaper tanpa mengganti tampilan monitor lain.',
@@ -106,7 +106,7 @@ export const products: Record<ProductSlug, Product> = {
     name:'TransparentBar',icon:'/icons/transparentbar.png',license:'MIT',repository:'https://github.com/Raflyf/TransparentBar',
     copy: {
       en: {
-        title:'TransparentBar: Transparent Taskbar for Windows 11 & 10',
+        title:'TransparentBar: Transparent Taskbar App for Windows 11 & 10 | LivelyDesk',
         heading:'A transparent taskbar for Windows 11 and Windows 10',
         description:'Make your Windows taskbar transparent with TransparentBar, a free Rust app with tray controls, optional startup, and a maximized-window connector.',
         intro:'TransparentBar removes the taskbar background while keeping Windows icons and system controls in place. Your wallpaper stays visible behind pinned apps, with settings available from a native tray menu.',
@@ -144,7 +144,7 @@ export const products: Record<ProductSlug, Product> = {
         ]
       },
       id: {
-        title:'TransparentBar: Taskbar Transparan Windows 11 & 10',
+        title:'TransparentBar: Aplikasi Taskbar Transparan Windows 11 & 10 | LivelyDesk',
         heading:'Taskbar transparan untuk Windows 11 dan Windows 10',
         description:'Buat taskbar Windows transparan dengan TransparentBar. Aplikasi Rust gratis dengan menu tray, startup opsional, dan konektor untuk jendela yang dimaksimalkan.',
         intro:'TransparentBar menghapus latar taskbar tanpa menghilangkan ikon dan kontrol Windows. Wallpaper tetap terlihat di belakang aplikasi yang disematkan, dengan pengaturan melalui menu tray native.',

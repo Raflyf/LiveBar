@@ -33,16 +33,16 @@ export function renderPageMetadata({ title, description, lang, paths, schema, im
 
 export function renderHomeMetadata(lang: PageLanguage) {
   const title = lang === 'id'
-    ? 'Wallpaper Bergerak & Taskbar Transparan Windows | LivelyDesk'
-    : 'Live Wallpaper & Transparent Taskbar for Windows | LivelyDesk';
+    ? 'LivelyDesk | Wallpaper Bergerak & Taskbar Transparan Windows 10 & 11'
+    : 'LivelyDesk | Live Wallpaper & Transparent Taskbar for Windows 10 & 11';
   const description = lang === 'id'
-    ? 'WallpaperLive memutar video dan GIF lokal sebagai wallpaper. TransparentBar membuat taskbar transparan. Unduh aplikasi dan panduan Windows 10/11 x64.'
-    : 'Use your own videos and GIFs as live wallpapers with WallpaperLive. Make the taskbar transparent with TransparentBar. Free apps for Windows 10/11 x64.';
+    ? 'LivelyDesk: WallpaperLive memutar video dan GIF lokal sebagai wallpaper bergerak, TransparentBar membuat taskbar transparan. Unduh gratis untuk Windows 10 & 11.'
+    : 'LivelyDesk: WallpaperLive plays your own videos and GIFs as live wallpapers, TransparentBar makes the taskbar transparent. Free apps for Windows 10 & 11.';
   const paths = { en: '/', id: '/id' };
   const schema = {
     '@context': 'https://schema.org',
     '@graph': [
-      { '@type': 'WebSite', '@id': siteOrigin + '/#website', name: 'LivelyDesk', url: siteOrigin + '/', inLanguage: ['en', 'id'], sameAs: 'https://github.com/Raflyf/LivelyDesk' },
+      { '@type': 'WebSite', '@id': siteOrigin + '/#website', name: 'LivelyDesk', alternateName: ['LivelyDesk Windows Suite'], url: siteOrigin + '/', inLanguage: ['en', 'id'], sameAs: 'https://github.com/Raflyf/LivelyDesk' },
       { '@type': 'CollectionPage', '@id': siteOrigin + paths[lang] + '#webpage', url: siteOrigin + paths[lang], name: title, description, inLanguage: lang,
         isPartOf: { '@id': siteOrigin + '/#website' },
         about: ['wallpaperlive', 'transparentbar'].map(slug => ({ '@type': 'SoftwareApplication', name: slug === 'wallpaperlive' ? 'WallpaperLive' : 'TransparentBar', url: siteOrigin + '/' + slug + (lang === 'id' ? '/id' : '') })) },
