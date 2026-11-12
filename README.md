@@ -196,4 +196,4 @@ The showcased applications remain separately licensed:
 - [WallpaperLive](https://github.com/Raflyf/WallpaperLive): [GPL-3.0-or-later](https://github.com/Raflyf/WallpaperLive/blob/main/LICENSE).
 - [TransparentBar](https://github.com/Raflyf/TransparentBar): [MIT](https://github.com/Raflyf/TransparentBar/blob/main/LICENSE.md).
 
-Third-party dependencies retain their own licenses. Product logos, screenshots, demo videos, and wallpaper artwork are not automatically covered by LiveBar’s MIT license; their original rights and permissions remain in force. See [icon sources](<public/icons/SOURCES.md>) and [figure sources](<public/images/SOURCES.md>).
+Third-party dependencies retain their own licenses. Product logos, screenshots, demo videos, and wallpaper artwork are not automatically covered by LivelyDesk’s MIT license; their original rights and permissions remain in force. See [icon sources](<public/icons/SOURCES.md>) and [figure sources](<public/images/SOURCES.md>).
