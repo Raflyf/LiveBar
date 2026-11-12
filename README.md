@@ -13,6 +13,7 @@
   <a href="https://github.com/Raflyf/WallpaperLive"><img src="https://img.shields.io/github/v/release/Raflyf/WallpaperLive?color=D9541E" alt="WallpaperLive"></a>
   <a href="https://github.com/Raflyf/TransparentBar"><img src="https://img.shields.io/github/v/release/Raflyf/TransparentBar?color=111111" alt="TransparentBar"></a>
   <a href="https://yapp.ink/raflyf"><img src="https://img.shields.io/badge/Support-Yapp.ink-ff4b4b?style=flat&logo=ko-fi" alt="Yapp.ink"></a>
+  <a href="https://saweria.co/BuyMatcha"><img src="https://img.shields.io/badge/Support-Saweria-faae2b?style=flat" alt="Saweria"></a>
   <a href="LICENSE"><img src="https://img.shields.io/github/license/Raflyf/LivelyDesk?color=586575" alt="LivelyDesk MIT license"></a>
 </p>
 
@@ -86,7 +87,7 @@ The first tab keeps the existing desktop demo video. Other tabs show the v0.1.6 
 - **Resource usage:** Task Manager captures cover cache preparation, desktop playback, and auto-pause.
 - **Bilingual Support (ID / EN):** Indonesian and English have separate URLs. The language switch follows the selected page language.
 - **Shared release metadata:** Hero versions and download cards use the same GitHub `/releases/latest` response on page load. Drafts and prereleases are excluded from the current version. Installer links and decimal MB sizes follow that release; cumulative counts include `.exe` and `.zip` assets across paginated public releases. API errors show unavailable status and link to GitHub’s latest release, never an invented or hardcoded fallback version. No continuous polling.
-- **Support options:** Separate [Yapp](https://yapp.ink/raflyf) and [Saweria](https://saweria.co/BuyMatcha) cards with cream and ink surfaces inside a shared frame, side by side on wider screens and stacked on phones. The navbar Support button scrolls to these cards rather than opening a payment platform. Each card opens its own platform, where the contribution amount is chosen.
+- **Support options:** Separate [Yapp](https://yapp.ink/raflyf) and [Saweria](https://saweria.co/BuyMatcha) cards with cream and ink surfaces inside a shared frame, side by side on wider screens and stacked on phones. The navbar and hero Support buttons scroll to these cards rather than opening a payment platform. Each card opens its own platform, where the contribution amount is chosen.
 
 ---
 
@@ -180,6 +181,10 @@ If you find these projects helpful, consider supporting their ongoing developmen
 <p align="center">
   <a href="https://yapp.ink/raflyf">
     <img src="https://img.shields.io/badge/Support%20on%20Yapp-D9541E?style=for-the-badge&logo=heart&logoColor=white" alt="Support on Yapp">
+  </a>
+  &nbsp;
+  <a href="https://saweria.co/BuyMatcha">
+    <img src="https://img.shields.io/badge/Support%20on%20Saweria-FAAE2B?style=for-the-badge" alt="Support on Saweria">
   </a>
 </p>
 

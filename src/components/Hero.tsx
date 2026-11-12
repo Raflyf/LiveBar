@@ -45,15 +45,14 @@ export const Hero: React.FC<HeroProps> = ({ t, releases }) => {
             <ArrowRight className="w-4 h-4 opacity-75" />
           </button>
 
-          <a
-            href="https://yapp.ink/raflyf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="motion-button w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-inverse text-on-inverse font-semibold text-sm hover:bg-inverse/90 transition-all shadow-sm"
+          <button
+            type="button"
+            onClick={scrollToSection('support')}
+            className="motion-button w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-inverse text-on-inverse font-semibold text-sm hover:bg-inverse/90 transition-all shadow-sm cursor-pointer"
           >
             <Heart className="w-4 h-4 text-burnt fill-burnt" />
             <span>{t.hero.ctaSecondary}</span>
-          </a>
+          </button>
         </div>
 
         <p data-reveal className="text-xs font-mono text-fg/70 pt-1">
